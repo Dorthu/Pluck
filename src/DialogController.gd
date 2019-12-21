@@ -18,13 +18,10 @@ func remove_box():
 
 func _ready():
 	self.add_box()
+	cur_box.set_text("Does this display correctly?")
+	cur_box.start()
 
 
 func _process(delta):
-	if cur_box:
-		update()
-
-
-func _draw():
 	if cur_box:
 		cur_box.position = BOX_POS-get_viewport_transform().origin
