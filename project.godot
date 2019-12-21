@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "DialogBox",
+"language": "GDScript",
+"path": "res://src/dialog.gd"
+}, {
+"base": "Node2D",
+"class": "DialogController",
+"language": "GDScript",
+"path": "res://src/DialogController.gd"
+}, {
+"base": "Node2D",
 "class": "MasterController",
 "language": "GDScript",
 "path": "res://src/master_scene.gd"
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://src/camera.gd"
 } ]
 _global_script_class_icons={
+"DialogBox": "",
+"DialogController": "",
 "MasterController": "",
 "MouseFollowCamera": ""
 }

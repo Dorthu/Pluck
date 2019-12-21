@@ -21,7 +21,6 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
 	if mouse_pos.x > get_viewport_rect().size.x - PAN_MARGIN:
 		self.position.x += PAN_SPEED
 	elif mouse_pos.x < PAN_MARGIN:

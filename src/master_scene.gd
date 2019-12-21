@@ -8,8 +8,7 @@ class_name MasterController
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var s = ResourceLoader.load('res://scenes/prototype-living-room.tscn')
-	print(get_node('ActiveScene'))
+	var s = ResourceLoader.load('res://scenes/rooms/prototype-living-room.tscn')
 	get_node('ActiveScene').add_child(s.instance())
 	#get_tree().get_root().get_node('ActiveScene').add_child(s)
 
