@@ -18,7 +18,7 @@ func remove_box():
 
 func _ready():
 	self.add_box()
-	cur_box.set_text("Does this display correctly?")
+	cur_box.set_text("Does this display correctly? |_Yes it does.|! SCARY TEXT |! NUMBER TWO")
 	cur_box.start()
 
 
