@@ -53,6 +53,7 @@ class TextParser:
 	
 	func _init(text: String):
 		self.raw_text = text
+		self.parts = Array()
 		self.parse()
 		
 	func parse():
@@ -71,7 +72,8 @@ class TextParser:
 					new_text = NormalText.new(p, cumulative_delay)
 				
 			cumulative_delay += new_text.get_time_taken()
-			parts.append(new_text)
+			self.parts.append(new_text)
+			
 			
 	func get_text(ticker_time):
 		var ret := ""

@@ -16,9 +16,20 @@ func remove_box():
 	self.remove_child(cur_box)
 
 
-func _ready():
+func _input(event):
+	if not cur_box:
+		return
+	
+	if event is InputEventMouseButton and event.pressed:
+		get_tree().set_input_as_handled()
+		remove_child(cur_box)
+		cur_box.queue_free()
+		cur_box = null
+
+
+func show_dialog(text: String):
 	self.add_box()
-	cur_box.set_text("Does this display correctly? |_Yes it does.|! SCARY TEXT |! NUMBER TWO")
+	cur_box.set_text(text)
 	cur_box.start()
 
 

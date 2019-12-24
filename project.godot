@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "Clickable",
+"language": "GDScript",
+"path": "res://src/clickable.gd"
+}, {
+"base": "Node2D",
 "class": "DialogBox",
 "language": "GDScript",
 "path": "res://src/dialog.gd"
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://src/camera.gd"
 } ]
 _global_script_class_icons={
+"Clickable": "",
 "DialogBox": "",
 "DialogController": "",
 "MasterController": "",
