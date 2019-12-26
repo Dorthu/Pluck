@@ -10,6 +10,7 @@ extents = Vector2( 100.176, 199.214 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
+room_width = 3000
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 1500, 300 )

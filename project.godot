@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "MouseFollowCamera",
 "language": "GDScript",
 "path": "res://src/camera.gd"
+}, {
+"base": "Node2D",
+"class": "Room",
+"language": "GDScript",
+"path": "res://src/room_shell.gd"
 } ]
 _global_script_class_icons={
 "Clickable": "",
 "DialogBox": "",
 "DialogController": "",
 "MasterController": "",
-"MouseFollowCamera": ""
+"MouseFollowCamera": "",
+"Room": ""
 }
 
 [application]
