@@ -14,11 +14,23 @@ var font := DynamicFont.new()
 var ticker: float
 var text_parser: TextParser
 const LETTER_SPEED := .05
+const LINE_HEIGHT := 30
+var ticker_max_value := 99999999999.9
+var line1: String
+var line2: String
+var line3: String
+var visible_line_1: String
+var visible_line_2: String
+var visible_line_3: String
+var parser1: TextParser
+var parser2: TextParser
+var parser3: TextParser
 
 func _ready():
 	self.text_origin = get_node("TextOrigin")
-	self.text = ""
-	self.visible_text = ""
+	self.visible_line_1 = ""
+	self.visible_line_2 = ""
+	self.visible_line_3 = ""
 	self.ticker = -1
 
 	var data = load("res://fonts/BreeSerif-Regular.ttf")
@@ -26,39 +38,65 @@ func _ready():
 	font.size = 24
 
 
-func set_text(text):
-	self.text = text
-	self.text_parser = TextParser.new(text)
+func set_text(line1: String, line2: String = "", line3: String = ""):
+	self.line1 = line1
+	self.line2 = line2
+	self.line3 = line3
+	self.parser1 = TextParser.new(line1)
+	self.parser2 = TextParser.new(line2, self.parser1.get_total_delta())
+	self.parser3 = TextParser.new(line3, self.parser2.get_total_delta())
 
 
 func start():
 	self.ticker = 0
+	self.ticker_max_value = self.parser3.get_total_delta()
+
+
+func show_full() -> bool:
+	# returns true if the full text was shown, false if the full text had already
+	# been visible
+	if self.ticker >= ticker_max_value:
+		return false
+	self.ticker = ticker_max_value
+	return true
 
 func _process(delta):
 	if self.ticker < 0:
 		return
 	
 	self.ticker += delta
-	self.visible_text = self.text_parser.get_text(self.ticker)
+	self.visible_line_1 = self.parser1.get_text(self.ticker)
+	self.visible_line_2 = self.parser2.get_text(self.ticker)
+	self.visible_line_3 = self.parser3.get_text(self.ticker)
+	
 	update()
 	
 
 func _draw():
-	draw_string(self.font, self.text_origin.position, self.visible_text)
+	draw_string(self.font, self.text_origin.position, self.visible_line_1)
+	draw_string(self.font, self.text_origin.position + Vector2(0, LINE_HEIGHT), self.visible_line_2)
+	draw_string(self.font, self.text_origin.position + Vector2(0, LINE_HEIGHT*2), self.visible_line_3)
 	
 class TextParser:
 	var raw_text: String
 	var token_count: int
 	var parts: Array
+	var initial_delay: float
 	
-	func _init(text: String):
+	func _init(text: String, delay: float = 0.0):
 		self.raw_text = text
+		self.initial_delay = delay
+		
+		# some time between lines
+		if self.initial_delay > 0:
+			self.initial_delay += LETTER_SPEED
+		
 		self.parts = Array()
 		self.parse()
 		
 	func parse():
 		var raw_parts := self.raw_text.split("|")
-		var cumulative_delay := 0.0
+		var cumulative_delay := self.initial_delay
 		
 		for p in raw_parts:
 			var new_text: Text
@@ -82,6 +120,13 @@ class TextParser:
 				break
 			ret += p.get_text(ticker_time)
 			
+		return ret
+		
+	func get_total_delta() -> float:
+		# returns the amount of time it will take all text to display
+		var ret := self.initial_delay
+		for p in parts:
+			ret += p.get_time_taken()
 		return ret
 
 class Text:

@@ -16,10 +16,10 @@ func _ready():
 	var camera = get_node("Camera")
 	camera.controller = self
 
-func show_dialog(text: String):
+func show_dialog(line1: String, line2: String, line3: String):
 	if dialog_active():
 		return
-	dialog_controller.show_dialog(text)
+	dialog_controller.show_dialog(line1, line2, line3)
 	
 func dialog_active():
 	return dialog_controller.cur_box != null

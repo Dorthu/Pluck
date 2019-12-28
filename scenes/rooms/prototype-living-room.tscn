@@ -25,7 +25,9 @@ texture = ExtResource( 2 )
 editor/display_folded = true
 position = Vector2( 1934.38, 270 )
 script = ExtResource( 3 )
-dialog_text = "This thing |!does not |! |belong here."
+line1 = "This thing is stange.."
+line2 = "|_V e r y  s t r a n g e"
+line3 = "I |!DO |!NOT|! |like it."
 
 [node name="Sprite" type="Sprite" parent="StrangeThing"]
 texture = ExtResource( 4 )

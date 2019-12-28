@@ -22,14 +22,15 @@ func _input(event):
 	
 	if event is InputEventMouseButton and event.pressed:
 		get_tree().set_input_as_handled()
-		remove_child(cur_box)
-		cur_box.queue_free()
-		cur_box = null
+		if not cur_box.show_full():
+			remove_child(cur_box)
+			cur_box.queue_free()
+			cur_box = null
 
 
-func show_dialog(text: String):
+func show_dialog(line1: String, line2: String, line3: String):
 	self.add_box()
-	cur_box.set_text(text)
+	cur_box.set_text(line1, line2, line3)
 	cur_box.start()
 
 
