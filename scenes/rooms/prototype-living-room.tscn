@@ -25,9 +25,7 @@ texture = ExtResource( 2 )
 editor/display_folded = true
 position = Vector2( 1934.38, 270 )
 script = ExtResource( 3 )
-line1 = "This thing is stange.."
-line2 = "|_V e r y  s t r a n g e"
-line3 = "I |!DO |!NOT|! |like it."
+lines = [ "This is line 1.", "Line two |_slow.", "|!Line |!3.", "Second dialog!", "Wow!" ]
 
 [node name="Sprite" type="Sprite" parent="StrangeThing"]
 texture = ExtResource( 4 )
@@ -36,6 +34,7 @@ texture = ExtResource( 4 )
 shape = SubResource( 1 )
 
 [node name="Left_Door" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 61.797, 275 )
 script = ExtResource( 5 )
 to_room = "test2"

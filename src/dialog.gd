@@ -38,10 +38,10 @@ func _ready():
 	font.size = 24
 
 
-func set_text(line1: String, line2: String = "", line3: String = ""):
-	self.line1 = line1
-	self.line2 = line2
-	self.line3 = line3
+func set_text(lines: Array): # of String
+	self.line1 = lines[0]
+	self.line2 = lines[1] if len(lines) > 1 else ""
+	self.line3 = lines[2] if len(lines) > 2 else ""
 	self.parser1 = TextParser.new(line1)
 	self.parser2 = TextParser.new(line2, self.parser1.get_total_delta())
 	self.parser3 = TextParser.new(line3, self.parser2.get_total_delta())
@@ -89,7 +89,7 @@ class TextParser:
 		
 		# some time between lines
 		if self.initial_delay > 0:
-			self.initial_delay += LETTER_SPEED
+			self.initial_delay += LETTER_SPEED*8
 		
 		self.parts = Array()
 		self.parse()

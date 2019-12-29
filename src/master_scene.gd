@@ -16,10 +16,11 @@ func _ready():
 	var camera = get_node("Camera")
 	camera.controller = self
 
-func show_dialog(line1: String, line2: String, line3: String):
+func show_dialog(text_pool): # Clickable.DialogTextPool
 	if dialog_active():
 		return
-	dialog_controller.show_dialog(line1, line2, line3)
+	print(text_pool)
+	dialog_controller.new_dialog(text_pool)
 	
 func dialog_active():
 	return dialog_controller.cur_box != null
