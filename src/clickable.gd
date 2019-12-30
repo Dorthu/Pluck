@@ -13,12 +13,14 @@ func _ready():
 	dialog_contents = DialogTextPool.new(lines)
 
 
+func show_dialog(event):
+	get_tree().get_root().get_children()[0].show_dialog(dialog_contents)
+
+
 func _on_Clickable_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		get_tree().set_input_as_handled()
-		print(dialog_contents)
-		get_tree().get_root().get_children()[0].show_dialog(dialog_contents)
-
+		show_dialog(event)	
 
 class DialogTextPool:
 	var lines: Array # of Array of String

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/prototype-living-room.png" type="Texture" id=2]
@@ -6,12 +6,18 @@
 [ext_resource path="res://img/living-room/test.png" type="Texture" id=4]
 [ext_resource path="res://src/Door.gd" type="Script" id=5]
 [ext_resource path="res://img/temp_arrow.png" type="Texture" id=6]
+[ext_resource path="res://src/Openable.gd" type="Script" id=7]
+[ext_resource path="res://img/living-room/test_dresser_closed.png" type="Texture" id=8]
+[ext_resource path="res://img/living-room/test_dresser_opened.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100.176, 199.214 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 104.332, 275.553 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 129, 123.3 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -47,7 +53,26 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left_Door"]
 shape = SubResource( 2 )
+
+[node name="Dresser" type="Area2D" parent="."]
+position = Vector2( 1300, 402 )
+script = ExtResource( 7 )
+lines = [ "It's empty." ]
+
+[node name="State1" type="Sprite" parent="Dresser"]
+scale = Vector2( 0.68, 0.68 )
+texture = ExtResource( 8 )
+
+[node name="State2" type="Sprite" parent="Dresser"]
+visible = false
+scale = Vector2( 0.68, 0.68 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dresser"]
+position = Vector2( -9, 0 )
+shape = SubResource( 3 )
 [connection signal="input_event" from="StrangeThing" to="StrangeThing" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="Left_Door" to="Left_Door" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="Left_Door" to="Left_Door" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="Left_Door" to="Left_Door" method="_on_Door_mouse_exited"]
+[connection signal="input_event" from="Dresser" to="Dresser" method="_on_Openable_input_event"]
