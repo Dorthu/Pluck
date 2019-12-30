@@ -39,9 +39,5 @@ func new_dialog(text_pool): # Clickable.DialogTextPool
 func show_dialog():
 	self.add_box()
 	cur_box.set_text(cur_text_pool.lines[cur_index])
+	cur_box.position = BOX_POS-get_viewport_transform().origin
 	cur_box.start()
-
-
-func _process(delta):
-	if cur_box:
-		cur_box.position = BOX_POS-get_viewport_transform().origin

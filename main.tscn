@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/master_scene.gd" type="Script" id=1]
 [ext_resource path="res://src/camera.gd" type="Script" id=2]
 [ext_resource path="res://src/DialogController.gd" type="Script" id=3]
 [ext_resource path="res://audio/music/ambiance.ogg" type="AudioStream" id=4]
+[ext_resource path="res://img/temp_inv_bar.png" type="Texture" id=5]
 
 [node name="MasterScene" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,3 +24,11 @@ script = ExtResource( 3 )
 stream = ExtResource( 4 )
 volume_db = 3.059
 autoplay = true
+
+[node name="Inventory" type="Node2D" parent="."]
+position = Vector2( 517, 566 )
+z_index = 10
+
+[node name="Sprite" type="Sprite" parent="Inventory"]
+scale = Vector2( 1.52833, 0.71 )
+texture = ExtResource( 5 )

@@ -36,5 +36,6 @@ func change_rooms(to_room: String, camera_x: float):
 	cur_room = room_map[to_room]
 	active_scene.add_child(cur_room)
 	
+	
 	if camera:
 		camera.position.x = camera_x
