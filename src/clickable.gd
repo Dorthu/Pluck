@@ -12,7 +12,6 @@ var dialog_contents: DialogTextPool
 func _ready():
 	dialog_contents = DialogTextPool.new(lines)
 
-
 func show_dialog(event):
 	get_tree().get_root().get_children()[0].show_dialog(dialog_contents)
 

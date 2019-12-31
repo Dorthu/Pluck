@@ -4,6 +4,7 @@ class_name MouseFollowCamera
 
 var PAN_SPEED := 5
 var PAN_MARGIN := 250
+var Y_CUTOFF := 500
 
 var controller: MasterController
 const VIEWPORT_WIDTH := 1020
@@ -14,7 +15,13 @@ func _process(delta):
 	if controller.dialog_active():
 		return
 	
-	var mouse_x = get_global_mouse_position().x
+	var mouse_pos := get_global_mouse_position()
+	
+	if mouse_pos.y >= Y_CUTOFF:
+		# it's in the inventory or whatever
+		return
+	
+	var mouse_x = mouse_pos.x
 	
 	if mouse_x > get_viewport_rect().size.x - PAN_MARGIN:
 		pan_position -= PAN_SPEED

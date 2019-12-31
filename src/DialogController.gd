@@ -7,6 +7,7 @@ var BOX_POS := Vector2(100, 425)
 var cur_box = null
 var cur_text_pool = null # Clickable.DialogTextPool
 var cur_index := -1
+var controller # a MasterController
 
 func add_box():
 	cur_box = BOX.instance()
@@ -30,6 +31,8 @@ func _input(event):
 			cur_index += 1
 			if cur_index < len(cur_text_pool.lines):
 				show_dialog()
+			else:
+				controller.dialog_finished()
 
 func new_dialog(text_pool): # Clickable.DialogTextPool
 	cur_text_pool = text_pool
