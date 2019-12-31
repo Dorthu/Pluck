@@ -35,6 +35,11 @@ _global_script_classes=[ {
 "path": "res://src/Inventory.gd"
 }, {
 "base": "Node2D",
+"class": "InventoryItem",
+"language": "GDScript",
+"path": "res://src/InventoryItem.gd"
+}, {
+"base": "Node2D",
 "class": "MasterController",
 "language": "GDScript",
 "path": "res://src/master_scene.gd"
@@ -65,6 +70,7 @@ _global_script_class_icons={
 "DialogController": "",
 "Doorway": "",
 "Inventory": "",
+"InventoryItem": "",
 "MasterController": "",
 "MouseFollowCamera": "",
 "Openable": "",

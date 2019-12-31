@@ -45,5 +45,5 @@ func change_rooms(to_room: String, camera_x: float):
 		camera.pan_position = camera_x
 
 func collect_item(item_id, item_texture):
-	var item = Inventory.InventoryItem.new(item_id, item_texture)
+	var item = inventory.make_item(item_id, item_texture)
 	inventory.add_item(item)
