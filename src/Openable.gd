@@ -9,7 +9,6 @@ var opened := false
 func _ready():
 	state1 = get_node("State1")
 	state2 = get_node("State2")
-	
 
 func _on_Openable_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
@@ -20,6 +19,8 @@ func handle_clicked(event):
 	if opened:
 		show_dialog(event)
 	else:
-		state1.hide()
-		state2.show()
-		opened = true
+		var controller = get_tree().get_root().get_children()[0]
+		if controller.active_item == null:
+			state1.hide()
+			state2.show()
+			opened = true

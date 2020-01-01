@@ -8,12 +8,31 @@ class_name Clickable
 # These can be set in the editor
 export(Array, String) var lines: Array
 var dialog_contents: DialogTextPool
+export var item_text: Dictionary;
+var DEFAULT_ITEM_TEXT := DialogTextPool.new(["I can't use this here."])
 
 func _ready():
 	dialog_contents = DialogTextPool.new(lines)
+	for k in item_text.keys():
+		var v = item_text[k]
+		if v is Array:
+			item_text[k] = DialogTextPool.new(v)
+		else:
+			item_text[k] = DialogTextPool.new([v])
 
 func show_dialog(event):
-	get_tree().get_root().get_children()[0].show_dialog(dialog_contents)
+	var controller = get_tree().get_root().get_children()[0]
+	
+	if controller.active_item == null:
+		controller.show_dialog(dialog_contents)
+	else:
+		print(controller.active_item.id)
+		print(item_text)
+		if controller.active_item.id in item_text:
+			print("Key found for active item!")
+			controller.show_dialog(item_text[controller.active_item.id])
+		else:
+			controller.show_dialog(DEFAULT_ITEM_TEXT)
 
 
 func _on_Clickable_input_event(viewport, event, shape_idx):

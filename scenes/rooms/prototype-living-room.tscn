@@ -38,6 +38,9 @@ editor/display_folded = true
 position = Vector2( 1934.38, 270 )
 script = ExtResource( 3 )
 lines = [ "This is line 1.", "Line two |_slow.", "|!Line |!3.", "Second dialog!", "Wow!" ]
+item_text = {
+"potion": "It does not like the potion."
+}
 
 [node name="Sprite" type="Sprite" parent="StrangeThing"]
 texture = ExtResource( 4 )
@@ -65,6 +68,9 @@ editor/display_folded = true
 position = Vector2( 1300, 402 )
 script = ExtResource( 7 )
 lines = [ "It's empty." ]
+item_text = {
+"potion": [ "It doesn't go here.", "In fact, I should keep it." ]
+}
 
 [node name="State1" type="Sprite" parent="Dresser"]
 scale = Vector2( 0.68, 0.68 )
@@ -80,6 +86,7 @@ position = Vector2( -9, 0 )
 shape = SubResource( 3 )
 
 [node name="Potion" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 892, 375 )
 script = ExtResource( 10 )
 lines = [ "A very well-drawn potion." ]

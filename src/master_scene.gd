@@ -8,6 +8,7 @@ var camera # a Camera
 var inventory # an Inventory
 var room_map: Dictionary
 var active_item: InventoryItem = null
+var clear_active_item := false
 
 func _ready():
 	for s in ["prototype-living-room", "test2"]:
@@ -61,12 +62,15 @@ func set_active_item(item: InventoryItem):
 	
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed and active_item != null:
-		get_tree().set_input_as_handled()
-		active_item = null
+		# don't mark this as handled!
+		clear_active_item = true # clear this nomatter what happens
 		update()
 		
 func _process(delta):
 	if active_item:
+		if clear_active_item:
+			active_item = null
+			clear_active_item = false
 		update()
 
 func _draw():
