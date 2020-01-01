@@ -22,4 +22,4 @@ func setup(inventory, item_id: String, texture: Texture):
 		
 func _on_InventoryItem_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		print("Clicked "+id)
+		my_inventory.controller.set_active_item(self)

@@ -7,6 +7,7 @@ var INVENTORY_ITEM_SCENE := ResourceLoader.load("res://scenes/ui/InventoryItem.t
 var items: Array # of InventoryItem, see below
 var slots: Array # of Node2D, these are the root nodes for the inventory items to be added to
 var next_slot := 0
+var controller # MasterController 
 
 func _ready():
 	slots.append(get_node("slot0"))

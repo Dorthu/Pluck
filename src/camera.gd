@@ -12,7 +12,7 @@ var pan_position := 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if controller.dialog_active():
+	if not controller.should_pan_camera():
 		return
 	
 	var mouse_pos := get_global_mouse_position()
