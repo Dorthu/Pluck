@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/room_shell.gd" type="Script" id=1]
+[ext_resource path="res://src/Door.gd" type="Script" id=2]
+[ext_resource path="res://img/temp_arrow.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 95.0016, 296.8 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+room_width = 1200
+
+[node name="LivingRoomDoor" type="Area2D" parent="."]
+position = Vector2( 1100, 300 )
+script = ExtResource( 2 )
+to_room = "living_room"
+
+[node name="Arrow" type="Sprite" parent="LivingRoomDoor"]
+visible = false
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LivingRoomDoor"]
+shape = SubResource( 1 )
+[connection signal="input_event" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_input_event"]
+[connection signal="mouse_entered" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_entered"]
+[connection signal="mouse_exited" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_exited"]

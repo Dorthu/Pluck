@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/room_shell.gd" type="Script" id=1]
+[ext_resource path="res://src/Door.gd" type="Script" id=2]
+[ext_resource path="res://img/temp_arrow.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 101.002, 310.8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 129.002, 267.8 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+room_width = 2000
+
+[node name="LivingRoomDoor" type="Area2D" parent="."]
+position = Vector2( 99, 314 )
+script = ExtResource( 2 )
+to_room = "living_room"
+initial_camera_x = -3000.0
+
+[node name="Arrow" type="Sprite" parent="LivingRoomDoor"]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LivingRoomDoor"]
+shape = SubResource( 1 )
+
+[node name="CellarDoor" type="Area2D" parent="."]
+position = Vector2( 949, 326 )
+script = ExtResource( 2 )
+to_room = "cellar"
+
+[node name="Arrow" type="Sprite" parent="CellarDoor"]
+visible = false
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CellarDoor"]
+shape = SubResource( 2 )
+[connection signal="input_event" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_input_event"]
+[connection signal="mouse_entered" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_entered"]
+[connection signal="mouse_exited" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_exited"]
+[connection signal="input_event" from="CellarDoor" to="CellarDoor" method="_on_Door_input_event"]
+[connection signal="mouse_entered" from="CellarDoor" to="CellarDoor" method="_on_Door_mouse_entered"]
+[connection signal="mouse_exited" from="CellarDoor" to="CellarDoor" method="_on_Door_mouse_exited"]

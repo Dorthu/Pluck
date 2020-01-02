@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/room_shell.gd" type="Script" id=1]
+[ext_resource path="res://img/prototype-living-room.png" type="Texture" id=2]
+[ext_resource path="res://src/Door.gd" type="Script" id=3]
+[ext_resource path="res://img/temp_arrow.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 86.4009, 257 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 137.801, 255.8 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+room_width = 3000
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BedroomDoor" type="Area2D" parent="."]
+position = Vector2( 68, 295 )
+script = ExtResource( 3 )
+to_room = "bedroom"
+initial_camera_x = -1000.0
+
+[node name="Arrow" type="Sprite" parent="BedroomDoor"]
+visible = false
+position = Vector2( 15, 4 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BedroomDoor"]
+position = Vector2( 8, 7 )
+shape = SubResource( 1 )
+
+[node name="KitchenDoor" type="Area2D" parent="."]
+position = Vector2( 2900, 295 )
+script = ExtResource( 3 )
+to_room = "kitchen"
+
+[node name="Arrow" type="Sprite" parent="KitchenDoor"]
+visible = false
+position = Vector2( -41, -29 )
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KitchenDoor"]
+position = Vector2( -35, -39 )
+shape = SubResource( 2 )
+[connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
+[connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
+[connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]
+[connection signal="input_event" from="KitchenDoor" to="KitchenDoor" method="_on_Door_input_event"]
+[connection signal="mouse_entered" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_entered"]
+[connection signal="mouse_exited" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_exited"]
