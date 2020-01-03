@@ -35,7 +35,7 @@ script = ExtResource( 4 )
 to_room = "cellar"
 unlocked_state_marker = "cellar-unlocked"
 locked_text = [ "Dad keeps this locked." ]
-key_id = "potion"
+key_id = "cellar_key"
 
 [node name="Lock" type="Sprite" parent="CellarDoor"]
 visible = false
