@@ -26,13 +26,12 @@ func show_dialog(event):
 	if controller.active_item == null:
 		controller.show_dialog(dialog_contents)
 	else:
-		print(controller.active_item.id)
-		print(item_text)
 		if controller.active_item.id in item_text:
 			print("Key found for active item!")
 			controller.show_dialog(item_text[controller.active_item.id])
 		else:
 			controller.show_dialog(DEFAULT_ITEM_TEXT)
+
 
 
 func _on_Clickable_input_event(viewport, event, shape_idx):

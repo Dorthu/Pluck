@@ -52,7 +52,7 @@ shape = SubResource( 1 )
 editor/display_folded = true
 position = Vector2( 61.797, 275 )
 script = ExtResource( 5 )
-to_room = "test2"
+to_room = "kitchen"
 
 [node name="Arrow" type="Sprite" parent="Left_Door"]
 visible = false

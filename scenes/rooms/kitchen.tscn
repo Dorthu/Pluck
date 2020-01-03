@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://src/Door.gd" type="Script" id=2]
 [ext_resource path="res://img/temp_arrow.png" type="Texture" id=3]
+[ext_resource path="res://src/LockedDoor.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 101.002, 310.8 )
@@ -29,8 +30,17 @@ shape = SubResource( 1 )
 
 [node name="CellarDoor" type="Area2D" parent="."]
 position = Vector2( 949, 326 )
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 to_room = "cellar"
+unlocked_state_marker = "cellar-unlocked"
+locked_text = [ "Dad keeps this locked." ]
+key_id = "potion"
+
+[node name="Lock" type="Sprite" parent="CellarDoor"]
+visible = false
+position = Vector2( 3, 2 )
+texture = ExtResource( 3 )
+flip_v = true
 
 [node name="Arrow" type="Sprite" parent="CellarDoor"]
 visible = false

@@ -28,6 +28,7 @@ volume_db = 3.059
 autoplay = true
 
 [node name="Inventory" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 517, 566 )
 z_index = 10
 script = ExtResource( 5 )
