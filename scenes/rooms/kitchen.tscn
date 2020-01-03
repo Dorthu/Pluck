@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://src/Door.gd" type="Script" id=2]
 [ext_resource path="res://img/temp_arrow.png" type="Texture" id=3]
 [ext_resource path="res://src/LockedDoor.gd" type="Script" id=4]
+[ext_resource path="res://img/temp_lock.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 101.002, 310.8 )
@@ -39,8 +40,7 @@ key_id = "potion"
 [node name="Lock" type="Sprite" parent="CellarDoor"]
 visible = false
 position = Vector2( 3, 2 )
-texture = ExtResource( 3 )
-flip_v = true
+texture = ExtResource( 5 )
 
 [node name="Arrow" type="Sprite" parent="CellarDoor"]
 visible = false
