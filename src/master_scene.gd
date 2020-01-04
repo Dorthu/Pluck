@@ -22,6 +22,7 @@ func _ready():
 	camera.controller = self
 	inventory = get_node("Inventory")
 	inventory.controller = self
+	game_state['test_state'] = true
 
 func show_dialog(text_pool): # Clickable.DialogTextPool
 	if dialog_active():

@@ -20,19 +20,18 @@ func _ready():
 		else:
 			item_text[k] = DialogTextPool.new([v])
 
+func text_for_item(item_id) -> DialogTextPool:
+	if item_id in item_text:
+		return item_text[item_id]
+	return DEFAULT_ITEM_TEXT
+
 func show_dialog(event):
 	var controller = get_tree().get_root().get_children()[0]
 	
 	if controller.active_item == null:
 		controller.show_dialog(dialog_contents)
 	else:
-		if controller.active_item.id in item_text:
-			print("Key found for active item!")
-			controller.show_dialog(item_text[controller.active_item.id])
-		else:
-			controller.show_dialog(DEFAULT_ITEM_TEXT)
-
-
+		controller.show_dialog(text_for_item(controller.active_item.id))
 
 func _on_Clickable_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:

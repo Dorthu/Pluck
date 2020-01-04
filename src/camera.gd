@@ -30,7 +30,7 @@ func _process(delta):
 		dir = -1
 	elif mouse_x < PAN_MARGIN:
 		distance = mouse_x
-
+	
 	if distance != 0:
 		pan_position += (PAN_MARGIN - distance) * PAN_SPEED * dir
 	

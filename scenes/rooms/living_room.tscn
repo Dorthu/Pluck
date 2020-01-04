@@ -1,15 +1,27 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/prototype-living-room.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/temp_arrow.png" type="Texture" id=4]
+[ext_resource path="res://src/LockedOpernable.gd" type="Script" id=5]
+[ext_resource path="res://img/living-room/temp_hook_closed.png" type="Texture" id=6]
+[ext_resource path="res://img/living-room/temp_hook_unfurelled.png" type="Texture" id=7]
+[ext_resource path="res://src/PickupItem.gd" type="Script" id=8]
+[ext_resource path="res://img/living-room/backpack_small.png" type="Texture" id=9]
+[ext_resource path="res://img/living-room/backpack.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 86.4009, 257 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 137.801, 255.8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 88.6812, 124.688 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 58.4486, 73.1813 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,6 +32,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="BedroomDoor" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 68, 295 )
 script = ExtResource( 3 )
 to_room = "bedroom"
@@ -35,6 +48,7 @@ position = Vector2( 8, 7 )
 shape = SubResource( 1 )
 
 [node name="KitchenDoor" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 2900, 295 )
 script = ExtResource( 3 )
 to_room = "kitchen"
@@ -48,9 +62,50 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KitchenDoor"]
 position = Vector2( -35, -39 )
 shape = SubResource( 2 )
+
+[node name="BranchHook" type="Area2D" parent="."]
+position = Vector2( 994.311, 260.895 )
+script = ExtResource( 5 )
+item_text = {
+"potion": "I think it wants water."
+}
+item_name = "Backpack"
+required_item_id = "cellar_key"
+consume_item = true
+locked_text = [ "The hook I hang my backpack on has", "grown around the hanger.  I can't get it.", "", "Maybe it would like some water?" ]
+
+[node name="State1" type="Sprite" parent="BranchHook"]
+position = Vector2( 40.3099, 61.5845 )
+texture = ExtResource( 6 )
+
+[node name="State2" type="Sprite" parent="BranchHook"]
+visible = false
+position = Vector2( 40.3099, 161.24 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BranchHook"]
+position = Vector2( 49.2677, 71.662 )
+shape = SubResource( 3 )
+
+[node name="Backpack" type="Area2D" parent="BranchHook"]
+visible = false
+position = Vector2( -26.8733, 220.585 )
+script = ExtResource( 8 )
+item_id = "backpack"
+item_sprite = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="BranchHook/Backpack"]
+position = Vector2( 71.662, -50.3874 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BranchHook/Backpack"]
+position = Vector2( 45.9086, 30.2324 )
+shape = SubResource( 4 )
 [connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]
 [connection signal="input_event" from="KitchenDoor" to="KitchenDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_exited"]
+[connection signal="input_event" from="BranchHook" to="BranchHook" method="_on_Openable_input_event"]
+[connection signal="input_event" from="BranchHook/Backpack" to="BranchHook/Backpack" method="_on_PickupItem_input_event"]
