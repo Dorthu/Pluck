@@ -2,7 +2,7 @@ extends Camera2D
 
 class_name MouseFollowCamera
 
-var PAN_SPEED := 5
+var PAN_SPEED := .08
 var PAN_MARGIN := 250
 var Y_CUTOFF := 500
 
@@ -22,11 +22,17 @@ func _process(delta):
 		return
 	
 	var mouse_x = mouse_pos.x
+	var distance = 0
+	var dir := 1
 	
 	if mouse_x > get_viewport_rect().size.x - PAN_MARGIN:
-		pan_position -= PAN_SPEED
+		distance = get_viewport_rect().size.x - mouse_x
+		dir = -1
 	elif mouse_x < PAN_MARGIN:
-		pan_position += PAN_SPEED
+		distance = mouse_x
+
+	if distance != 0:
+		pan_position += (PAN_MARGIN - distance) * PAN_SPEED * dir
 	
 	#position = self.position
 	if pan_position > 0:
