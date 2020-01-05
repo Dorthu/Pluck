@@ -10,3 +10,9 @@ func opening_dialog():
 	]
 	var text_pool = Clickable.DialogTextPool.new(lines)
 	controller.show_dialog(text_pool)
+	controller.stop_camera = false
+	
+func _on_OpeningDialog_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.pressed:
+		opening_dialog()
+		get_parent().remove_child(self)

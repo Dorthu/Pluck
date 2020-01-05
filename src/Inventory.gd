@@ -9,7 +9,7 @@ var slots: Array # of Node2D, these are the root nodes for the inventory items t
 var controller # MasterController 
 
 func _ready():
-	# TODO - maybe more slots?
+	# TODO - maye more slots?
 	slots.append(get_node("slot0"))
 	slots.append(get_node("slot1"))
 	slots.append(get_node("slot2"))
@@ -40,3 +40,9 @@ func remove_item(item: InventoryItem):
 		if s.get_child(0) == item:
 			s.remove_child(s.get_child(0))
 			break
+
+func has_item(name: String) -> bool:
+	for c in items:
+		if c is InventoryItem and c.id == name:
+			return true
+	return false

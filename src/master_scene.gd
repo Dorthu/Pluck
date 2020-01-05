@@ -10,6 +10,7 @@ var room_map: Dictionary
 var active_item: InventoryItem = null
 var clear_active_item := false
 var game_state := Dictionary()
+var stop_camera := true
 
 func _ready():
 	for s in ["prototype-living-room", "test2", "living_room","bedroom","kitchen","cellar"]:
@@ -27,8 +28,6 @@ func _ready():
 	# initial room
 	change_rooms('bedroom', -400)
 	
-	# Show initial dialog
-	get_node("OpeningDialog").opening_dialog()
 
 func show_dialog(text_pool): # Clickable.DialogTextPool
 	if dialog_active():
@@ -43,6 +42,8 @@ func dialog_active():
 	return dialog_controller.cur_box != null
 
 func should_pan_camera():
+	if stop_camera:
+		return false
 	return active_item == null and not dialog_active()
 
 func should_allow_doors():

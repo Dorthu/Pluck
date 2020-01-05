@@ -1,5 +1,7 @@
 extends Clickable
 
+class_name Sink
+
 export var cup_of_water_texture: Texture
 export(Array, String) var fill_cup_text
 var fill_cup_text_pool: Clickable.DialogTextPool

@@ -1,15 +1,31 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/bedroom/sketch.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/temp_arrow.png" type="Texture" id=4]
+[ext_resource path="res://src/Openable.gd" type="Script" id=5]
+[ext_resource path="res://img/bedroom/sketch_top_doors_closed.png" type="Texture" id=6]
+[ext_resource path="res://img/bedroom/sketch_top_doors_open.png" type="Texture" id=7]
+[ext_resource path="res://img/bedroom/sketch_bottom_doors_closed.png" type="Texture" id=8]
+[ext_resource path="res://img/bedroom/sketch_bottom_doors_open.png" type="Texture" id=9]
+[ext_resource path="res://src/PickupItem.gd" type="Script" id=10]
+[ext_resource path="res://img/bedroom/sketch_cellar_key.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.0016, 214.8 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 57.0016, 229.8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 109, 86.0618 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 104.614, 66.7545 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 27.4976, 15.3434 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,6 +36,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="LivingRoomDoor" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 1461, 340 )
 script = ExtResource( 3 )
 to_room = "living_room"
@@ -36,6 +53,7 @@ position = Vector2( -18, -12 )
 shape = SubResource( 1 )
 
 [node name="KitchenDoor" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 56, 323 )
 script = ExtResource( 3 )
 to_room = "kitchen"
@@ -50,9 +68,60 @@ texture = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KitchenDoor"]
 position = Vector2( -1, -18 )
 shape = SubResource( 2 )
+
+[node name="DresserTop" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 370.666, 238.863 )
+script = ExtResource( 5 )
+
+[node name="State1" type="Sprite" parent="DresserTop"]
+texture = ExtResource( 6 )
+
+[node name="State2" type="Sprite" parent="DresserTop"]
+visible = false
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DresserTop"]
+position = Vector2( -21.7508, -29.2431 )
+shape = SubResource( 3 )
+
+[node name="DresserBottom" type="Area2D" parent="."]
+position = Vector2( 361.247, 366.396 )
+script = ExtResource( 5 )
+item_name = "CellarDoorKey"
+
+[node name="State1" type="Sprite" parent="DresserBottom"]
+position = Vector2( 20.7714, 67.0103 )
+texture = ExtResource( 8 )
+
+[node name="State2" type="Sprite" parent="DresserBottom"]
+visible = false
+position = Vector2( 21.4939, 69.1778 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DresserBottom"]
+position = Vector2( -1.28528, 6.42639 )
+shape = SubResource( 4 )
+
+[node name="CellarDoorKey" type="Area2D" parent="DresserBottom"]
+visible = false
+position = Vector2( -8.99695, -9.31827 )
+script = ExtResource( 10 )
+lines = [ "An old key." ]
+item_id = "cellar_key"
+item_sprite = ExtResource( 11 )
+
+[node name="Sprite" type="Sprite" parent="DresserBottom/CellarDoorKey"]
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DresserBottom/CellarDoorKey"]
+shape = SubResource( 5 )
 [connection signal="input_event" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_exited"]
 [connection signal="input_event" from="KitchenDoor" to="KitchenDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_exited"]
+[connection signal="input_event" from="DresserTop" to="DresserTop" method="_on_Openable_input_event"]
+[connection signal="input_event" from="DresserBottom" to="DresserBottom" method="_on_Openable_input_event"]
+[connection signal="input_event" from="DresserBottom/CellarDoorKey" to="DresserBottom/CellarDoorKey" method="_on_PickupItem_input_event"]
