@@ -15,14 +15,20 @@ func _ready():
 	for s in ["prototype-living-room", "test2", "living_room","bedroom","kitchen","cellar"]:
 		room_map[s] = ResourceLoader.load('res://scenes/rooms/'+s+'.tscn').instance()
 		room_map[s].controller = self
-	change_rooms('prototype-living-room', 600)
 	dialog_controller = get_node('DialogController')
 	dialog_controller.controller = self
 	camera = get_node("Camera")
 	camera.controller = self
 	inventory = get_node("Inventory")
 	inventory.controller = self
+	# TEMP
 	game_state['test_state'] = true
+	
+	# initial room
+	change_rooms('bedroom', -400)
+	
+	# Show initial dialog
+	get_node("OpeningDialog").opening_dialog()
 
 func show_dialog(text_pool): # Clickable.DialogTextPool
 	if dialog_active():

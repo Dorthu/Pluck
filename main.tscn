@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/master_scene.gd" type="Script" id=1]
 [ext_resource path="res://src/camera.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://audio/music/ambiance.ogg" type="AudioStream" id=4]
 [ext_resource path="res://src/Inventory.gd" type="Script" id=5]
 [ext_resource path="res://img/temp_inv_bar.png" type="Texture" id=6]
+[ext_resource path="res://src/OpeningDialog.gd" type="Script" id=7]
 
 [node name="MasterScene" type="Node2D"]
 z_index = 9
@@ -48,3 +49,6 @@ position = Vector2( -269.03, 14.9622 )
 
 [node name="slot3" type="Node2D" parent="Inventory"]
 position = Vector2( -225.007, 14.3867 )
+
+[node name="OpeningDialog" type="Node2D" parent="."]
+script = ExtResource( 7 )

@@ -13,6 +13,7 @@ var pan_position := 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not controller.should_pan_camera():
+		controller.cur_room.position.x = pan_position
 		return
 	
 	var mouse_pos := get_global_mouse_position()

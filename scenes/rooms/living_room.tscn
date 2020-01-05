@@ -92,6 +92,7 @@ shape = SubResource( 3 )
 visible = false
 position = Vector2( -26.8733, 220.585 )
 script = ExtResource( 8 )
+lines = [ "My backpack!  Now I'm ready to leave the house!" ]
 item_id = "backpack"
 item_sprite = ExtResource( 9 )
 
