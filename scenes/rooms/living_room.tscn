@@ -67,10 +67,11 @@ shape = SubResource( 2 )
 position = Vector2( 994.311, 260.895 )
 script = ExtResource( 5 )
 item_text = {
+"cup": "The cup is empty.",
 "potion": "I think it wants water."
 }
 item_name = "Backpack"
-required_item_id = "cellar_key"
+required_item_id = "water_cup"
 consume_item = true
 locked_text = [ "The hook I hang my backpack on has", "grown around the hanger.  I can't get it.", "", "Maybe it would like some water?" ]
 

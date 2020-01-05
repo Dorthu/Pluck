@@ -1,22 +1,38 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://src/Door.gd" type="Script" id=2]
 [ext_resource path="res://img/temp_arrow.png" type="Texture" id=3]
 [ext_resource path="res://src/LockedDoor.gd" type="Script" id=4]
 [ext_resource path="res://img/temp_lock.png" type="Texture" id=5]
+[ext_resource path="res://src/PickupItem.gd" type="Script" id=6]
+[ext_resource path="res://img/living-room/temp_glass_small.png" type="Texture" id=7]
+[ext_resource path="res://img/living-room/temp_glass.png" type="Texture" id=8]
+[ext_resource path="res://src/Sink.gd" type="Script" id=9]
+[ext_resource path="res://img/living-room/temp_water_glass.png" type="Texture" id=10]
+[ext_resource path="res://img/kitchen/temp_sink.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 101.002, 310.8 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 129.002, 267.8 )
+extents = Vector2( 129.002, 225 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 126, 273.8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 39.2, 49.9999 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 108.2, 71.9999 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 room_width = 2000
 
 [node name="LivingRoomDoor" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 99, 314 )
 script = ExtResource( 2 )
 to_room = "living_room"
@@ -48,10 +64,63 @@ texture = ExtResource( 3 )
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CellarDoor"]
+position = Vector2( -1, -61 )
 shape = SubResource( 2 )
+
+[node name="BedroomDoor" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 1916, 281 )
+script = ExtResource( 2 )
+to_room = "bedroom"
+
+[node name="Arrow" type="Sprite" parent="BedroomDoor"]
+visible = false
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BedroomDoor"]
+shape = SubResource( 3 )
+
+[node name="Cup" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 556, 285 )
+script = ExtResource( 6 )
+lines = [ "An empty cup." ]
+item_id = "cup"
+item_sprite = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Cup"]
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cup"]
+shape = SubResource( 4 )
+
+[node name="Sink" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 1325, 289 )
+script = ExtResource( 9 )
+lines = [ "The sink." ]
+item_text = {
+"water_cup": "It's already full."
+}
+cup_of_water_texture = ExtResource( 10 )
+fill_cup_text = [ "I filled the cup with water." ]
+
+[node name="Sprite" type="Sprite" parent="Sink"]
+position = Vector2( 0.25, 0.5 )
+scale = Vector2( 1.41, 1.41 )
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sink"]
+shape = SubResource( 5 )
 [connection signal="input_event" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_exited"]
 [connection signal="input_event" from="CellarDoor" to="CellarDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="CellarDoor" to="CellarDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="CellarDoor" to="CellarDoor" method="_on_Door_mouse_exited"]
+[connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
+[connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
+[connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]
+[connection signal="input_event" from="Cup" to="Cup" method="_on_PickupItem_input_event"]
+[connection signal="input_event" from="Sink" to="Sink" method="_on_Clickable_input_event"]
