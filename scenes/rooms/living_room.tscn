@@ -110,6 +110,7 @@ position = Vector2( 45.9086, 30.2324 )
 shape = SubResource( 4 )
 
 [node name="FrontDoor" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 1203.7, 309.043 )
 script = ExtResource( 11 )
 
