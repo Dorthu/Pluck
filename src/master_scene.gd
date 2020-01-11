@@ -13,7 +13,7 @@ var game_state := Dictionary()
 var stop_camera := true
 
 func _ready():
-	for s in ["prototype-living-room", "test2", "living_room","bedroom","kitchen","cellar"]:
+	for s in ["living_room","bedroom","kitchen","cellar"]:
 		room_map[s] = ResourceLoader.load('res://scenes/rooms/'+s+'.tscn').instance()
 		room_map[s].controller = self
 	dialog_controller = get_node('DialogController')

@@ -7,7 +7,7 @@
 [ext_resource path="res://src/LockedDoor.gd" type="Script" id=5]
 [ext_resource path="res://img/kitchen/cellar_door_closed.png" type="Texture" id=6]
 [ext_resource path="res://img/kitchen/cellar_door_opened.png" type="Texture" id=7]
-[ext_resource path="res://img/temp_lock.png" type="Texture" id=8]
+[ext_resource path="res://img/ui/lock.png" type="Texture" id=8]
 [ext_resource path="res://src/PickupItem.gd" type="Script" id=9]
 [ext_resource path="res://img/kitchen/cup_empty.png" type="Texture" id=10]
 [ext_resource path="res://src/Sink.gd" type="Script" id=11]
@@ -85,7 +85,8 @@ texture = ExtResource( 7 )
 
 [node name="Lock" type="Sprite" parent="CellarDoor"]
 visible = false
-position = Vector2( 3, 2 )
+position = Vector2( 53.1995, 7.71924 )
+scale = Vector2( 0.14789, 0.14789 )
 texture = ExtResource( 8 )
 
 [node name="Arrow" type="Sprite" parent="CellarDoor"]
@@ -147,7 +148,7 @@ shape = SubResource( 5 )
 editor/display_folded = true
 position = Vector2( 1231.48, 91.575 )
 script = ExtResource( 9 )
-lines = [ "Dad doesn't want me to drink this.", "|_...", "Whic is |!totally |!unfair." ]
+lines = [ "Dad doesn't want me to drink this.", "|_ . . .", "Whic is |!totally |!unfair." ]
 item_id = "liquor"
 item_sprite = ExtResource( 13 )
 
@@ -160,7 +161,7 @@ shape = SubResource( 6 )
 
 [node name="CabinetLeft" type="Area2D" parent="."]
 editor/display_folded = true
-position = Vector2( 765.548, 362.303 )
+position = Vector2( 765.734, 362.303 )
 script = ExtResource( 14 )
 lines = [ "It's empty." ]
 close_nodes = [ "CabinetRight" ]
