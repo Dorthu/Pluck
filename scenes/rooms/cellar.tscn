@@ -3,7 +3,7 @@
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/cellar/cellar-sketch.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
-[ext_resource path="res://img/temp_arrow.png" type="Texture" id=4]
+[ext_resource path="res://img/ui/temp_arrow.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 110.002, 150.8 )

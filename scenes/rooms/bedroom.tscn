@@ -3,7 +3,7 @@
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/bedroom/sketch.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
-[ext_resource path="res://img/temp_arrow.png" type="Texture" id=4]
+[ext_resource path="res://img/ui/temp_arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/Openable.gd" type="Script" id=5]
 [ext_resource path="res://img/bedroom/sketch_top_doors_closed.png" type="Texture" id=6]
 [ext_resource path="res://img/bedroom/sketch_top_doors_open.png" type="Texture" id=7]
@@ -11,6 +11,7 @@
 [ext_resource path="res://img/bedroom/sketch_bottom_doors_open.png" type="Texture" id=9]
 [ext_resource path="res://src/PickupItem.gd" type="Script" id=10]
 [ext_resource path="res://img/bedroom/sketch_cellar_key.png" type="Texture" id=11]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.0016, 214.8 )
