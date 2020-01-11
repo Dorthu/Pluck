@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/backpack_small.png-b2ef034f0ef76422898540b58f11a2f7.stex"
+path="res://.import/backpack_final_small.png-7cbe1ca078eb7fd6d736ed023d7f9e3b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/living-room/backpack_small.png"
-dest_files=[ "res://.import/backpack_small.png-b2ef034f0ef76422898540b58f11a2f7.stex" ]
+source_file="res://img/living-room/backpack_final_small.png"
+dest_files=[ "res://.import/backpack_final_small.png-7cbe1ca078eb7fd6d736ed023d7f9e3b.stex" ]
 
 [params]
 
