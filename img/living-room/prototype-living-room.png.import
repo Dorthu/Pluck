@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/prototype-living-room.png-bc54485312b58d36e1e754bee8233005.stex"
+path="res://.import/prototype-living-room.png-808fcecdbf7a9b0ce5cabe310aa1395b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/prototype-living-room.png"
-dest_files=[ "res://.import/prototype-living-room.png-bc54485312b58d36e1e754bee8233005.stex" ]
+source_file="res://img/living-room/prototype-living-room.png"
+dest_files=[ "res://.import/prototype-living-room.png-808fcecdbf7a9b0ce5cabe310aa1395b.stex" ]
 
 [params]
 
