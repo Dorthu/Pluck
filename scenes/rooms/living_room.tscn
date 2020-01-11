@@ -73,6 +73,7 @@ position = Vector2( 1838.58, 132.127 )
 script = ExtResource( 5 )
 item_text = {
 "cup": "The cup is empty.",
+"liquor": "It wouldn't like that.",
 "potion": "I think it wants water."
 }
 item_name = "Backpack"

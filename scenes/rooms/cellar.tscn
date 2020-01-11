@@ -20,7 +20,6 @@ centered = false
 position = Vector2( 612, 196 )
 script = ExtResource( 3 )
 to_room = "kitchen"
-initial_camera_x = -500.0
 
 [node name="Arrow" type="Sprite" parent="KitchenDoor"]
 visible = false

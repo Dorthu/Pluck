@@ -19,6 +19,15 @@ func open():
 		var item = get_node(item_name)
 		item.show()
 
+func close():
+	state1.show()
+	state2.hide()
+	opened = false
+	if item_name:
+		var item = get_node(item_name)
+		if item:
+			item.hide()
+
 func _on_Openable_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		get_tree().set_input_as_handled()

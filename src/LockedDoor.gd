@@ -5,11 +5,15 @@ export(Array, String) var locked_text
 var locked_icon: Sprite
 var locked_dialog_contents: Clickable.DialogTextPool
 export var key_id: String
+var closed_state: Sprite
+var opened_state: Sprite
 
 func _ready():
 	._ready()
 	locked_icon = get_node("Lock")
 	locked_dialog_contents = Clickable.DialogTextPool.new(locked_text)
+	closed_state = get_node("State1")
+	opened_state = get_node("State2")
 
 func is_unlocked():
 	if unlocked_state_marker in controller.game_state:
@@ -33,6 +37,8 @@ func _on_Door_input_event(viewport, event, shape_idx):
 			# unlock the door!
 			get_tree().set_input_as_handled()
 			controller.game_state[unlocked_state_marker] = true
+			closed_state.hide()
+			opened_state.show()
 			controller.inventory.remove_item(controller.active_item)
 			return
 		
