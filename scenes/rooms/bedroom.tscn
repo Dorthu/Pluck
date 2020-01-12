@@ -3,7 +3,7 @@
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/bedroom/sketch.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
-[ext_resource path="res://img/ui/temp_arrow.png" type="Texture" id=4]
+[ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/Openable.gd" type="Script" id=5]
 [ext_resource path="res://img/bedroom/sketch_top_doors_closed.png" type="Texture" id=6]
 [ext_resource path="res://img/bedroom/sketch_top_doors_open.png" type="Texture" id=7]
@@ -11,7 +11,6 @@
 [ext_resource path="res://img/bedroom/sketch_bottom_doors_open.png" type="Texture" id=9]
 [ext_resource path="res://src/PickupItem.gd" type="Script" id=10]
 [ext_resource path="res://img/bedroom/sketch_cellar_key.png" type="Texture" id=11]
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.0016, 214.8 )
@@ -44,8 +43,7 @@ to_room = "living_room"
 
 [node name="Arrow" type="Sprite" parent="LivingRoomDoor"]
 visible = false
-position = Vector2( -14.5, 5.5 )
-scale = Vector2( 0.695, 0.695 )
+position = Vector2( -61.7552, -20.2755 )
 texture = ExtResource( 4 )
 flip_h = true
 
@@ -54,7 +52,6 @@ position = Vector2( -18, -12 )
 shape = SubResource( 1 )
 
 [node name="KitchenDoor" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 56, 323 )
 script = ExtResource( 3 )
 to_room = "kitchen"
@@ -62,8 +59,7 @@ initial_camera_x = -1900.0
 
 [node name="Arrow" type="Sprite" parent="KitchenDoor"]
 visible = false
-position = Vector2( 9, -3 )
-scale = Vector2( 0.61, 0.61 )
+position = Vector2( 46.2313, -17.3197 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KitchenDoor"]
@@ -87,6 +83,7 @@ position = Vector2( -21.7508, -29.2431 )
 shape = SubResource( 3 )
 
 [node name="DresserBottom" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 361.247, 366.396 )
 script = ExtResource( 5 )
 item_name = "CellarDoorKey"

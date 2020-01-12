@@ -5,7 +5,7 @@
 [ext_resource path="res://src/DialogController.gd" type="Script" id=3]
 [ext_resource path="res://audio/music/ambiance.ogg" type="AudioStream" id=4]
 [ext_resource path="res://src/Inventory.gd" type="Script" id=5]
-[ext_resource path="res://img/ui/temp_inv_bar.png" type="Texture" id=6]
+[ext_resource path="res://img/ui/inventory_bar.png" type="Texture" id=6]
 [ext_resource path="res://src/OpeningDialog.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -32,26 +32,26 @@ volume_db = 3.059
 autoplay = true
 
 [node name="Inventory" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 517, 566 )
 z_index = 10
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Inventory"]
-scale = Vector2( 1.52833, 0.71 )
+position = Vector2( 8.59189, 0 )
+scale = Vector2( 1.14678, 1 )
 texture = ExtResource( 6 )
 
 [node name="slot0" type="Node2D" parent="Inventory"]
-position = Vector2( -362.831, 16.113 )
+position = Vector2( -329.896, 3.22524 )
 
 [node name="slot1" type="Node2D" parent="Inventory"]
-position = Vector2( -316.506, 15.8253 )
+position = Vector2( -283.571, 2.93754 )
 
 [node name="slot2" type="Node2D" parent="Inventory"]
-position = Vector2( -269.03, 14.9622 )
+position = Vector2( -236.095, 3.50645 )
 
 [node name="slot3" type="Node2D" parent="Inventory"]
-position = Vector2( -225.007, 14.3867 )
+position = Vector2( -186.344, 2.93095 )
 
 [node name="OpeningDialog" type="Area2D" parent="."]
 position = Vector2( 552, 327 )

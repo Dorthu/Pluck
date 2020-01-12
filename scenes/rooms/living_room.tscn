@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
-[ext_resource path="res://img/living-room/prototype-living-room.png" type="Texture" id=2]
+[ext_resource path="res://img/living-room/background.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
-[ext_resource path="res://img/ui/temp_arrow.png" type="Texture" id=4]
+[ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/LockedOpernable.gd" type="Script" id=5]
 [ext_resource path="res://img/living-room/backpack_hook.png" type="Texture" id=6]
 [ext_resource path="res://img/living-room/vine_extended.png" type="Texture" id=7]
@@ -44,7 +44,7 @@ initial_camera_x = -1000.0
 
 [node name="Arrow" type="Sprite" parent="BedroomDoor"]
 visible = false
-position = Vector2( 15, 4 )
+position = Vector2( 35.4487, 17.6325 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BedroomDoor"]
