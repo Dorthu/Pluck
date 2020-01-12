@@ -7,15 +7,15 @@ func show_dialog(event):
 	
 	if controller.inventory.has_item('backpack'):
 		controller.show_dialog(DialogTextPool.new([
-			"That's all for now!  Check the dev blog for future updates:",
-			"https://dorthu-project-blog.us-east-1.linodeobjects.com",
+			"That's all for now!  Check back soon for updates, or",
+			"click the link below for our dev blog!",
 			"",
 			"Thank you for playing!",
-			"Special thanks to the following people: ",
+			"This game was made by: ",
 			"",
-			"Dorthu :: dorthu.com",
 			"Sara :: @PointyEarsIllustration on instagram",
 			"Josh :: Josh Sager on YouTube",
+			"Dorthu :: dorthu.com",
 		]))
 	else:
 		controller.show_dialog(DialogTextPool.new([

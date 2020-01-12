@@ -27,6 +27,7 @@
 
 		#canvas:focus {
 			outline: none;
+            display: center;
 		}
 
 		.godot {
@@ -118,10 +119,10 @@
 $GODOT_HEAD_INCLUDE
 </head>
 <body>
-	<canvas id='canvas'>
-		HTML5 canvas appears to be unsupported in the current browser.<br />
-		Please try updating or use a different browser.
-	</canvas>
+    <canvas id='canvas'>
+        HTML5 canvas appears to be unsupported in the current browser.<br />
+        Please try updating or use a different browser.
+    </canvas>
 	<div id='status'>
 		<div id='status-progress' style='display: none;' oncontextmenu='event.preventDefault();'><div id ='status-progress-inner'></div></div>
 		<div id='status-indeterminate' style='display: none;' oncontextmenu='event.preventDefault();'>

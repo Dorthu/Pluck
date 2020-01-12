@@ -1,12 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/cellar/cellar-sketch.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
+[ext_resource path="res://src/clickable.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 110.002, 150.8 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 47.2172
+height = 115.197
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 87.6597, 47.4568 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,6 +25,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="KitchenDoor" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 612, 196 )
 script = ExtResource( 3 )
 to_room = "kitchen"
@@ -29,6 +38,31 @@ texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KitchenDoor"]
 shape = SubResource( 1 )
+
+[node name="Potions" type="Area2D" parent="."]
+position = Vector2( 993.527, 382.987 )
+script = ExtResource( 5 )
+lines = [ "The potions.  I don't know what most of these are for." ]
+item_text = {
+"cup": "I shouldn't fill this with potions."
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Potions"]
+position = Vector2( 1.99023, -4.64392 )
+rotation = 2.00713
+shape = SubResource( 3 )
+
+[node name="Chest" type="Area2D" parent="."]
+position = Vector2( 951.732, 475.866 )
+script = ExtResource( 5 )
+lines = [ "Dad's old chest.  He keeps it locked.", "I don't know what's inside." ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest"]
+position = Vector2( 10.0591, 13.9281 )
+rotation = 0.436332
+shape = SubResource( 2 )
 [connection signal="input_event" from="KitchenDoor" to="KitchenDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_exited"]
+[connection signal="input_event" from="Potions" to="Potions" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Chest" to="Chest" method="_on_Clickable_input_event"]

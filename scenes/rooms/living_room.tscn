@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/living-room/background.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://img/living-room/backpack_final_small.png" type="Texture" id=9]
 [ext_resource path="res://img/living-room/backpack_final.png" type="Texture" id=10]
 [ext_resource path="res://src/FrontDoor.gd" type="Script" id=11]
+[ext_resource path="res://src/clickable.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 86.4009, 257 )
@@ -26,6 +27,12 @@ extents = Vector2( 58.4486, 73.1813 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 139.964, 201.501 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 22.3111, 22.6504 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 140.493, 34.5527 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -68,6 +75,7 @@ position = Vector2( -35, -39 )
 shape = SubResource( 2 )
 
 [node name="BranchHook" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 1838.58, 132.127 )
 script = ExtResource( 5 )
 item_text = {
@@ -120,6 +128,32 @@ script = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoor"]
 position = Vector2( -17.9155, -10.0775 )
 shape = SubResource( 5 )
+
+[node name="Skull" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 541.788, 251.51 )
+script = ExtResource( 12 )
+lines = [ "I think it's pretty cool." ]
+item_text = {
+"liquor": "I'm afraid of what it might do if I gave it some..."
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skull"]
+position = Vector2( -0.487671, -1.46303 )
+shape = SubResource( 6 )
+
+[node name="Books" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 421.002, 97.3745 )
+script = ExtResource( 12 )
+lines = [ "Lots of stories of adventures!" ]
+item_text = {
+"water_cup": "That would ruin the books."
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Books"]
+position = Vector2( -9.24268, 4.40128 )
+shape = SubResource( 7 )
 [connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]
@@ -129,3 +163,5 @@ shape = SubResource( 5 )
 [connection signal="input_event" from="BranchHook" to="BranchHook" method="_on_Openable_input_event"]
 [connection signal="input_event" from="BranchHook/Backpack" to="BranchHook/Backpack" method="_on_PickupItem_input_event"]
 [connection signal="input_event" from="FrontDoor" to="FrontDoor" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Skull" to="Skull" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Books" to="Books" method="_on_Clickable_input_event"]
