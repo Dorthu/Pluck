@@ -12,4 +12,8 @@ color = Color( 0.141176, 0.141176, 0.141176, 1 )
 polygon = PoolVector2Array( 0, 0, 0, 150, 800, 150, 800, 0 )
 
 [node name="TextOrigin" type="Node2D" parent="."]
-position = Vector2( 20, 40 )
+position = Vector2( 25, 40 )
+
+[node name="Profile" type="Sprite" parent="."]
+position = Vector2( 20, 20 )
+centered = false

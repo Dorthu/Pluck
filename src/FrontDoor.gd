@@ -19,5 +19,5 @@ func show_dialog(event):
 		]))
 	else:
 		controller.show_dialog(DialogTextPool.new([
-			"I can't leave the house without my backpack."
+			"|Ppat_sad|I can't leave the house without my backpack."
 		]))

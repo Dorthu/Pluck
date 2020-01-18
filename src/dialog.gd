@@ -3,6 +3,7 @@ extends Node2D
 class_name DialogBox
 
 var text_origin: Node2D
+var profile: Sprite
 var text
 var visible_text
 var font := DynamicFont.new()
@@ -14,7 +15,7 @@ var font := DynamicFont.new()
 var ticker: float
 var text_parser: TextParser
 const LETTER_SPEED := .05
-const LINE_HEIGHT := 30
+const LINE_HEIGHT := 35
 var ticker_max_value := 99999999999.9
 var line1: String
 var line2: String
@@ -28,11 +29,13 @@ var parser3: TextParser
 
 func _ready():
 	self.text_origin = get_node("TextOrigin")
+	self.profile = get_node("Profile")
+	
 	self.visible_line_1 = ""
 	self.visible_line_2 = ""
 	self.visible_line_3 = ""
 	self.ticker = -1
-
+	
 	var data = load("res://fonts/BreeSerif-Regular.ttf")
 	font.font_data = data
 	font.size = 24
@@ -45,7 +48,13 @@ func set_text(lines: Array): # of String
 	self.parser1 = TextParser.new(line1)
 	self.parser2 = TextParser.new(line2, self.parser1.get_total_delta())
 	self.parser3 = TextParser.new(line3, self.parser2.get_total_delta())
-
+	
+	var profile_image := self.parser1.profile
+	if profile_image:
+		self.profile.set_texture(load("res://img/dialog/"+profile_image+".png"))
+		self.text_origin.position.x += 105
+	else:
+		self.profile.hide()
 
 func start():
 	self.ticker = 0
@@ -82,10 +91,12 @@ class TextParser:
 	var token_count: int
 	var parts: Array
 	var initial_delay: float
+	var profile: String
 	
 	func _init(text: String, delay: float = 0.0):
 		self.raw_text = text
 		self.initial_delay = delay
+		self.profile = ""
 		
 		# some time between lines
 		if self.initial_delay > 0:
@@ -102,6 +113,8 @@ class TextParser:
 			var new_text: Text
 			
 			match p.left(1):
+				'P': # define a profile; text follows next |
+					self.profile = p.substr(1, len(p))
 				'!': # ALL AT ONCE
 					new_text = SuddenText.new(p.substr(1, len(p)), cumulative_delay)
 				'_': # s l o w  t e x t
@@ -109,6 +122,9 @@ class TextParser:
 				_: # The default case
 					new_text = NormalText.new(p, cumulative_delay)
 				
+			if not new_text:
+				continue
+			
 			cumulative_delay += new_text.get_time_taken()
 			self.parts.append(new_text)
 			

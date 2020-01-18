@@ -40,11 +40,12 @@ texture = ExtResource( 4 )
 shape = SubResource( 1 )
 
 [node name="Potions" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 993.527, 382.987 )
 script = ExtResource( 5 )
-lines = [ "The potions.  I don't know what most of these are for." ]
+lines = [ "|Ppat_normal|The potions.  I don't know what most of these are for." ]
 item_text = {
-"cup": "I shouldn't fill this with potions."
+"cup": "|Ppat_sad|I shouldn't fill this with potions."
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Potions"]
@@ -53,9 +54,10 @@ rotation = 2.00713
 shape = SubResource( 3 )
 
 [node name="Chest" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 951.732, 475.866 )
 script = ExtResource( 5 )
-lines = [ "Dad's old chest.  He keeps it locked.", "I don't know what's inside." ]
+lines = [ "|Ppat_normal|Dad's old chest.  He keeps it locked.", "I don't know what's inside." ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chest"]
 position = Vector2( 10.0591, 13.9281 )

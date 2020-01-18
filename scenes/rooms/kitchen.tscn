@@ -66,11 +66,12 @@ position = Vector2( -48.44, -5.17322 )
 shape = SubResource( 1 )
 
 [node name="CellarDoor" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 359.897, 275.649 )
 script = ExtResource( 5 )
 to_room = "cellar"
 unlocked_state_marker = "cellar-unlocked"
-locked_text = [ "Dad keeps this locked." ]
+locked_text = [ "|Ppat_normal|Dad keeps this locked." ]
 key_id = "cellar_key"
 
 [node name="State1" type="Sprite" parent="CellarDoor"]
@@ -149,7 +150,7 @@ shape = SubResource( 5 )
 editor/display_folded = true
 position = Vector2( 1231.48, 91.575 )
 script = ExtResource( 9 )
-lines = [ "Dad doesn't want me to drink this.", "|_ . . .", "Whic is |!totally |!unfair." ]
+lines = [ "|Ppat_sad|Dad doesn't want me to drink this.", "|_ . . .", "Which is |!totally |!unfair." ]
 item_id = "liquor"
 item_sprite = ExtResource( 13 )
 

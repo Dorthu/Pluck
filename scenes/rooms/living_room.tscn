@@ -79,14 +79,14 @@ editor/display_folded = true
 position = Vector2( 1838.58, 132.127 )
 script = ExtResource( 5 )
 item_text = {
-"cup": "The cup is empty.",
-"liquor": "It wouldn't like that.",
+"cup": "|Ppat_sad|The cup is empty.",
+"liquor": "|Ppat_sad|It wouldn't like that.",
 "potion": "I think it wants water."
 }
 item_name = "Backpack"
 required_item_id = "water_cup"
 consume_item = true
-locked_text = [ "The hook I hang my backpack on has", "grown around the hanger.  I can't get it.", "", "Maybe it would like some water?" ]
+locked_text = [ "|Ppat_sad|The hook I hang my backpack on has", "grown around the hanger.  I can't get it.", "", "|Ppat_normal|Maybe it would like some water?" ]
 
 [node name="State1" type="Sprite" parent="BranchHook"]
 position = Vector2( 44.6504, 114.593 )
@@ -104,10 +104,11 @@ position = Vector2( 49.2677, 71.662 )
 shape = SubResource( 3 )
 
 [node name="Backpack" type="Area2D" parent="BranchHook"]
+editor/display_folded = true
 visible = false
 position = Vector2( -26.8733, 220.585 )
 script = ExtResource( 8 )
-lines = [ "My backpack!  Now I'm ready to leave the house!" ]
+lines = [ "|Ppat_normal|My backpack!  Now I'm ready to leave the house!" ]
 item_id = "backpack"
 item_sprite = ExtResource( 9 )
 
@@ -133,9 +134,10 @@ shape = SubResource( 5 )
 editor/display_folded = true
 position = Vector2( 541.788, 251.51 )
 script = ExtResource( 12 )
-lines = [ "I think it's pretty cool." ]
+lines = [ "|Ppat_normal|I think he's pretty cool." ]
 item_text = {
-"liquor": "I'm afraid of what it might do if I gave it some..."
+"liquor": "|Ppat_sad|I'm afraid of what he might do if I gave him some...",
+"water_cup": "|Ppat_normal|He's not thirsty."
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Skull"]
@@ -146,7 +148,7 @@ shape = SubResource( 6 )
 editor/display_folded = true
 position = Vector2( 421.002, 97.3745 )
 script = ExtResource( 12 )
-lines = [ "Lots of stories of adventures!" ]
+lines = [ "|Ppat_normal|Lots of stories of adventures!" ]
 item_text = {
 "water_cup": "That would ruin the books."
 }
