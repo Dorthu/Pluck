@@ -52,6 +52,7 @@ position = Vector2( -18, -12 )
 shape = SubResource( 1 )
 
 [node name="KitchenDoor" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 56, 323 )
 script = ExtResource( 3 )
 to_room = "kitchen"

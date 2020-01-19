@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "Bumble",
+"language": "GDScript",
+"path": "res://src/bumble.gd"
+}, {
+"base": "Node2D",
 "class": "Clickable",
 "language": "GDScript",
 "path": "res://src/clickable.gd"
@@ -85,6 +90,7 @@ _global_script_classes=[ {
 "path": "res://src/Sink.gd"
 } ]
 _global_script_class_icons={
+"Bumble": "",
 "Clickable": "",
 "ConditionalPickupItem": "",
 "DialogBox": "",

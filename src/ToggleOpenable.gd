@@ -8,4 +8,6 @@ func open():
 		var node = parent.get_node(c)
 		node.close()
 		
+	#var b = load("res://scenes/interact/bumble.tscn")
+	#self.get_parent().add_child(b.instance())
 	.open()
