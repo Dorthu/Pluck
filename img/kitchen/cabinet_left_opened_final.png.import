@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/cabinet_left_opened_final.png-305d757bf72e78742be57ef6b99c992e.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://img/kitchen/cabinet_left_opened_final.png"
+dest_files=[ "res://.import/cabinet_left_opened_final.png-305d757bf72e78742be57ef6b99c992e.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

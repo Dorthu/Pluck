@@ -1,22 +1,23 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
-[ext_resource path="res://img/kitchen/sketch.png" type="Texture" id=2]
+[ext_resource path="res://img/kitchen/background_final.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/LockedDoor.gd" type="Script" id=5]
-[ext_resource path="res://img/kitchen/cellar_door_closed.png" type="Texture" id=6]
-[ext_resource path="res://img/kitchen/cellar_door_opened.png" type="Texture" id=7]
+[ext_resource path="res://img/kitchen/cellar_door_closed_final.png" type="Texture" id=6]
+[ext_resource path="res://img/kitchen/cellar_door_opened_final.png" type="Texture" id=7]
 [ext_resource path="res://img/ui/lock.png" type="Texture" id=8]
 [ext_resource path="res://src/PickupItem.gd" type="Script" id=9]
 [ext_resource path="res://img/kitchen/cup_empty.png" type="Texture" id=10]
 [ext_resource path="res://src/Sink.gd" type="Script" id=11]
 [ext_resource path="res://img/kitchen/cup_full.png" type="Texture" id=12]
-[ext_resource path="res://img/kitchen/liquor.png" type="Texture" id=13]
+[ext_resource path="res://img/kitchen/liquor_final.png" type="Texture" id=13]
 [ext_resource path="res://src/ToggleOpenable.gd" type="Script" id=14]
-[ext_resource path="res://img/kitchen/cabinet_right_closed.png" type="Texture" id=15]
-[ext_resource path="res://img/kitchen/cabinet_left_opened.png" type="Texture" id=16]
-[ext_resource path="res://img/kitchen/cabinet_right_opened.png" type="Texture" id=17]
+[ext_resource path="res://img/kitchen/cabinet_left_closed_final.png" type="Texture" id=15]
+[ext_resource path="res://img/kitchen/cabinet_left_opened_final.png" type="Texture" id=16]
+[ext_resource path="res://img/kitchen/cabinet_right_closed_final.png" type="Texture" id=17]
+[ext_resource path="res://img/kitchen/cabinet_right_opened_final.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 53.8139, 195.76 )
@@ -75,12 +76,12 @@ locked_text = [ "|Ppat_normal|Dad keeps this locked." ]
 key_id = "cellar_key"
 
 [node name="State1" type="Sprite" parent="CellarDoor"]
-position = Vector2( -58.6508, 17.7733 )
+position = Vector2( -61.6508, 6.7733 )
 texture = ExtResource( 6 )
 
 [node name="State2" type="Sprite" parent="CellarDoor"]
 visible = false
-position = Vector2( -58.6508, 17.7733 )
+position = Vector2( -61.6508, 8.7733 )
 texture = ExtResource( 7 )
 
 [node name="Lock" type="Sprite" parent="CellarDoor"]
@@ -163,17 +164,18 @@ shape = SubResource( 6 )
 
 [node name="CabinetLeft" type="Area2D" parent="."]
 editor/display_folded = true
-position = Vector2( 765.734, 362.303 )
+position = Vector2( 764.734, 363.303 )
 script = ExtResource( 14 )
 lines = [ "It's empty." ]
 close_nodes = [ "CabinetRight" ]
 
 [node name="State1" type="Sprite" parent="CabinetLeft"]
-position = Vector2( 46.776, 3.30737 )
+position = Vector2( 0.776001, -2.69263 )
 texture = ExtResource( 15 )
 
 [node name="State2" type="Sprite" parent="CabinetLeft"]
 visible = false
+position = Vector2( 0, -6 )
 texture = ExtResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CabinetLeft"]
@@ -182,17 +184,17 @@ shape = SubResource( 7 )
 
 [node name="CabinetRight" type="Area2D" parent="."]
 editor/display_folded = true
-position = Vector2( 987.474, 363.854 )
+position = Vector2( 977.474, 362.854 )
 script = ExtResource( 14 )
 lines = [ "Just some food." ]
 close_nodes = [ "CabinetLeft" ]
 
 [node name="State1" type="Sprite" parent="CabinetRight"]
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 
 [node name="State2" type="Sprite" parent="CabinetRight"]
 visible = false
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CabinetRight"]
 position = Vector2( -38.15, -24.1543 )
