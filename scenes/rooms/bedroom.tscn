@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/bedroom/sketch.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://img/bedroom/sketch_bottom_doors_open.png" type="Texture" id=9]
 [ext_resource path="res://src/PickupItem.gd" type="Script" id=10]
 [ext_resource path="res://img/bedroom/sketch_cellar_key.png" type="Texture" id=11]
+[ext_resource path="res://img/stool_sketch.png" type="Texture" id=12]
+[ext_resource path="res://img/stool_sketch_smol.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.0016, 214.8 )
@@ -26,6 +28,9 @@ extents = Vector2( 104.614, 66.7545 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 27.4976, 15.3434 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 66.6224, 67.1126 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -111,6 +116,19 @@ texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DresserBottom/CellarDoorKey"]
 shape = SubResource( 5 )
+
+[node name="Stool" type="Area2D" parent="."]
+position = Vector2( 1041.68, 422.413 )
+script = ExtResource( 10 )
+lines = [ "The stool." ]
+item_id = "stool"
+item_sprite = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="Stool"]
+texture = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stool"]
+shape = SubResource( 6 )
 [connection signal="input_event" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_exited"]
@@ -120,3 +138,4 @@ shape = SubResource( 5 )
 [connection signal="input_event" from="DresserTop" to="DresserTop" method="_on_Openable_input_event"]
 [connection signal="input_event" from="DresserBottom" to="DresserBottom" method="_on_Openable_input_event"]
 [connection signal="input_event" from="DresserBottom/CellarDoorKey" to="DresserBottom/CellarDoorKey" method="_on_PickupItem_input_event"]
+[connection signal="input_event" from="Stool" to="Stool" method="_on_PickupItem_input_event"]
