@@ -8,55 +8,32 @@ class_name Bumble
 var controller # The MasterController 
 
 const MOVE_SPEED = 500
-const MIN_SPEED := 20.0
 const MAX_SPEED := 500.0
-var room_center: Vector2
-var velocity := Vector2(0, -1)
+const MAX_TURN := .2
+const BASE_ACCEL := 20.0
 
-var angle := 1.57
-var cvelocity := 1.0
-const MAX_TURN := 3.0
+var room_center: Vector2
+var velocity := Vector2(1, 1)
+
 
 func _ready():
 	controller = get_tree().get_root().get_children()[0]
 	room_center = Vector2(get_parent().room_width/2, 300)
 
-func old_process(delta):
-	var mouse_pos = get_global_mouse_position()
-	# if I'm on the screen, what am I doing?
-	if controller.active_item != null and controller.active_item.id == 'liquor':
-		# go toward the mouse
-		velocity = (mouse_pos - self.position).normalized()
-	else:
-		# if it's not near me, bumble around
-		var distance := self.position.distance_to(mouse_pos)
-		
-		if distance < 200:
-			velocity = (self.position - mouse_pos).normalized()
-		else:
-			velocity = (Vector2(500, 300) - self.position).normalized()
-	
-	self.position += velocity*MOVE_SPEED*delta
-
-func _angle_between_points(p1: Vector2, p2: Vector2) -> float:
-	return atan2(p2.y - p1.y, p2.x - p1.x)
 
 func _process(delta):
 	# find where we want to go
-	var goal := Vector2(500, 300) # arbitrary point to buzz around
+	var goal := room_center # we just like buzzing around here
 	var mouse_pos = get_global_mouse_position()
 	var avoid_mouse = true
+	var accel = BASE_ACCEL
 	
 	# maybe we want to go to the mouse instead of there
 	if controller.active_item != null and controller.active_item.id == 'liquor':
 		avoid_mouse = false
 		goal = mouse_pos
 	
-	# TODO: I _think_ this is where the issue is
-	# right now we're getting stuck looping around random points
-	# and I think it's because this angle isn't correct
-	var angle_to_goal := _angle_between_points(self.position, goal)
-	print(angle_to_goal)
+	var vector_to_target := goal - self.position
 	
 	# oh no wait we want to avoid the mouse
 	if avoid_mouse:
@@ -65,40 +42,22 @@ func _process(delta):
 		# it's too close - run (fly?) away!
 		if distance_to_mouse < 200:
 			# flying away is deciding we want to fly _exactly away_
-			angle_to_goal = deg2rad(180) + _angle_between_points(self.position, mouse_pos)
+			vector_to_target = (mouse_pos - self.position) * -1
+			accel = 200 - distance_to_mouse # speed up flying away
 	
-	print(rad2deg(angle_to_goal))
+	# find out how hard we want to turn, and how hard we can turn
+	var desired_turn := vector_to_target.normalized()
+	var actual_turn := desired_turn
+	actual_turn.x = clamp(actual_turn.x, -MAX_TURN, MAX_TURN)
+	actual_turn.y = clamp(actual_turn.y, -MAX_TURN, MAX_TURN)
 	
-	# this is how far we can turn this step (include delta for smoothness)
-	var max_turn_step = MAX_TURN * delta
+	# slow down if we're turning very hard
+	if desired_turn.angle() > PI/2:
+		accel /= desired_turn.angle()
 	
-	# so this is how hard I want to turn
-	var desired_turn = abs(angle_to_goal - angle)
-	
-	# now break it down into how hard I can actually turn and in what direction
-	var turn_dir = -1 if (angle_to_goal - angle) < 0 else 1
-	if desired_turn > max_turn_step:
-		desired_turn = max_turn_step
-	
-	# turn!
-	angle += turn_dir * desired_turn
-	
-	# keep our angle clamped to within 0-360
-	if rad2deg(angle) < 0:
-		angle = deg2rad(rad2deg(angle) + 360)
-	elif rad2deg(angle) > 360:
-		angle = deg2rad(rad2deg(angle) - 360)
-	
-	# slow down when turning hard, speed up when flying straight
-	if desired_turn > max_turn_step * 1/4:
-		# slow down
-		cvelocity -= desired_turn * 10 * delta
-		cvelocity = max(MIN_SPEED, cvelocity)
-	else:
-		# speed up
-		cvelocity += cvelocity * delta
-		cvelocity = min(MAX_SPEED, cvelocity)
+	# update our velocity
+	velocity += actual_turn * accel
+	velocity = velocity.clamped(MAX_SPEED)
 	
 	# actually move in the direction we're going
-	var move_dir = Vector2(cos(angle), sin(angle)).normalized()
-	self.position += move_dir * cvelocity * delta
+	self.position += velocity * delta

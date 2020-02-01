@@ -9,11 +9,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 110.002, 150.8 )
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 47.2172
 height = 115.197
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 87.6597, 47.4568 )
 
 [node name="Node2D" type="Node2D"]
@@ -25,7 +25,6 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="KitchenDoor" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 612, 196 )
 script = ExtResource( 3 )
 to_room = "kitchen"
@@ -40,7 +39,6 @@ texture = ExtResource( 4 )
 shape = SubResource( 1 )
 
 [node name="Potions" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 993.527, 382.987 )
 script = ExtResource( 5 )
 lines = [ "|Ppat_normal|The potions.  I don't know what most of these are for." ]
@@ -51,10 +49,9 @@ item_text = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Potions"]
 position = Vector2( 1.99023, -4.64392 )
 rotation = 2.00713
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Chest" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 951.732, 475.866 )
 script = ExtResource( 5 )
 lines = [ "|Ppat_normal|Dad's old chest.  He keeps it locked.", "I don't know what's inside." ]
@@ -62,7 +59,7 @@ lines = [ "|Ppat_normal|Dad's old chest.  He keeps it locked.", "I don't know wh
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chest"]
 position = Vector2( 10.0591, 13.9281 )
 rotation = 0.436332
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 [connection signal="input_event" from="KitchenDoor" to="KitchenDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_exited"]

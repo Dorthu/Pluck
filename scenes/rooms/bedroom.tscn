@@ -36,7 +36,6 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="LivingRoomDoor" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 1461, 340 )
 script = ExtResource( 3 )
 to_room = "living_room"
@@ -52,7 +51,6 @@ position = Vector2( -18, -12 )
 shape = SubResource( 1 )
 
 [node name="KitchenDoor" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 56, 323 )
 script = ExtResource( 3 )
 to_room = "kitchen"
@@ -68,7 +66,6 @@ position = Vector2( -1, -18 )
 shape = SubResource( 2 )
 
 [node name="DresserTop" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 370.666, 238.863 )
 script = ExtResource( 5 )
 
@@ -84,7 +81,6 @@ position = Vector2( -21.7508, -29.2431 )
 shape = SubResource( 3 )
 
 [node name="DresserBottom" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 361.247, 366.396 )
 script = ExtResource( 5 )
 item_name = "CellarDoorKey"

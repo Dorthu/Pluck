@@ -43,7 +43,6 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="BedroomDoor" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 68, 295 )
 script = ExtResource( 3 )
 to_room = "bedroom"
@@ -59,7 +58,6 @@ position = Vector2( 8, 7 )
 shape = SubResource( 1 )
 
 [node name="KitchenDoor" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 2900, 295 )
 script = ExtResource( 3 )
 to_room = "kitchen"
@@ -75,7 +73,6 @@ position = Vector2( -35, -39 )
 shape = SubResource( 2 )
 
 [node name="BranchHook" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 1838.58, 132.127 )
 script = ExtResource( 5 )
 item_text = {
@@ -104,7 +101,6 @@ position = Vector2( 49.2677, 71.662 )
 shape = SubResource( 3 )
 
 [node name="Backpack" type="Area2D" parent="BranchHook"]
-editor/display_folded = true
 visible = false
 position = Vector2( -26.8733, 220.585 )
 script = ExtResource( 8 )
@@ -122,7 +118,6 @@ position = Vector2( 45.9086, 30.2324 )
 shape = SubResource( 4 )
 
 [node name="FrontDoor" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 1203.7, 309.043 )
 script = ExtResource( 11 )
 
@@ -131,7 +126,6 @@ position = Vector2( -17.9155, -10.0775 )
 shape = SubResource( 5 )
 
 [node name="Skull" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 541.788, 251.51 )
 script = ExtResource( 12 )
 lines = [ "|Ppat_normal|I think he's pretty cool." ]
@@ -145,7 +139,6 @@ position = Vector2( -0.487671, -1.46303 )
 shape = SubResource( 6 )
 
 [node name="Books" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 421.002, 97.3745 )
 script = ExtResource( 12 )
 lines = [ "|Ppat_normal|Lots of stories of adventures!" ]
