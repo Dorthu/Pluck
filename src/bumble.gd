@@ -38,6 +38,9 @@ func old_process(delta):
 	
 	self.position += velocity*MOVE_SPEED*delta
 
+func _angle_between_points(p1: Vector2, p2: Vector2) -> float:
+	return atan2(p2.y - p1.y, p2.x - p1.x)
+
 func _process(delta):
 	# find where we want to go
 	var goal := Vector2(500, 300) # arbitrary point to buzz around
@@ -52,7 +55,8 @@ func _process(delta):
 	# TODO: I _think_ this is where the issue is
 	# right now we're getting stuck looping around random points
 	# and I think it's because this angle isn't correct
-	var angle_to_goal := (goal - self.position).normalized().angle()
+	var angle_to_goal := _angle_between_points(self.position, goal)
+	print(angle_to_goal)
 	
 	# oh no wait we want to avoid the mouse
 	if avoid_mouse:
@@ -61,7 +65,7 @@ func _process(delta):
 		# it's too close - run (fly?) away!
 		if distance_to_mouse < 200:
 			# flying away is deciding we want to fly _exactly away_
-			angle_to_goal = deg2rad(180) + (mouse_pos - self.position).normalized().angle()
+			angle_to_goal = deg2rad(180) + _angle_between_points(self.position, mouse_pos)
 	
 	print(rad2deg(angle_to_goal))
 	

@@ -9,9 +9,9 @@ func open():
 		var node = parent.get_node(c)
 		node.close()
 	
-	#if not spawned_bee:
-	#	spawned_bee = true
-	#	var b = load("res://scenes/interact/bumble.tscn")
-	#	self.get_parent().add_child(b.instance())
+	if not spawned_bee:
+		spawned_bee = true
+		var b = load("res://scenes/interact/bumble.tscn")
+		self.get_parent().add_child(b.instance())
 	
 	.open()
