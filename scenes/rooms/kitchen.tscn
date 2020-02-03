@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/kitchen/background_final.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://src/StoolSpot.gd" type="Script" id=19]
 [ext_resource path="res://img/stool_sketch.png" type="Texture" id=20]
 [ext_resource path="res://img/stool_sketch_smol.png" type="Texture" id=21]
+[ext_resource path="res://src/StoolOnlyPickupItem.gd" type="Script" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 53.8139, 195.76 )
@@ -173,7 +174,7 @@ shape = SubResource( 5 )
 
 [node name="Liquor" type="Area2D" parent="."]
 position = Vector2( 1231.48, 91.575 )
-script = ExtResource( 9 )
+script = ExtResource( 22 )
 lines = [ "|Ppat_sad|Dad doesn't want me to drink this.", "|_ . . .", "Which is |!totally |!unfair." ]
 item_id = "liquor"
 item_sprite = ExtResource( 13 )
