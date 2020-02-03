@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/living-room/background.png" type="Texture" id=2]
@@ -12,8 +12,12 @@
 [ext_resource path="res://img/living-room/backpack_final.png" type="Texture" id=10]
 [ext_resource path="res://src/FrontDoor.gd" type="Script" id=11]
 [ext_resource path="res://src/clickable.gd" type="Script" id=12]
-[ext_resource path="res://img/living-room/fireplace_mask.png" type="Texture" id=13]
+[ext_resource path="res://img/living-room/fire_mask_glow.png" type="Texture" id=13]
 [ext_resource path="res://src/FireLight.gd" type="Script" id=14]
+[ext_resource path="res://img/stool_sketch.png" type="Texture" id=15]
+[ext_resource path="res://src/shaders/phantom_stool.shader" type="Shader" id=16]
+[ext_resource path="res://src/StoolSpot.gd" type="Script" id=17]
+[ext_resource path="res://img/stool_sketch_smol.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 86.4009, 257 )
@@ -35,6 +39,25 @@ extents = Vector2( 22.3111, 22.6504 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 140.493, 34.5527 )
+
+[sub_resource type="OccluderPolygon2D" id=10]
+polygon = PoolVector2Array( -69.5605, 46.1689, -64.8401, 51.2388, -51.9031, 50.8891, -58.3716, 45.4695 )
+
+[sub_resource type="OccluderPolygon2D" id=11]
+polygon = PoolVector2Array( -15.8892, 60.6793, 8.18799, 62.29, -6.41162, 68.1298 )
+
+[sub_resource type="OccluderPolygon2D" id=12]
+polygon = PoolVector2Array( 52.5706, 48.5665, 68.3379, 45.9386, 58.4102, 40.9747 )
+
+[sub_resource type="OccluderPolygon2D" id=13]
+polygon = PoolVector2Array( 13.4438, 44.4786, 4.97607, 51.1944, -4.65967, 47.3985, 2.34814, 42.1427 )
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 16 )
+shader_param/Texture = ExtResource( 15 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 71.0562, 66.4996 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -158,12 +181,44 @@ position = Vector2( -9.24268, 4.40128 )
 shape = SubResource( 7 )
 
 [node name="FireplaceLight" type="Light2D" parent="."]
-position = Vector2( 2251.68, 298.551 )
+position = Vector2( 2291.67, 310.924 )
 texture = ExtResource( 13 )
+offset = Vector2( -234.99, 12.6266 )
 color = Color( 0.886275, 0.239216, 0.133333, 1 )
 mode = 2
+range_z_max = 99
 shadow_enabled = true
 script = ExtResource( 14 )
+
+[node name="StoolSpot" type="Area2D" parent="."]
+position = Vector2( 2169.55, 345.565 )
+z_index = 100
+script = ExtResource( 17 )
+stool_item_texture = ExtResource( 18 )
+
+[node name="StoolSprite" type="Sprite" parent="StoolSpot"]
+visible = false
+texture = ExtResource( 15 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
+occluder = SubResource( 10 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
+occluder = SubResource( 11 )
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
+occluder = SubResource( 12 )
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
+occluder = SubResource( 13 )
+
+[node name="StoolPlaceholder" type="Sprite" parent="StoolSpot"]
+visible = false
+material = SubResource( 8 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StoolSpot"]
+shape = SubResource( 9 )
 [connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]
@@ -175,3 +230,6 @@ script = ExtResource( 14 )
 [connection signal="input_event" from="FrontDoor" to="FrontDoor" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="Skull" to="Skull" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="Books" to="Books" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="StoolSpot" to="StoolSpot" method="_on_StoolSpot_input_event"]
+[connection signal="mouse_entered" from="StoolSpot" to="StoolSpot" method="_on_StoolSpot_mouse_entered"]
+[connection signal="mouse_exited" from="StoolSpot" to="StoolSpot" method="_on_StoolSpot_mouse_exited"]

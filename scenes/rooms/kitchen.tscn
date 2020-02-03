@@ -22,6 +22,7 @@
 [ext_resource path="res://img/stool_sketch.png" type="Texture" id=20]
 [ext_resource path="res://img/stool_sketch_smol.png" type="Texture" id=21]
 [ext_resource path="res://src/StoolOnlyPickupItem.gd" type="Script" id=22]
+[ext_resource path="res://src/shaders/phantom_stool.shader" type="Shader" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 53.8139, 195.76 )
@@ -47,25 +48,8 @@ extents = Vector2( 85.0508, 58.4772 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 78.2014, 57.898 )
 
-[sub_resource type="Shader" id=10]
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-// this is the texture we're rendering
-uniform sampler2D Texture;
-
-// fragment runs on each pixel before lighting is applied
-void fragment() {
-	// sample the texture at this pixel
-	COLOR = texture(Texture, UV);
-	// if this pixel isn't transparent already, make it flash
-	if(COLOR.a > 0.0) {
-		COLOR.a = max(.1, (cos(TIME*1.8)-UV.y) * .8);
-	}
-}"
-
 [sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 10 )
+shader = ExtResource( 23 )
 shader_param/Texture = ExtResource( 20 )
 
 [sub_resource type="RectangleShape2D" id=9]
