@@ -21,10 +21,12 @@ func _ready():
 		else:
 			item_text[k] = DialogTextPool.new([v])
 
+
 func text_for_item(item_id) -> DialogTextPool:
 	if item_id in item_text:
 		return item_text[item_id]
 	return DEFAULT_ITEM_TEXT
+
 
 func show_dialog(_event):
 	var controller = get_tree().get_root().get_children()[0]
@@ -33,6 +35,7 @@ func show_dialog(_event):
 		controller.show_dialog(dialog_contents)
 	else:
 		controller.show_dialog(text_for_item(controller.active_item.id))
+
 
 func _on_Clickable_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
@@ -46,9 +49,11 @@ func _on_Clickable_input_event(_viewport, event, _shape_idx):
 				return
 		
 		handle_clicked(event)
-		
+
+
 func handle_clicked(event):
 	show_dialog(event)
+
 
 class DialogTextPool:
 	var lines: Array # of Array of String
@@ -66,4 +71,3 @@ class DialogTextPool:
 		
 		if len(cur_line) > 0:
 			self.lines.append(cur_line)
-			
