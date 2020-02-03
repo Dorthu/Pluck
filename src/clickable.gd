@@ -6,6 +6,7 @@ extends Node2D
 class_name Clickable
 
 # These can be set in the editor
+export var before_backpack: bool = false
 export(Array, String) var lines: Array
 var dialog_contents: DialogTextPool
 export var item_text: Dictionary;
@@ -25,7 +26,7 @@ func text_for_item(item_id) -> DialogTextPool:
 		return item_text[item_id]
 	return DEFAULT_ITEM_TEXT
 
-func show_dialog(event):
+func show_dialog(_event):
 	var controller = get_tree().get_root().get_children()[0]
 	
 	if controller.active_item == null:
@@ -33,10 +34,21 @@ func show_dialog(event):
 	else:
 		controller.show_dialog(text_for_item(controller.active_item.id))
 
-func _on_Clickable_input_event(viewport, event, shape_idx):
+func _on_Clickable_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		get_tree().set_input_as_handled()
-		show_dialog(event)	
+		
+		# if this is flagged as being unavailable before the backpack
+		# is obtained, do nothing if the backpack isn't in the inventory
+		if not before_backpack:
+			var controller = get_tree().get_root().get_children()[0]
+			if not controller.inventory.has_item("backpack"):
+				return
+		
+		handle_clicked(event)
+		
+func handle_clicked(event):
+	show_dialog(event)
 
 class DialogTextPool:
 	var lines: Array # of Array of String

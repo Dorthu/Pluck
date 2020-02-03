@@ -19,7 +19,7 @@ func has_stool() -> bool:
 	# returns False
 	return controller.inventory.has_item("stool")
 
-func _on_StoolSpot_input_event(viewport, event, shape_idx):
+func _on_StoolSpot_input_event(_viewport, event, _shape_idx):
 	# when you put the stool down
 	if event is InputEventMouseButton and event.pressed:
 		if controller.active_item != null and controller.active_item.id == "stool":

@@ -75,7 +75,7 @@ func _unhandled_input(event):
 		clear_active_item = true # clear this nomatter what happens
 		update()
 		
-func _process(delta):
+func _process(_delta):
 	if active_item:
 		if clear_active_item:
 			active_item = null

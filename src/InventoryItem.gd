@@ -20,6 +20,6 @@ func setup(inventory, item_id: String, texture: Texture):
 	if my_sprite:
 		my_sprite.texture = texture
 		
-func _on_InventoryItem_input_event(viewport, event, shape_idx):
+func _on_InventoryItem_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		my_inventory.controller.set_active_item(self)

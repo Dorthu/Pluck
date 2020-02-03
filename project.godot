@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Door.gd"
 }, {
+"base": "Light2D",
+"class": "FireLight",
+"language": "GDScript",
+"path": "res://src/FireLight.gd"
+}, {
 "base": "Clickable",
 "class": "FrontDoor",
 "language": "GDScript",
@@ -101,6 +106,7 @@ _global_script_class_icons={
 "DialogBox": "",
 "DialogController": "",
 "Doorway": "",
+"FireLight": "",
 "FrontDoor": "",
 "Inventory": "",
 "InventoryItem": "",

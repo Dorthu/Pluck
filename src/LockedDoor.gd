@@ -31,7 +31,7 @@ func _on_Door_mouse_exited():
 	arrow.hide()
 	locked_icon.hide()
 
-func _on_Door_input_event(viewport, event, shape_idx):	
+func _on_Door_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		if controller.active_item != null and controller.active_item.id == key_id:
 			# unlock the door!

@@ -18,7 +18,7 @@ func _on_Door_mouse_entered():
 func _on_Door_mouse_exited():
 	arrow.hide()
 
-func _on_Door_input_event(viewport, event, shape_idx):
+func _on_Door_input_event(_viewport, event, _shape_idx):
 	if not controller.should_allow_doors():
 		return
 	

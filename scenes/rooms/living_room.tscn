@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/living-room/background.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://img/living-room/backpack_final.png" type="Texture" id=10]
 [ext_resource path="res://src/FrontDoor.gd" type="Script" id=11]
 [ext_resource path="res://src/clickable.gd" type="Script" id=12]
+[ext_resource path="res://img/living-room/fireplace_mask.png" type="Texture" id=13]
+[ext_resource path="res://src/FireLight.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 86.4009, 257 )
@@ -75,6 +77,7 @@ shape = SubResource( 2 )
 [node name="BranchHook" type="Area2D" parent="."]
 position = Vector2( 1838.58, 132.127 )
 script = ExtResource( 5 )
+before_backpack = true
 item_text = {
 "cup": "|Ppat_sad|The cup is empty.",
 "liquor": "|Ppat_sad|It wouldn't like that.",
@@ -104,6 +107,7 @@ shape = SubResource( 3 )
 visible = false
 position = Vector2( -26.8733, 220.585 )
 script = ExtResource( 8 )
+before_backpack = true
 lines = [ "|Ppat_normal|My backpack!  Now I'm ready to leave the house!" ]
 item_id = "backpack"
 item_sprite = ExtResource( 9 )
@@ -120,6 +124,7 @@ shape = SubResource( 4 )
 [node name="FrontDoor" type="Area2D" parent="."]
 position = Vector2( 1203.7, 309.043 )
 script = ExtResource( 11 )
+before_backpack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoor"]
 position = Vector2( -17.9155, -10.0775 )
@@ -128,6 +133,7 @@ shape = SubResource( 5 )
 [node name="Skull" type="Area2D" parent="."]
 position = Vector2( 541.788, 251.51 )
 script = ExtResource( 12 )
+before_backpack = true
 lines = [ "|Ppat_normal|I think he's pretty cool." ]
 item_text = {
 "liquor": "|Ppat_sad|I'm afraid of what he might do if I gave him some...",
@@ -141,6 +147,7 @@ shape = SubResource( 6 )
 [node name="Books" type="Area2D" parent="."]
 position = Vector2( 421.002, 97.3745 )
 script = ExtResource( 12 )
+before_backpack = true
 lines = [ "|Ppat_normal|Lots of stories of adventures!" ]
 item_text = {
 "water_cup": "That would ruin the books."
@@ -149,6 +156,14 @@ item_text = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Books"]
 position = Vector2( -9.24268, 4.40128 )
 shape = SubResource( 7 )
+
+[node name="FireplaceLight" type="Light2D" parent="."]
+position = Vector2( 2251.68, 298.551 )
+texture = ExtResource( 13 )
+color = Color( 0.886275, 0.239216, 0.133333, 1 )
+mode = 2
+shadow_enabled = true
+script = ExtResource( 14 )
 [connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]

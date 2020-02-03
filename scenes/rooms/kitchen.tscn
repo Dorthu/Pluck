@@ -143,6 +143,7 @@ shape = SubResource( 3 )
 [node name="Cup" type="Area2D" parent="."]
 position = Vector2( 757.622, 245.596 )
 script = ExtResource( 9 )
+before_backpack = true
 lines = [ "An empty cup." ]
 item_id = "cup"
 item_sprite = ExtResource( 10 )
@@ -157,6 +158,7 @@ shape = SubResource( 4 )
 [node name="Sink" type="Area2D" parent="."]
 position = Vector2( 604.718, 244.609 )
 script = ExtResource( 11 )
+before_backpack = true
 lines = [ "The sink." ]
 item_text = {
 "liquor": "It's not for water.",

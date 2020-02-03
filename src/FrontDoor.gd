@@ -2,7 +2,7 @@ extends Clickable
 
 class_name FrontDoor
 
-func show_dialog(event):
+func show_dialog(_event):
 	var controller = get_tree().get_root().get_children()[0]
 	
 	if controller.inventory.has_item('backpack'):

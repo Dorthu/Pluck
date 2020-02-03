@@ -11,7 +11,7 @@ const VIEWPORT_WIDTH := 1020
 var pan_position := 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if not controller.should_pan_camera():
 		controller.cur_room.position.x = pan_position
 		return

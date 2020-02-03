@@ -28,11 +28,10 @@ func close():
 		if item:
 			item.hide()
 
-func _on_Openable_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed:
-		get_tree().set_input_as_handled()
-		handle_clicked(event)
-		
+func _on_Openable_input_event(viewport, event, shade_idk):
+	# call to parent method since these are already linked all over
+	_on_Clickable_input_event(viewport, event, shade_idk)
+
 func handle_clicked(event):
 	if opened:
 		if len(lines) > 0:

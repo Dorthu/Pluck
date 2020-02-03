@@ -155,9 +155,9 @@ class Text:
 	var delay: float
 	var letter_speed: float
 	
-	func _init(text: String, delay: float):
+	func _init(text: String, initial_delay: float):
 		self.raw_text = text
-		self.delay = delay
+		self.delay = initial_delay
 		self.letter_speed = LETTER_SPEED
 		self.parse()
 		
