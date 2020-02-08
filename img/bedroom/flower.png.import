@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sketch_bottom_doors_closed.png-f20c6d755eeccac11def02cba15b0f95.stex"
+path="res://.import/flower.png-9adee903725f1580d9921f02479165ff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/bedroom/sketch_bottom_doors_closed.png"
-dest_files=[ "res://.import/sketch_bottom_doors_closed.png-f20c6d755eeccac11def02cba15b0f95.stex" ]
+source_file="res://img/bedroom/flower.png"
+dest_files=[ "res://.import/flower.png-9adee903725f1580d9921f02479165ff.stex" ]
 
 [params]
 

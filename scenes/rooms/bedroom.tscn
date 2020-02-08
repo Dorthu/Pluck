@@ -1,19 +1,19 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
-[ext_resource path="res://img/bedroom/sketch.png" type="Texture" id=2]
+[ext_resource path="res://img/bedroom/top_doors_open.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/Openable.gd" type="Script" id=5]
 [ext_resource path="res://img/bedroom/sketch_top_doors_closed.png" type="Texture" id=6]
-[ext_resource path="res://img/bedroom/sketch_top_doors_open.png" type="Texture" id=7]
+[ext_resource path="res://img/bedroom/bottom_doors_open.png" type="Texture" id=7]
 [ext_resource path="res://img/bedroom/sketch_bottom_doors_closed.png" type="Texture" id=8]
-[ext_resource path="res://img/bedroom/sketch_bottom_doors_open.png" type="Texture" id=9]
+[ext_resource path="res://img/bedroom/background.png" type="Texture" id=9]
 [ext_resource path="res://src/PickupItem.gd" type="Script" id=10]
-[ext_resource path="res://img/bedroom/sketch_cellar_key.png" type="Texture" id=11]
+[ext_resource path="res://img/bedroom/key.png" type="Texture" id=11]
 [ext_resource path="res://img/stool_sketch.png" type="Texture" id=12]
 [ext_resource path="res://img/stool_sketch_smol.png" type="Texture" id=13]
-[ext_resource path="res://img/bedroom/sketch_flower.png" type="Texture" id=14]
+[ext_resource path="res://img/bedroom/flower.png" type="Texture" id=14]
 [ext_resource path="res://src/ConditionalPickupItem.gd" type="Script" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -42,7 +42,7 @@ script = ExtResource( 1 )
 room_width = 1500
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 9 )
 centered = false
 
 [node name="LivingRoomDoor" type="Area2D" parent="."]
@@ -80,11 +80,13 @@ position = Vector2( 370.666, 238.863 )
 script = ExtResource( 5 )
 
 [node name="State1" type="Sprite" parent="DresserTop"]
+visible = false
 texture = ExtResource( 6 )
 
 [node name="State2" type="Sprite" parent="DresserTop"]
 visible = false
-texture = ExtResource( 7 )
+position = Vector2( -30, -11 )
+texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DresserTop"]
 position = Vector2( -21.7508, -29.2431 )
@@ -97,13 +99,14 @@ script = ExtResource( 5 )
 item_name = "CellarDoorKey"
 
 [node name="State1" type="Sprite" parent="DresserBottom"]
+visible = false
 position = Vector2( 20.7714, 67.0103 )
 texture = ExtResource( 8 )
 
 [node name="State2" type="Sprite" parent="DresserBottom"]
 visible = false
-position = Vector2( 21.4939, 69.1778 )
-texture = ExtResource( 9 )
+position = Vector2( 7.10859, 44.9154 )
+texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DresserBottom"]
 position = Vector2( -1.28528, 6.42639 )
@@ -112,7 +115,7 @@ shape = SubResource( 4 )
 
 [node name="CellarDoorKey" type="Area2D" parent="DresserBottom"]
 visible = false
-position = Vector2( -8.99695, -9.31827 )
+position = Vector2( -54.9969, 12.6817 )
 script = ExtResource( 10 )
 lines = [ "An old key." ]
 item_id = "cellar_key"
