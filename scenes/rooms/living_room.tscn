@@ -181,7 +181,7 @@ position = Vector2( -9.24268, 4.40128 )
 shape = SubResource( 7 )
 
 [node name="FireplaceLight" type="Light2D" parent="."]
-position = Vector2( 2295.36, 312.152 )
+position = Vector2( 2291.36, 311.152 )
 texture = ExtResource( 13 )
 offset = Vector2( -234.99, 12.6266 )
 color = Color( 0.886275, 0.239216, 0.133333, 1 )
