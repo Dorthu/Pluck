@@ -194,6 +194,7 @@ position = Vector2( 977.474, 362.854 )
 script = ExtResource( 14 )
 lines = [ "Just some food." ]
 close_nodes = [ "CabinetLeft" ]
+spawns_bumble = true
 
 [node name="State1" type="Sprite" parent="CabinetRight"]
 texture = ExtResource( 17 )

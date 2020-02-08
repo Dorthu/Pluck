@@ -69,6 +69,12 @@ func collect_item(item_id, item_texture):
 func set_active_item(item: InventoryItem):
 	active_item = item
 	
+func set_game_state(state: String):
+	game_state[state] = true
+
+func game_state_active(state: String):
+	return state in game_state
+	
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed and active_item != null:
 		# don't mark this as handled!

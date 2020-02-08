@@ -131,7 +131,7 @@ visible = false
 position = Vector2( -26.8733, 220.585 )
 script = ExtResource( 8 )
 before_backpack = true
-lines = [ "|Ppat_normal|My backpack!  Now I'm ready to leave the house!" ]
+lines = [ "|Ppat_normal|My backpack!", "Now I need something to eat on the journey." ]
 item_id = "backpack"
 item_sprite = ExtResource( 9 )
 

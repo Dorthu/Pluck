@@ -7,6 +7,7 @@ class_name PickupItem
 export(String) var item_id: String
 export(Texture) var item_sprite: Texture
 
+
 func _on_PickupItem_input_event(viewport, event, shape_idx):
 	# call parent function since this is already linked up everywhere
 	_on_Clickable_input_event(viewport, event, shape_idx)

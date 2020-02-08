@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/bedroom/sketch.png" type="Texture" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://img/bedroom/sketch_cellar_key.png" type="Texture" id=11]
 [ext_resource path="res://img/stool_sketch.png" type="Texture" id=12]
 [ext_resource path="res://img/stool_sketch_smol.png" type="Texture" id=13]
+[ext_resource path="res://img/bedroom/sketch_flower.png" type="Texture" id=14]
+[ext_resource path="res://src/ConditionalPickupItem.gd" type="Script" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.0016, 214.8 )
@@ -21,16 +23,19 @@ extents = Vector2( 59.0016, 214.8 )
 extents = Vector2( 57.0016, 229.8 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 109, 86.0618 )
+extents = Vector2( 96.1458, 89.3997 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 104.614, 66.7545 )
+extents = Vector2( 99.6133, 53.6346 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 27.4976, 15.3434 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 66.6224, 67.1126 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 23.825, 31.8396 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -83,6 +88,7 @@ texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DresserTop"]
 position = Vector2( -21.7508, -29.2431 )
+rotation = -0.152885
 shape = SubResource( 3 )
 
 [node name="DresserBottom" type="Area2D" parent="."]
@@ -101,6 +107,7 @@ texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DresserBottom"]
 position = Vector2( -1.28528, 6.42639 )
+rotation = -0.226022
 shape = SubResource( 4 )
 
 [node name="CellarDoorKey" type="Area2D" parent="DresserBottom"]
@@ -129,6 +136,22 @@ texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stool"]
 shape = SubResource( 6 )
+
+[node name="Flower" type="Area2D" parent="."]
+position = Vector2( 576.588, 178.632 )
+script = ExtResource( 15 )
+before_backpack = true
+lines = [ "|Ppat_normal|I bet the bumblebee would like this." ]
+item_id = "flower"
+item_sprite = ExtResource( 14 )
+required_game_state = "bumble"
+before_state_lines = [ "|Ppat_normal|It's very pretty." ]
+
+[node name="Sprite" type="Sprite" parent="Flower"]
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower"]
+shape = SubResource( 7 )
 [connection signal="input_event" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_exited"]
@@ -139,3 +162,4 @@ shape = SubResource( 6 )
 [connection signal="input_event" from="DresserBottom" to="DresserBottom" method="_on_Openable_input_event"]
 [connection signal="input_event" from="DresserBottom/CellarDoorKey" to="DresserBottom/CellarDoorKey" method="_on_PickupItem_input_event"]
 [connection signal="input_event" from="Stool" to="Stool" method="_on_PickupItem_input_event"]
+[connection signal="input_event" from="Flower" to="Flower" method="_on_PickupItem_input_event"]

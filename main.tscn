@@ -48,10 +48,13 @@ position = Vector2( -329.896, 3.22524 )
 position = Vector2( -283.571, 2.93754 )
 
 [node name="slot2" type="Node2D" parent="Inventory"]
-position = Vector2( -236.095, 3.50645 )
+position = Vector2( -233.302, 3.50645 )
 
 [node name="slot3" type="Node2D" parent="Inventory"]
-position = Vector2( -186.344, 2.93095 )
+position = Vector2( -183.551, 2.93095 )
+
+[node name="slot4" type="Node2D" parent="Inventory"]
+position = Vector2( -137.387, 2.05054 )
 
 [node name="OpeningDialog" type="Area2D" parent="."]
 position = Vector2( 552, 327 )
