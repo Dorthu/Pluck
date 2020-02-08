@@ -1,13 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/bedroom/top_doors_open.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/Openable.gd" type="Script" id=5]
-[ext_resource path="res://img/bedroom/sketch_top_doors_closed.png" type="Texture" id=6]
 [ext_resource path="res://img/bedroom/bottom_doors_open.png" type="Texture" id=7]
-[ext_resource path="res://img/bedroom/sketch_bottom_doors_closed.png" type="Texture" id=8]
 [ext_resource path="res://img/bedroom/background.png" type="Texture" id=9]
 [ext_resource path="res://src/PickupItem.gd" type="Script" id=10]
 [ext_resource path="res://img/bedroom/key.png" type="Texture" id=11]
@@ -81,7 +79,6 @@ script = ExtResource( 5 )
 
 [node name="State1" type="Sprite" parent="DresserTop"]
 visible = false
-texture = ExtResource( 6 )
 
 [node name="State2" type="Sprite" parent="DresserTop"]
 visible = false
@@ -101,7 +98,6 @@ item_name = "CellarDoorKey"
 [node name="State1" type="Sprite" parent="DresserBottom"]
 visible = false
 position = Vector2( 20.7714, 67.0103 )
-texture = ExtResource( 8 )
 
 [node name="State2" type="Sprite" parent="DresserBottom"]
 visible = false
