@@ -1,20 +1,36 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/cellar/cellar-sketch.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/clickable.gd" type="Script" id=5]
+[ext_resource path="res://src/Potion.gd" type="Script" id=6]
+[ext_resource path="res://img/kitchen/liquor.png" type="Texture" id=7]
+[ext_resource path="res://src/Imp.gd" type="Script" id=8]
+[ext_resource path="res://img/cellar/imp_hidden.png" type="Texture" id=9]
+[ext_resource path="res://img/cellar/imp.png" type="Texture" id=10]
+[ext_resource path="res://img/cellar/barrels.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 110.002, 150.8 )
+extents = Vector2( 110.002, 133.186 )
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 47.2172
-height = 115.197
+height = 74.435
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 87.6597, 47.4568 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 19.7986
+height = 29.2131
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 124.408, 123.593 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 108.573, 129.767 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -36,18 +52,19 @@ rotation = 2.18166
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KitchenDoor"]
+position = Vector2( 0, -9.52002 )
 shape = SubResource( 1 )
 
-[node name="Potions" type="Area2D" parent="."]
+[node name="WrongPotions" type="Area2D" parent="."]
 position = Vector2( 993.527, 382.987 )
 script = ExtResource( 5 )
-lines = [ "|Ppat_normal|The potions.  I don't know what most of these are for." ]
+lines = [ "|Ppat_normal|I don't know what these ones do." ]
 item_text = {
 "cup": "|Ppat_sad|I shouldn't fill this with potions."
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Potions"]
-position = Vector2( 1.99023, -4.64392 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WrongPotions"]
+position = Vector2( 11.0686, -0.453979 )
 rotation = 2.00713
 shape = SubResource( 2 )
 
@@ -60,8 +77,52 @@ lines = [ "|Ppat_normal|Dad's old chest.  He keeps it locked.", "I don't know wh
 position = Vector2( 10.0591, 13.9281 )
 rotation = 0.436332
 shape = SubResource( 3 )
+
+[node name="Potion" type="Area2D" parent="."]
+position = Vector2( 905.415, 355.134 )
+script = ExtResource( 6 )
+item_id = "potion"
+item_sprite = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Potion"]
+position = Vector2( -1.19165, -12.3137 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Potion"]
+position = Vector2( -1.19165, -10.3276 )
+shape = SubResource( 4 )
+
+[node name="Imp" type="Area2D" parent="."]
+position = Vector2( 439.725, 381.186 )
+script = ExtResource( 8 )
+
+[node name="hidden" type="Sprite" parent="Imp"]
+position = Vector2( -152.931, 19.1333 )
+texture = ExtResource( 9 )
+
+[node name="shown" type="Sprite" parent="Imp"]
+visible = false
+position = Vector2( 14.9393, 65.2433 )
+z_index = 1
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Imp"]
+position = Vector2( 13.718, 63.7343 )
+shape = SubResource( 5 )
+
+[node name="Barrels" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Barrels"]
+position = Vector2( 196.75, 393.5 )
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrels"]
+position = Vector2( 110.016, 401.798 )
+shape = SubResource( 6 )
 [connection signal="input_event" from="KitchenDoor" to="KitchenDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_exited"]
-[connection signal="input_event" from="Potions" to="Potions" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="WrongPotions" to="WrongPotions" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="Chest" to="Chest" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Potion" to="Potion" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Imp" to="Imp" method="_on_Clickable_input_event"]

@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/FrontDoor.gd"
 }, {
+"base": "Clickable",
+"class": "Imp",
+"language": "GDScript",
+"path": "res://src/Imp.gd"
+}, {
 "base": "Node2D",
 "class": "Inventory",
 "language": "GDScript",
@@ -84,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/PickupItem.gd"
 }, {
+"base": "PickupItem",
+"class": "Potion",
+"language": "GDScript",
+"path": "res://src/Potion.gd"
+}, {
 "base": "Node2D",
 "class": "Room",
 "language": "GDScript",
@@ -113,6 +123,7 @@ _global_script_class_icons={
 "Doorway": "",
 "FireLight": "",
 "FrontDoor": "",
+"Imp": "",
 "Inventory": "",
 "InventoryItem": "",
 "LockedOpenable": "",
@@ -120,6 +131,7 @@ _global_script_class_icons={
 "MouseFollowCamera": "",
 "Openable": "",
 "PickupItem": "",
+"Potion": "",
 "Room": "",
 "Sink": "",
 "StoolOnlyPickipItem": "",
