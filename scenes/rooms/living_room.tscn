@@ -40,23 +40,23 @@ extents = Vector2( 22.3111, 22.6504 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 140.493, 34.5527 )
 
-[sub_resource type="OccluderPolygon2D" id=10]
+[sub_resource type="OccluderPolygon2D" id=8]
 polygon = PoolVector2Array( -69.5605, 46.1689, -64.8401, 51.2388, -51.9031, 50.8891, -58.3716, 45.4695 )
 
-[sub_resource type="OccluderPolygon2D" id=11]
+[sub_resource type="OccluderPolygon2D" id=9]
 polygon = PoolVector2Array( -15.8892, 60.6793, 8.18799, 62.29, -6.41162, 68.1298 )
 
-[sub_resource type="OccluderPolygon2D" id=12]
+[sub_resource type="OccluderPolygon2D" id=10]
 polygon = PoolVector2Array( 52.5706, 48.5665, 68.3379, 45.9386, 58.4102, 40.9747 )
 
-[sub_resource type="OccluderPolygon2D" id=13]
+[sub_resource type="OccluderPolygon2D" id=11]
 polygon = PoolVector2Array( 13.4438, 44.4786, 4.97607, 51.1944, -4.65967, 47.3985, 2.34814, 42.1427 )
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 16 )
 shader_param/Texture = ExtResource( 15 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 71.0562, 66.4996 )
 
 [node name="Node2D" type="Node2D"]
@@ -131,7 +131,7 @@ visible = false
 position = Vector2( -26.8733, 220.585 )
 script = ExtResource( 8 )
 before_backpack = true
-lines = [ "|Ppat_normal|My backpack!", "Now I need something to eat on the journey." ]
+lines = [ "|Ppat_normal|My backpack!", "Now, what to bring?", "I'm going to need to look around the house to get these..", "|Ppat_normal|I need something to eat while I'm out..", "Something to keep my energy up.", "", "|Ppat_normal|I should also bring a potion from the basement.", "|_. . . ", "Just in case I get hurt." ]
 item_id = "backpack"
 item_sprite = ExtResource( 9 )
 
@@ -147,11 +147,15 @@ shape = SubResource( 4 )
 [node name="FrontDoor" type="Area2D" parent="."]
 position = Vector2( 1203.7, 309.043 )
 script = ExtResource( 11 )
-before_backpack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoor"]
 position = Vector2( -17.9155, -10.0775 )
 shape = SubResource( 5 )
+
+[node name="Arrow" type="Sprite" parent="FrontDoor"]
+visible = false
+rotation = 1.5708
+texture = ExtResource( 4 )
 
 [node name="Skull" type="Area2D" parent="."]
 position = Vector2( 541.788, 251.51 )
@@ -181,7 +185,7 @@ position = Vector2( -9.24268, 4.40128 )
 shape = SubResource( 7 )
 
 [node name="FireplaceLight" type="Light2D" parent="."]
-position = Vector2( 2291.36, 311.152 )
+position = Vector2( 2289.36, 311.152 )
 texture = ExtResource( 13 )
 offset = Vector2( -234.99, 12.6266 )
 color = Color( 0.886275, 0.239216, 0.133333, 1 )
@@ -201,24 +205,24 @@ visible = false
 texture = ExtResource( 15 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
-occluder = SubResource( 10 )
+occluder = SubResource( 8 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
-occluder = SubResource( 11 )
+occluder = SubResource( 9 )
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
-occluder = SubResource( 12 )
+occluder = SubResource( 10 )
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
-occluder = SubResource( 13 )
+occluder = SubResource( 11 )
 
 [node name="StoolPlaceholder" type="Sprite" parent="StoolSpot"]
 visible = false
-material = SubResource( 8 )
+material = SubResource( 12 )
 texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StoolSpot"]
-shape = SubResource( 9 )
+shape = SubResource( 13 )
 [connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]
@@ -227,7 +231,9 @@ shape = SubResource( 9 )
 [connection signal="mouse_exited" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_exited"]
 [connection signal="input_event" from="BranchHook" to="BranchHook" method="_on_Openable_input_event"]
 [connection signal="input_event" from="BranchHook/Backpack" to="BranchHook/Backpack" method="_on_PickupItem_input_event"]
-[connection signal="input_event" from="FrontDoor" to="FrontDoor" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="FrontDoor" to="FrontDoor" method="_on_FrontDoor_input_event"]
+[connection signal="mouse_entered" from="FrontDoor" to="FrontDoor" method="_on_Door_mouse_entered"]
+[connection signal="mouse_exited" from="FrontDoor" to="FrontDoor" method="_on_Door_mouse_exited"]
 [connection signal="input_event" from="Skull" to="Skull" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="Books" to="Books" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="StoolSpot" to="StoolSpot" method="_on_StoolSpot_input_event"]

@@ -48,11 +48,11 @@ extents = Vector2( 85.0508, 58.4772 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 78.2014, 57.898 )
 
-[sub_resource type="ShaderMaterial" id=11]
+[sub_resource type="ShaderMaterial" id=9]
 shader = ExtResource( 23 )
 shader_param/Texture = ExtResource( 20 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 71.2109, 68.0586 )
 
 [node name="Node2D" type="Node2D"]
@@ -218,11 +218,11 @@ texture = ExtResource( 20 )
 
 [node name="StoolPlaceholder" type="Sprite" parent="StoolSpot"]
 visible = false
-material = SubResource( 11 )
+material = SubResource( 9 )
 texture = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StoolSpot"]
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 [connection signal="input_event" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_exited"]
