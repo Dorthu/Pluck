@@ -27,7 +27,7 @@ radius = 19.7986
 height = 29.2131
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 124.408, 123.593 )
+extents = Vector2( 124.408, 99.7581 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 108.573, 129.767 )
@@ -81,6 +81,7 @@ shape = SubResource( 3 )
 [node name="Potion" type="Area2D" parent="."]
 position = Vector2( 905.415, 355.134 )
 script = ExtResource( 6 )
+lines = [ "|Ppat_normal|He seems really out..", "I think I can just take it now.", "|_. . . ", "|Ppat_normal|Sorry Frank!  I'll tell Dad that you tried." ]
 item_id = "potion"
 item_sprite = ExtResource( 7 )
 
@@ -107,7 +108,7 @@ z_index = 1
 texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Imp"]
-position = Vector2( 13.718, 63.7343 )
+position = Vector2( 8.95799, 35.2543 )
 shape = SubResource( 5 )
 
 [node name="Barrels" type="Area2D" parent="."]
