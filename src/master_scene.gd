@@ -11,6 +11,7 @@ var active_item: InventoryItem = null
 var clear_active_item := false
 var game_state := Dictionary()
 var stop_camera := true
+var on_dialog_finished
 
 func _ready():
 	for s in ["living_room","bedroom","kitchen","cellar"]:
@@ -29,14 +30,18 @@ func _ready():
 	change_rooms('bedroom', -400)
 	
 
-func show_dialog(text_pool): # Clickable.DialogTextPool
+func show_dialog(text_pool, on_finished=null): # Clickable.DialogTextPool
 	if dialog_active():
 		return
 	inventory.hide()
 	dialog_controller.new_dialog(text_pool)
+	on_dialog_finished = on_finished
 
 func dialog_finished():
 	inventory.show()
+	if on_dialog_finished:
+		on_dialog_finished.dialog_finished()
+		on_dialog_finished = null
 
 func dialog_active():
 	return dialog_controller.cur_box != null

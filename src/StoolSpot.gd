@@ -22,16 +22,21 @@ func has_stool() -> bool:
 func _on_StoolSpot_input_event(_viewport, event, _shape_idx):
 	# when you put the stool down
 	if event is InputEventMouseButton and event.pressed:
-		if controller.active_item != null and controller.active_item.id == "stool":
-			controller.inventory.remove_item(controller.active_item)
-			stool_present = true
-			stool_suggestion.hide()
-			stool_sprite.show()
-		
-		if stool_present and controller.active_item == null:
-			stool_present = false
-			stool_sprite.hide()
-			controller.collect_item("stool", stool_item_texture)
+		interact_with_stool()
+
+
+func interact_with_stool():
+	if controller.active_item != null and controller.active_item.id == "stool":
+		controller.inventory.remove_item(controller.active_item)
+		stool_present = true
+		stool_suggestion.hide()
+		stool_sprite.show()
+	
+	if stool_present and controller.active_item == null:
+		stool_present = false
+		stool_sprite.hide()
+		controller.collect_item("stool", stool_item_texture)
+
 
 func _on_StoolSpot_mouse_entered():
 	if stool_present or not has_stool():

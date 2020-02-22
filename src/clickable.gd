@@ -6,10 +6,14 @@ extends Node2D
 class_name Clickable
 
 # These can be set in the editor
+## If true, this can be interacted with before finding the backpack.
 export var before_backpack: bool = false
+## The text pool to display when clicked.
 export(Array, String) var lines: Array
 var dialog_contents: DialogTextPool
-export var item_text: Dictionary;
+## Keys: item ids  
+## Values: Text pools when that item is used on this clickable.
+export var item_text: Dictionary
 var DEFAULT_ITEM_TEXT := DialogTextPool.new(["I can't use this here."])
 
 func _ready():
