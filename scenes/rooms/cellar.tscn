@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/cellar/cellar-sketch.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://img/cellar/imp_hidden.png" type="Texture" id=9]
 [ext_resource path="res://img/cellar/imp.png" type="Texture" id=10]
 [ext_resource path="res://img/cellar/barrels.png" type="Texture" id=11]
+[ext_resource path="res://img/cellar/sleep_particle.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 110.002, 133.186 )
@@ -25,6 +26,23 @@ extents = Vector2( 87.6597, 47.4568 )
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 19.7986
 height = 29.2131
+
+[sub_resource type="Curve" id=7]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0.017341, 9.09091 ), 0.0, 0.0, 0, 0, Vector2( 0.988439, -16.3636 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=8]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, -52.3636 ), 0.0, 0.0, 0, 0, Vector2( 1, 16.3636 ), 84.9272, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0.0590909 ), 0.0, 0.0, 0, 0, Vector2( 0.456647, 0.309091 ), -0.28595, -0.28595, 0, 0, Vector2( 0.965318, 0.736364 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.68, 0.993333, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.341176, 0.341176, 0.341176, 0.886275, 0.360784, 0.360784, 0.360784, 0.188235, 1, 1, 1, 0 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 124.408, 99.7581 )
@@ -100,6 +118,19 @@ script = ExtResource( 8 )
 [node name="hidden" type="Sprite" parent="Imp"]
 position = Vector2( -152.931, 19.1333 )
 texture = ExtResource( 9 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Imp/hidden"]
+position = Vector2( 22.8062, 8.82739 )
+amount = 3
+lifetime = 3.0
+texture = ExtResource( 12 )
+direction = Vector2( 0, 1 )
+gravity = Vector2( -10, -30 )
+linear_accel_curve = SubResource( 7 )
+angle_random = 0.3
+angle_curve = SubResource( 8 )
+scale_amount_curve = SubResource( 9 )
+color_ramp = SubResource( 10 )
 
 [node name="shown" type="Sprite" parent="Imp"]
 visible = false

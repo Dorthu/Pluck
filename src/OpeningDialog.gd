@@ -12,7 +12,7 @@ func opening_dialog():
 	controller.show_dialog(text_pool)
 	controller.stop_camera = false
 	
-func _on_OpeningDialog_input_event(viewport, event, shape_idx):
+func _on_OpeningDialog_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		opening_dialog()
 		get_parent().remove_child(self)

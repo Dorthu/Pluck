@@ -25,7 +25,7 @@ var without_honeycomb: AnimatedSprite
 func _ready():
 	controller = get_tree().get_root().get_children()[0]
 	room = get_parent()
-	room_center = Vector2(room.room_width/2, 300)
+	room_center = Vector2(room.room_width/2.0, 300)
 	controller.set_game_state('bumble')
 	with_honeycomb = get_node("with_honeycomb")
 	without_honeycomb = get_node("no_honeycomb")
