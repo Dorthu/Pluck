@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/DialogController.gd"
 }, {
+"base": "Clickable",
+"class": "Domorov",
+"language": "GDScript",
+"path": "res://src/Domorov.gd"
+}, {
 "base": "Area2D",
 "class": "Doorway",
 "language": "GDScript",
@@ -125,6 +130,7 @@ _global_script_class_icons={
 "ConditionalPickupItem": "",
 "DialogBox": "",
 "DialogController": "",
+"Domorov": "",
 "Doorway": "",
 "FireLight": "",
 "FrontDoor": "",

@@ -3,7 +3,7 @@ extends StoolSpot
 class_name LivingRoomStoolStop
 
 var denied_text_pool := Clickable.DialogTextPool.new([
-	"|Pfireguy|Hey!  A stool!  That looks tasty!",
+	"|Pdomorov|Hey!  A stool!  That looks tasty!",
 	"",
 	"",
 	"|Ppat_normal|No!  You can't eat the stool!",
@@ -20,11 +20,18 @@ var after_place_text_pool := Clickable.DialogTextPool.new([
 func interact_with_stool():
 	# if we're not allowed to put this here yet, we get some dialog
 	# and then the stool goes back into our inventory
-	if true: # TODO
-		if controller.active_item != null and controller.active_item.id == "stool":	
+	if controller.active_item != null and controller.active_item.id == "stool":	
+		if not controller.game_state_active("domorov_satisfied"):
+			controller.set_game_state("hungry_fire")
 			stool_suggestion.hide()
 			stool_sprite.show()
 			controller.show_dialog(denied_text_pool, self)
+		else:
+			# if he's cool tho we can just put it down like normal
+			.interact_with_stool()
+	elif controller.active_item == null and stool_present:
+		# we can always take the stool back
+		.interact_with_stool()
 
 
 func dialog_finished():

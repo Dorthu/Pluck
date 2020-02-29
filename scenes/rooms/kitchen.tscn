@@ -162,6 +162,7 @@ script = ExtResource( 22 )
 lines = [ "|Ppat_sad|Dad doesn't want me to drink this.", "|_ . . .", "Which is |!totally |!unfair." ]
 item_id = "liquor"
 item_sprite = ExtResource( 13 )
+no_stool_lines = [ "|Ppat_sad|I can't reach it." ]
 
 [node name="Sprite" type="Sprite" parent="Liquor"]
 texture = ExtResource( 13 )

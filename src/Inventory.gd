@@ -15,7 +15,8 @@ func _ready():
 	slots.append(get_node("slot2"))
 	slots.append(get_node("slot3"))
 	slots.append(get_node("slot4"))
-
+	slots.append(get_node("slot5"))
+	slots.append(get_node("slot6"))
 
 func make_item(item_id: String, texture: Texture) -> InventoryItem:
 	var new_item = INVENTORY_ITEM_SCENE.instance()

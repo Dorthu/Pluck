@@ -56,6 +56,12 @@ position = Vector2( -183.551, 2.93095 )
 [node name="slot4" type="Node2D" parent="Inventory"]
 position = Vector2( -137.387, 2.05054 )
 
+[node name="slot5" type="Node2D" parent="Inventory"]
+position = Vector2( -88.4203, -0.94946 )
+
+[node name="slot6" type="Node2D" parent="Inventory"]
+position = Vector2( -44.0055, -6.50128 )
+
 [node name="OpeningDialog" type="Area2D" parent="."]
 position = Vector2( 552, 327 )
 script = ExtResource( 7 )

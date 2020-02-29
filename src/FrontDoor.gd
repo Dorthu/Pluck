@@ -9,11 +9,16 @@ const DIALOG_MAP := {
 		"Something to keep my strength up.",
 		"",
 	],
+	"sword_and_shield": [
+		"|Ppat_normal|I need to get something to defend myself wtih.",
+		"The woods can be dangerous..",
+		"",
+	],
 	"potion": [
 		"|Ppat_normal|I need to take a potion from downstairs",
 		"|_. . . ",
 		"Just in case I get hurt.",
-	]
+	],
 }
 
 # Temporary, until there's a real ending
@@ -57,7 +62,7 @@ func show_dialog(_event):
 	
 	if controller.inventory.has_item('backpack'):
 		if ready_to_go(controller):
-			controller.show_dialog(Clickable.DialogTextPool.new(YOU_WIN_TEXT))
+			controller.show_dialog(Clickable.DialogTextPool.new([]+YOU_WIN_TEXT))
 		else:
 			controller.show_dialog(Clickable.DialogTextPool.new(
 				get_signposting_text(controller)

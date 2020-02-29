@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/imp.png-2552a3fc15a185148deee239c999a960.stex"
+path="res://.import/frank_happy.png-752389fdd9b9bb69e98cf4003c1b0bc3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/dialog/imp.png"
-dest_files=[ "res://.import/imp.png-2552a3fc15a185148deee239c999a960.stex" ]
+source_file="res://img/dialog/frank_happy.png"
+dest_files=[ "res://.import/frank_happy.png-752389fdd9b9bb69e98cf4003c1b0bc3.stex" ]
 
 [params]
 

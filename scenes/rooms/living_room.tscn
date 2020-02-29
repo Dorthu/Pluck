@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/living-room/background.png" type="Texture" id=2]
@@ -18,6 +18,10 @@
 [ext_resource path="res://src/shaders/phantom_stool.shader" type="Shader" id=16]
 [ext_resource path="res://src/LivingRoomStoolSpot.gd" type="Script" id=17]
 [ext_resource path="res://img/stool_sketch_smol.png" type="Texture" id=18]
+[ext_resource path="res://src/Domorov.gd" type="Script" id=19]
+[ext_resource path="res://img/living-room/temp_sword_and_shield_smol.png" type="Texture" id=20]
+[ext_resource path="res://src/StoolOnlyPickupItem.gd" type="Script" id=21]
+[ext_resource path="res://img/living-room/temp_sword_and_shield.png" type="Texture" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 86.4009, 257 )
@@ -61,6 +65,9 @@ extents = Vector2( 71.0562, 66.4996 )
 
 [sub_resource type="CircleShape2D" id=14]
 radius = 71.7813
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 54.2749, 46.7183 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -134,7 +141,7 @@ visible = false
 position = Vector2( -26.8733, 220.585 )
 script = ExtResource( 8 )
 before_backpack = true
-lines = [ "|Ppat_normal|My backpack!", "Now, what to bring?", "I'm going to need to look around the house to get these..", "|Ppat_normal|I need something to eat while I'm out..", "Something to keep my energy up.", "", "|Ppat_normal|I should also bring a potion from the basement.", "|_. . . ", "Just in case I get hurt." ]
+lines = [ "|Ppat_normal|My backpack!", "Now, what to bring?", "I'm going to need to look around the house to get these..", "|Ppat_normal|I need something to eat while I'm out..", "Something to keep my energy up.", "", "|Ppat_normal|I need something to defend myself with.", "The woods can be dangerous..", "", "|Ppat_normal|I should also bring a potion from the basement.", "|_. . . ", "Just in case I get hurt." ]
 item_id = "backpack"
 item_sprite = ExtResource( 9 )
 
@@ -229,11 +236,25 @@ shape = SubResource( 13 )
 
 [node name="SwordShield" type="Area2D" parent="."]
 position = Vector2( 2297.27, 79.4159 )
-script = ExtResource( 12 )
-lines = [ "|Ppat_normal|The sword and shield would be a good way to defend myself.", "", "", "|Ppat_sad|But I can't reach it." ]
+script = ExtResource( 21 )
+lines = [ "|Ppat_normal|I hope I don't need to use these.." ]
+item_id = "sword_and_shield"
+item_sprite = ExtResource( 20 )
+no_stool_lines = [ "|Ppat_normal|The sword and sheild would be a good way to", "defend myself, if I need to.", "", "|Ppat_sad|But I can't reach them up there." ]
+
+[node name="Sprite" type="Sprite" parent="SwordShield"]
+position = Vector2( -13, 10 )
+texture = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordShield"]
 shape = SubResource( 14 )
+
+[node name="Domorov" type="Area2D" parent="."]
+position = Vector2( 2308.49, 312.114 )
+script = ExtResource( 19 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Domorov"]
+shape = SubResource( 15 )
 [connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]
@@ -251,3 +272,4 @@ shape = SubResource( 14 )
 [connection signal="mouse_entered" from="StoolSpot" to="StoolSpot" method="_on_StoolSpot_mouse_entered"]
 [connection signal="mouse_exited" from="StoolSpot" to="StoolSpot" method="_on_StoolSpot_mouse_exited"]
 [connection signal="input_event" from="SwordShield" to="SwordShield" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Domorov" to="Domorov" method="_on_Clickable_input_event"]

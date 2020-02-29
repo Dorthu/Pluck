@@ -10,23 +10,23 @@ var shown: Sprite
 var cur_text: int
 const TEXT_POOL: Array = [
 	[
-		"|Pimp|Text pool entry 1",
+		"|Pfrank_happy|Text pool entry 1",
 	],
 	[
-		"|Pimp|Text pool entry 2",
+		"|Pfrank_happy|Text pool entry 2",
 		"Two lines for number 2",
 	],
 	[
-		"|Pimp|Text pool entry 3",
+		"|Pfrank_happy|Text pool entry 3",
 		"Only two lines though",
 		"",
 		"|Ppat_normal|Why not more?",
 		"",
 		"",
-		"|Pimp|Because.",
+		"|Pfrank_happy|Because.",
 	],
 	[
-		"|Pimp|Text pool entry 4",
+		"|Pfrank_happy|Text pool entry 4",
 	],
 ]
 
@@ -43,32 +43,32 @@ func pop_out():
 	shown.show()
 	
 	say([
-		"|Pimp|Hey!  Stop that!",
+		"|Pfrank_nervous|Hey!  Stop that!",
 		"",
 		"",
 		"|Ppat_sad|Oh, hey Frank.",
 		"",
 		"",
-		"|Pimp|You know your father doesn't want you getting into the",
+		"|Pfrank_happy|You know your father doesn't want you getting into the",
 		"potions.",
 		"Now get out of here.",
 		"|Ppat_sad|But he's missing!  I'm trying to-",
 		"",
 		"",
-		"|Pimp|!No |!way. ",
+		"|Pfrank_nervous|!No |!way. ",
 		"",
 		"Now get lost kid.",
 	])
 
 func make_demands():
 	say([
-		"|Pimp|I'm not letting you take any potions.",
+		"|Pfrank_happy|I'm not letting you take any potions.",
 		"Your father would be cross with me if I did.",
 		"",
 		"|Ppat_normal|Can't I do anything to change your mind?",
 		"",
 		"",
-		"|Pimp|Hmm....|!No.",
+		"|Pfrank_nervous|Hmm....|!No.",
 		"You couldn't even get it while I was sleeping.",
 		"I'd have to be |_really |out for you to get it.",
 	])
@@ -88,7 +88,7 @@ func talk():
 			cur_text = 0
 	else:
 		say([
-			"|Pimp|_zzzzzzzzzz",
+			"|Pfrank_happy|_zzzzzzzzzz",
 		])
 
 func handle_clicked(_event):
@@ -100,19 +100,19 @@ func handle_clicked(_event):
 	if controller.active_item:
 		if controller.active_item.id == "liquor":
 			say([
-				"|Pimp|!Hey!  |Where'd you get that?",
+				"|Pfrank_nervous|!Hey!  |Where'd you get that?",
 				"",
 				"",
 				"|Ppat_normal|I found it in the kitchen.",
 				"",
 				"",
-				"|Pimp|Well, it's not for kids!",
+				"|Pfrank_nervous|Well, it's not for kids!",
 				"Give it here!",
 				"",
 				"|Ppat_normal|Uhh.. okay..",
 				"",
 				"",
-				"|Pimp|Heh.. haven't had any of this in a |_long time.",
+				"|Pfrank_happy|Heh.. haven't had any of this in a |_long time.",
 				"|_. . . ",
 				"|_zzzzzzzzz",
 				"|Ppat_normal|I think he fell asleep?",
@@ -121,17 +121,17 @@ func handle_clicked(_event):
 			controller.inventory.remove_item(controller.active_item)
 		elif controller.active_item.id == "potion":
 			say([
-				"|Pimp|Zzzz",
+				"|Pfrank_happy|Zzzz",
 			])
 		else:
 			say([
-				"|Pimp|Don't try to bribe me.",
+				"|Pfrank_nervous|Don't try to bribe me.",
 				"I don't even want that.",
 				"",
 				"|Ppat_sad|What do you want then?",
 				"",
 				"",
-				"|Pimp|Nothing!",
+				"|Pfrank_nervous|Nothing!",
 				"",
 				"At leas, nothing a kid would have...",
 			])
