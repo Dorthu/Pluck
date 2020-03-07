@@ -9,7 +9,7 @@ void fragment() {
 	// sample the texture at this pixel
 	COLOR = texture(Texture, UV);
 	// if this pixel isn't transparent already, make it flash
-	if(COLOR.a > 0.0) {
+	if(COLOR.a > 0.2) {
 		COLOR.a = max(.1, (cos(TIME*1.8)-UV.y) * .8);
 	}
 }

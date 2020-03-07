@@ -229,6 +229,7 @@ material = SubResource( 9 )
 texture = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StoolSpot"]
+visible = false
 shape = SubResource( 10 )
 [connection signal="input_event" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_entered"]

@@ -119,7 +119,7 @@ func handle_clicked(_event):
 			])
 			satisfied = true
 			controller.inventory.remove_item(controller.active_item)
-		elif controller.active_item.id == "potion":
+		elif satisfied:
 			say([
 				"|Pfrank_happy|Zzzz",
 			])
