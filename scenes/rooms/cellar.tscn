@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/cellar/cellar-sketch.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://img/cellar/imp.png" type="Texture" id=10]
 [ext_resource path="res://img/cellar/barrels.png" type="Texture" id=11]
 [ext_resource path="res://img/cellar/sleep_particle.png" type="Texture" id=12]
+[ext_resource path="res://audio/fx/potion_pickup.wav" type="AudioStream" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 110.002, 133.186 )
@@ -27,27 +28,27 @@ extents = Vector2( 87.6597, 47.4568 )
 radius = 19.7986
 height = 29.2131
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=5]
 min_value = -200.0
 max_value = 200.0
 _data = [ Vector2( 0.017341, 9.09091 ), 0.0, 0.0, 0, 0, Vector2( 0.988439, -16.3636 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id=6]
 min_value = -360.0
 max_value = 360.0
 _data = [ Vector2( 0, -52.3636 ), 0.0, 0.0, 0, 0, Vector2( 1, 16.3636 ), 84.9272, 0.0, 0, 0 ]
 
-[sub_resource type="Curve" id=9]
+[sub_resource type="Curve" id=7]
 _data = [ Vector2( 0, 0.0590909 ), 0.0, 0.0, 0, 0, Vector2( 0.456647, 0.309091 ), -0.28595, -0.28595, 0, 0, Vector2( 0.965318, 0.736364 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0, 0.68, 0.993333, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.341176, 0.341176, 0.341176, 0.886275, 0.360784, 0.360784, 0.360784, 0.188235, 1, 1, 1, 0 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 124.408, 99.7581 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 108.573, 129.767 )
 
 [node name="Node2D" type="Node2D"]
@@ -102,6 +103,7 @@ script = ExtResource( 6 )
 lines = [ "|Ppat_normal|He seems really out..", "I think I can just take it now.", "|_. . . ", "|Ppat_normal|Sorry Frank!  I'll tell Dad that you tried." ]
 item_id = "potion"
 item_sprite = ExtResource( 7 )
+pickup_sound = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="Potion"]
 position = Vector2( -1.19165, -12.3137 )
@@ -126,11 +128,11 @@ lifetime = 3.0
 texture = ExtResource( 12 )
 direction = Vector2( 0, 1 )
 gravity = Vector2( -10, -30 )
-linear_accel_curve = SubResource( 7 )
+linear_accel_curve = SubResource( 5 )
 angle_random = 0.3
-angle_curve = SubResource( 8 )
-scale_amount_curve = SubResource( 9 )
-color_ramp = SubResource( 10 )
+angle_curve = SubResource( 6 )
+scale_amount_curve = SubResource( 7 )
+color_ramp = SubResource( 8 )
 
 [node name="shown" type="Sprite" parent="Imp"]
 visible = false
@@ -140,7 +142,7 @@ texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Imp"]
 position = Vector2( 8.95799, 35.2543 )
-shape = SubResource( 5 )
+shape = SubResource( 9 )
 
 [node name="Barrels" type="Area2D" parent="."]
 
@@ -150,7 +152,7 @@ texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barrels"]
 position = Vector2( 110.016, 401.798 )
-shape = SubResource( 6 )
+shape = SubResource( 10 )
 [connection signal="input_event" from="KitchenDoor" to="KitchenDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="KitchenDoor" to="KitchenDoor" method="_on_Door_mouse_exited"]

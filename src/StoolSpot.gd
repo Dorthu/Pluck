@@ -9,10 +9,24 @@ var stool_suggestion: Sprite
 
 export var stool_item_texture: Texture
 
+var stool_drop_fx: Array = [
+	load("res://audio/fx/stool_drop_1.wav"),
+	load("res://audio/fx/stool_drop_2.wav"),
+]
+
+var stool_lift_fx: Array = [
+	load("res://audio/fx/stool_lift_1.wav"),
+	load("res://audio/fx/stool_lift_2.wav"),
+]
+
+var sfx: AudioStreamPlayer
+
 func _ready():
 	controller = get_tree().get_root().get_children()[0]
 	stool_sprite = get_node("StoolSprite")
 	stool_suggestion = get_node("StoolPlaceholder")
+	sfx = AudioStreamPlayer.new()
+	add_child(sfx)
 
 func has_stool() -> bool:
 	# returns True if the stool is in the inventory, otherwise
@@ -31,11 +45,15 @@ func interact_with_stool():
 		stool_present = true
 		stool_suggestion.hide()
 		stool_sprite.show()
+		sfx.stream = stool_drop_fx[randi()%len(stool_drop_fx)]
+		sfx.play()
 	
 	if stool_present and controller.active_item == null:
 		stool_present = false
 		stool_sprite.hide()
 		controller.collect_item("stool", stool_item_texture)
+		sfx.stream = stool_lift_fx[randi()%len(stool_lift_fx)]
+		sfx.play()
 
 
 func _on_StoolSpot_mouse_entered():

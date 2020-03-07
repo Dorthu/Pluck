@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/living-room/background.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://img/living-room/temp_sword_and_shield_smol.png" type="Texture" id=20]
 [ext_resource path="res://src/StoolOnlyPickupItem.gd" type="Script" id=21]
 [ext_resource path="res://img/living-room/temp_sword_and_shield.png" type="Texture" id=22]
+[ext_resource path="res://audio/fx/backpack_drop.wav" type="AudioStream" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 86.4009, 257 )
@@ -117,6 +118,7 @@ item_text = {
 "potion": "I think it wants water."
 }
 item_name = "Backpack"
+open_sound = ExtResource( 23 )
 required_item_id = "water_cup"
 consume_item = true
 locked_text = [ "|Ppat_sad|The hook I hang my backpack on has", "grown around the hanger.  I can't get it.", "", "|Ppat_normal|Maybe it would like some water?" ]

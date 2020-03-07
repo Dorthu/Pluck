@@ -8,12 +8,18 @@ export var key_id: String
 var closed_state: Sprite
 var opened_state: Sprite
 
+var open_sound = load("res://audio/fx/door_unlock.wav")
+var sfx: AudioStreamPlayer
+
 func _ready():
 	._ready()
 	locked_icon = get_node("Lock")
 	locked_dialog_contents = Clickable.DialogTextPool.new(locked_text)
 	closed_state = get_node("State1")
 	opened_state = get_node("State2")
+	sfx = AudioStreamPlayer.new()
+	sfx.stream = open_sound
+	add_child(sfx)
 
 func is_unlocked():
 	if unlocked_state_marker in controller.game_state:
@@ -40,6 +46,7 @@ func _on_Door_input_event(_viewport, event, _shape_idx):
 			closed_state.hide()
 			opened_state.show()
 			controller.inventory.remove_item(controller.active_item)
+			sfx.play()
 			return
 		
 		if not controller.should_allow_doors():

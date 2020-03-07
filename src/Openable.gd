@@ -6,10 +6,17 @@ var state1: Sprite
 var state2: Sprite
 var opened := false
 export var item_name: String
+export var open_sound: AudioStream
+
+var sfx: AudioStreamPlayer
 
 func _ready():
 	state1 = get_node("State1")
 	state2 = get_node("State2")
+	if open_sound:
+		sfx = AudioStreamPlayer.new()
+		sfx.stream = open_sound
+		add_child(sfx)
 
 func open():
 	state1.hide()
@@ -18,6 +25,8 @@ func open():
 	if item_name:
 		var item = get_node(item_name)
 		item.show()
+	if sfx:
+		sfx.play()
 
 func close():
 	state1.show()

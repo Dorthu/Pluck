@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/bumble.gd" type="Script" id=1]
+[ext_resource path="res://audio/fx/temp_bee_buzz.ogg" type="AudioStream" id=2]
 [ext_resource path="res://img/kitchen/bumble_frame_2.png" type="Texture" id=3]
 [ext_resource path="res://img/kitchen/bumble_frame_1.png" type="Texture" id=4]
 [ext_resource path="res://img/kitchen/bumble_honeycomb_frame_2.png" type="Texture" id=5]
@@ -30,12 +31,14 @@ script = ExtResource( 1 )
 [node name="with_honeycomb" type="AnimatedSprite" parent="."]
 position = Vector2( -6.5, 17.5 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="no_honeycomb" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( -6.5, 17.5 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+autoplay = true

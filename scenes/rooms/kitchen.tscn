@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/kitchen/background_final.png" type="Texture" id=2]
@@ -23,6 +23,9 @@
 [ext_resource path="res://img/stool_sketch_smol.png" type="Texture" id=21]
 [ext_resource path="res://src/StoolOnlyPickupItem.gd" type="Script" id=22]
 [ext_resource path="res://src/shaders/phantom_stool.shader" type="Shader" id=23]
+[ext_resource path="res://audio/fx/kitchen_cabinets_1.wav" type="AudioStream" id=24]
+[ext_resource path="res://audio/fx/kitchen_cabinets_2.wav" type="AudioStream" id=25]
+[ext_resource path="res://audio/fx/liquor_pickup.wav" type="AudioStream" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 53.8139, 195.76 )
@@ -162,6 +165,7 @@ script = ExtResource( 22 )
 lines = [ "|Ppat_sad|Dad doesn't want me to drink this.", "|_ . . .", "Which is |!totally |!unfair." ]
 item_id = "liquor"
 item_sprite = ExtResource( 13 )
+pickup_sound = ExtResource( 26 )
 no_stool_lines = [ "|Ppat_sad|I can't reach it." ]
 
 [node name="Sprite" type="Sprite" parent="Liquor"]
@@ -175,6 +179,7 @@ shape = SubResource( 6 )
 position = Vector2( 764.734, 363.303 )
 script = ExtResource( 14 )
 lines = [ "It's empty." ]
+open_sound = ExtResource( 24 )
 close_nodes = [ "CabinetRight" ]
 
 [node name="State1" type="Sprite" parent="CabinetLeft"]
@@ -194,6 +199,7 @@ shape = SubResource( 7 )
 position = Vector2( 977.474, 362.854 )
 script = ExtResource( 14 )
 lines = [ "Just some food." ]
+open_sound = ExtResource( 25 )
 close_nodes = [ "CabinetLeft" ]
 spawns_bumble = true
 

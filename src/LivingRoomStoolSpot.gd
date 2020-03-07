@@ -25,6 +25,8 @@ func interact_with_stool():
 			controller.set_game_state("hungry_fire")
 			stool_suggestion.hide()
 			stool_sprite.show()
+			sfx.stream = stool_drop_fx[randi()%len(stool_drop_fx)]
+			sfx.play()
 			controller.show_dialog(denied_text_pool, self)
 		else:
 			# if he's cool tho we can just put it down like normal
@@ -36,4 +38,6 @@ func interact_with_stool():
 
 func dialog_finished():
 	stool_sprite.hide()
+	sfx.stream = stool_lift_fx[randi()%len(stool_lift_fx)]
+	sfx.play()
 	controller.show_dialog(after_place_text_pool)

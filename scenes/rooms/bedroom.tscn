@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/bedroom/top_doors_open.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/Openable.gd" type="Script" id=5]
 [ext_resource path="res://img/bedroom/cookies.png" type="Texture" id=6]
 [ext_resource path="res://img/bedroom/bottom_doors_open.png" type="Texture" id=7]
+[ext_resource path="res://audio/fx/stool_lift_1.wav" type="AudioStream" id=8]
 [ext_resource path="res://img/bedroom/background.png" type="Texture" id=9]
 [ext_resource path="res://src/PickupItem.gd" type="Script" id=10]
 [ext_resource path="res://img/bedroom/key.png" type="Texture" id=11]
@@ -14,6 +15,8 @@
 [ext_resource path="res://img/stool_sketch_smol.png" type="Texture" id=13]
 [ext_resource path="res://img/bedroom/flower.png" type="Texture" id=14]
 [ext_resource path="res://src/ConditionalPickupItem.gd" type="Script" id=15]
+[ext_resource path="res://audio/fx/kitchen_cabinets_1.wav" type="AudioStream" id=16]
+[ext_resource path="res://audio/fx/kitchen_cabinets_2.wav" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.0016, 214.8 )
@@ -81,6 +84,7 @@ shape = SubResource( 2 )
 position = Vector2( 370.666, 238.863 )
 script = ExtResource( 5 )
 item_name = "Cookies"
+open_sound = ExtResource( 16 )
 
 [node name="State1" type="Sprite" parent="DresserTop"]
 visible = false
@@ -115,6 +119,7 @@ shape = SubResource( 4 )
 position = Vector2( 361.247, 366.396 )
 script = ExtResource( 5 )
 item_name = "CellarDoorKey"
+open_sound = ExtResource( 17 )
 
 [node name="State1" type="Sprite" parent="DresserBottom"]
 visible = false
@@ -150,6 +155,7 @@ script = ExtResource( 10 )
 lines = [ "The stool." ]
 item_id = "stool"
 item_sprite = ExtResource( 13 )
+pickup_sound = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="Stool"]
 texture = ExtResource( 12 )

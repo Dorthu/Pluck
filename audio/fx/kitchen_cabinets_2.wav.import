@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/kitchen_cabinets_2.wav-9197ed9e86ea16142325646a42d71ccb.sample"
+
+[deps]
+
+source_file="res://audio/fx/kitchen_cabinets_2.wav"
+dest_files=[ "res://.import/kitchen_cabinets_2.wav-9197ed9e86ea16142325646a42d71ccb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
