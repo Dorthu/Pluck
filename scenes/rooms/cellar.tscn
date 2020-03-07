@@ -1,12 +1,12 @@
 [gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
-[ext_resource path="res://img/cellar/cellar-sketch.png" type="Texture" id=2]
+[ext_resource path="res://img/cellar/potion.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/clickable.gd" type="Script" id=5]
 [ext_resource path="res://src/Potion.gd" type="Script" id=6]
-[ext_resource path="res://img/kitchen/liquor.png" type="Texture" id=7]
+[ext_resource path="res://img/cellar/background.png" type="Texture" id=7]
 [ext_resource path="res://src/Imp.gd" type="Script" id=8]
 [ext_resource path="res://img/cellar/imp_hidden.png" type="Texture" id=9]
 [ext_resource path="res://img/cellar/imp.png" type="Texture" id=10]
@@ -25,8 +25,8 @@ height = 74.435
 extents = Vector2( 87.6597, 47.4568 )
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 19.7986
-height = 29.2131
+radius = 14.8666
+height = 37.6813
 
 [sub_resource type="Curve" id=5]
 min_value = -200.0
@@ -56,7 +56,7 @@ script = ExtResource( 1 )
 room_width = 1500
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 7 )
 centered = false
 
 [node name="KitchenDoor" type="Area2D" parent="."]
@@ -102,15 +102,15 @@ position = Vector2( 905.415, 355.134 )
 script = ExtResource( 6 )
 lines = [ "|Ppat_normal|He seems really out..", "I think I can just take it now.", "|_. . . ", "|Ppat_normal|Sorry Frank!  I'll tell Dad that you tried." ]
 item_id = "potion"
-item_sprite = ExtResource( 7 )
+item_sprite = ExtResource( 2 )
 pickup_sound = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="Potion"]
-position = Vector2( -1.19165, -12.3137 )
-texture = ExtResource( 7 )
+position = Vector2( 2.18927, -11.3916 )
+texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Potion"]
-position = Vector2( -1.19165, -10.3276 )
+position = Vector2( 2.18927, -10.3276 )
 shape = SubResource( 4 )
 
 [node name="Imp" type="Area2D" parent="."]
@@ -118,7 +118,7 @@ position = Vector2( 439.725, 381.186 )
 script = ExtResource( 8 )
 
 [node name="hidden" type="Sprite" parent="Imp"]
-position = Vector2( -152.931, 19.1333 )
+position = Vector2( -154.069, 23.6837 )
 texture = ExtResource( 9 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Imp/hidden"]
@@ -145,6 +145,8 @@ position = Vector2( 8.95799, 35.2543 )
 shape = SubResource( 9 )
 
 [node name="Barrels" type="Area2D" parent="."]
+script = ExtResource( 5 )
+lines = [ "|Ppat_normal|Just a bunch of barrels." ]
 
 [node name="Sprite" type="Sprite" parent="Barrels"]
 position = Vector2( 196.75, 393.5 )
@@ -160,3 +162,4 @@ shape = SubResource( 10 )
 [connection signal="input_event" from="Chest" to="Chest" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="Potion" to="Potion" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="Imp" to="Imp" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Barrels" to="Barrels" method="_on_Clickable_input_event"]
