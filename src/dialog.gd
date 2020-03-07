@@ -82,9 +82,9 @@ func _process(delta):
 	
 
 func _draw():
-	draw_string(self.font, self.text_origin.position, self.visible_line_1)
-	draw_string(self.font, self.text_origin.position + Vector2(0, LINE_HEIGHT), self.visible_line_2)
-	draw_string(self.font, self.text_origin.position + Vector2(0, LINE_HEIGHT*2), self.visible_line_3)
+	draw_string(self.font, self.text_origin.position, self.visible_line_1, Color.black)
+	draw_string(self.font, self.text_origin.position + Vector2(0, LINE_HEIGHT), self.visible_line_2, Color.black)
+	draw_string(self.font, self.text_origin.position + Vector2(0, LINE_HEIGHT*2), self.visible_line_3, Color.black)
 	
 class TextParser:
 	var raw_text: String
