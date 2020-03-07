@@ -14,10 +14,10 @@
 [ext_resource path="res://src/clickable.gd" type="Script" id=12]
 [ext_resource path="res://img/living-room/fire_mask_glow.png" type="Texture" id=13]
 [ext_resource path="res://src/FireLight.gd" type="Script" id=14]
-[ext_resource path="res://img/stool_sketch.png" type="Texture" id=15]
+[ext_resource path="res://img/stool.png" type="Texture" id=15]
 [ext_resource path="res://src/shaders/phantom_stool.shader" type="Shader" id=16]
 [ext_resource path="res://src/LivingRoomStoolSpot.gd" type="Script" id=17]
-[ext_resource path="res://img/stool_sketch_smol.png" type="Texture" id=18]
+[ext_resource path="res://img/stool_smol.png" type="Texture" id=18]
 [ext_resource path="res://src/Domorov.gd" type="Script" id=19]
 [ext_resource path="res://img/living-room/temp_sword_and_shield_smol.png" type="Texture" id=20]
 [ext_resource path="res://src/StoolOnlyPickupItem.gd" type="Script" id=21]
@@ -46,16 +46,16 @@ extents = Vector2( 22.3111, 22.6504 )
 extents = Vector2( 140.493, 34.5527 )
 
 [sub_resource type="OccluderPolygon2D" id=8]
-polygon = PoolVector2Array( -69.5605, 46.1689, -64.8401, 51.2388, -51.9031, 50.8891, -58.3716, 45.4695 )
+polygon = PoolVector2Array( -69.5605, 46.1689, -60.4941, 53.4715, -48.3054, 49.5281, -58.3716, 45.4695 )
 
 [sub_resource type="OccluderPolygon2D" id=9]
-polygon = PoolVector2Array( -15.8892, 60.6793, 8.18799, 62.29, -6.41162, 68.1298 )
+polygon = PoolVector2Array( -17.1169, 64.5847, 7.26025, 64.5847, -6.41162, 68.1298 )
 
 [sub_resource type="OccluderPolygon2D" id=10]
-polygon = PoolVector2Array( 52.5706, 48.5665, 68.3379, 45.9386, 58.4102, 40.9747 )
+polygon = PoolVector2Array( 57.4482, 53.83, 68.3379, 45.9386, 57.4482, 43.7923, 48.4861, 47.3772 )
 
 [sub_resource type="OccluderPolygon2D" id=11]
-polygon = PoolVector2Array( 13.4438, 44.4786, 4.97607, 51.1944, -4.65967, 47.3985, 2.34814, 42.1427 )
+polygon = PoolVector2Array( 11.9204, 44.1508, 3.67529, 48.4527, -2.77759, 46.3018, 3.31665, 41.9999 )
 
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 16 )
@@ -217,15 +217,19 @@ visible = false
 texture = ExtResource( 15 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
+position = Vector2( 16.8489, -10.0377 )
 occluder = SubResource( 8 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
+position = Vector2( 6.45264, -4.30188 )
 occluder = SubResource( 9 )
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
+position = Vector2( -16.4905, -10.3961 )
 occluder = SubResource( 10 )
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
+position = Vector2( 0, -13.264 )
 occluder = SubResource( 11 )
 
 [node name="StoolPlaceholder" type="Sprite" parent="StoolSpot"]
