@@ -2,6 +2,7 @@ extends Node2D
 
 class_name DialogBox
 
+
 var text_origin: Node2D
 var profile: Sprite
 var text
@@ -27,9 +28,12 @@ var parser1: TextParser
 var parser2: TextParser
 var parser3: TextParser
 
+var click_hint: RichTextLabel
+
 func _ready():
 	self.text_origin = get_node("TextOrigin")
 	self.profile = get_node("Profile")
+	self.click_hint = get_node("ClickHint")
 	
 	self.visible_line_1 = ""
 	self.visible_line_2 = ""
@@ -77,6 +81,9 @@ func _process(delta):
 	self.visible_line_1 = self.parser1.get_text(self.ticker)
 	self.visible_line_2 = self.parser2.get_text(self.ticker)
 	self.visible_line_3 = self.parser3.get_text(self.ticker)
+	
+	if not self.click_hint.visible and self.ticker > ticker_max_value + 1.5:
+		self.click_hint.show()
 	
 	update()
 	

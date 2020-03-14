@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/FrontDoor.gd"
 }, {
+"base": "Area2D",
+"class": "HintIcon",
+"language": "GDScript",
+"path": "res://src/HintIcon.gd"
+}, {
 "base": "Clickable",
 "class": "Imp",
 "language": "GDScript",
@@ -123,6 +128,11 @@ _global_script_classes=[ {
 "class": "StoolSpot",
 "language": "GDScript",
 "path": "res://src/StoolSpot.gd"
+}, {
+"base": "Node2D",
+"class": "Tutor",
+"language": "GDScript",
+"path": "res://src/tutor.gd"
 } ]
 _global_script_class_icons={
 "Bumble": "",
@@ -134,6 +144,7 @@ _global_script_class_icons={
 "Doorway": "",
 "FireLight": "",
 "FrontDoor": "",
+"HintIcon": "",
 "Imp": "",
 "Inventory": "",
 "InventoryItem": "",
@@ -147,7 +158,8 @@ _global_script_class_icons={
 "Room": "",
 "Sink": "",
 "StoolOnlyPickipItem": "",
-"StoolSpot": ""
+"StoolSpot": "",
+"Tutor": ""
 }
 
 [application]

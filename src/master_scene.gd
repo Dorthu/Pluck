@@ -6,12 +6,15 @@ var dialog_controller # a DialogController
 var cur_room # a Room, but it's circular dependency to declare that
 var camera # a Camera
 var inventory # an Inventory
+var hint_icon # a HintIcon
 var room_map: Dictionary
 var active_item: InventoryItem = null
 var clear_active_item := false
 var game_state := Dictionary()
 var stop_camera := true
 var on_dialog_finished
+
+var HINT_ICON_TEMPLATE = ResourceLoader.load("res://scenes/ui/ClickHint.tscn")
 
 func _ready():
 	for s in ["living_room","bedroom","kitchen","cellar"]:
@@ -23,8 +26,7 @@ func _ready():
 	camera.controller = self
 	inventory = get_node("Inventory")
 	inventory.controller = self
-	# TEMP
-	game_state['test_state'] = true
+	hint_icon = get_node("HintIcon")
 	
 	# initial room
 	change_rooms('bedroom', -400)
@@ -34,11 +36,13 @@ func show_dialog(text_pool, on_finished=null): # Clickable.DialogTextPool
 	if dialog_active():
 		return
 	inventory.hide()
+	hint_icon.hide()
 	dialog_controller.new_dialog(text_pool)
 	on_dialog_finished = on_finished
 
 func dialog_finished():
 	inventory.show()
+	hint_icon.show()
 	if on_dialog_finished:
 		on_dialog_finished.dialog_finished()
 		on_dialog_finished = null
@@ -52,7 +56,7 @@ func should_pan_camera():
 	return active_item == null and not dialog_active()
 
 func should_allow_doors():
-	return active_item == null
+	return active_item == null and not dialog_active()
 
 func get_room_width():
 	return cur_room.room_width
@@ -96,3 +100,31 @@ func _process(_delta):
 func _draw():
 	if active_item:
 		draw_texture(active_item.my_texture, get_global_mouse_position())
+
+func show_click_hints():
+	# when called, this function adds and makes visible a "click hint"
+	# on each clickable element on the screen.  This is intended to
+	# help players find what is interactable and help avoid pixel-
+	# hunting.
+	for node in cur_room.get_children():
+		if not node is Clickable or not node.visible:
+			continue
+		
+		var existing_hint_node = node.get_node("ClickHint")
+		if existing_hint_node:
+			existing_hint_node.show()
+		else:
+			if not node.before_backpack:
+				if not inventory.has_item("backpack"):
+					continue
+			var new_hint_node = HINT_ICON_TEMPLATE.instance()
+			new_hint_node.name = "ClickHint"
+			new_hint_node.z_index = 15
+			node.add_child(new_hint_node)
+
+func hide_click_hints():
+	# when called, this function hides all click hitns
+	for node in cur_room.get_children():
+		var existing_hint_node = node.get_node("ClickHint")
+		if existing_hint_node:
+			existing_hint_node.hide()

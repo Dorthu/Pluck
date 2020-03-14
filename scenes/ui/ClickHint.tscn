@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://img/ui/temp_hint_star.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( -1.29791, 1.80371 )
+scale = Vector2( 0.692308, 1.10606 )
+invert_border = 0.1
+polygon = PoolVector2Array( -4.08644, -9.5525, 13.0424, -7.97138, 14.6235, 2.0424, 7.24495, 7.83986, -9.35685, 5.20465, -12.7826, -3.49153 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 6
+texture = ExtResource( 1 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 20.0
+angular_velocity_random = 1.0
+angle_random = 1.0
+scale_amount = 0.5
+scale_amount_random = 0.29

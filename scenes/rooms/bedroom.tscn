@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/bedroom/top_doors_open.png" type="Texture" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://src/ConditionalPickupItem.gd" type="Script" id=15]
 [ext_resource path="res://audio/fx/kitchen_cabinets_1.wav" type="AudioStream" id=16]
 [ext_resource path="res://audio/fx/kitchen_cabinets_2.wav" type="AudioStream" id=17]
+[ext_resource path="res://img/ui/click_hint.png" type="Texture" id=18]
+[ext_resource path="res://img/ui/look_hint.png" type="Texture" id=19]
+[ext_resource path="res://src/tutor.gd" type="Script" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.0016, 214.8 )
@@ -49,6 +52,21 @@ room_width = 1500
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 9 )
 centered = false
+
+[node name="Hints" type="Node2D" parent="."]
+position = Vector2( 790.372, 251.124 )
+z_index = 15
+script = ExtResource( 20 )
+
+[node name="LookHint" type="Sprite" parent="Hints"]
+visible = false
+position = Vector2( 0, -81 )
+texture = ExtResource( 19 )
+
+[node name="ClickHint" type="Sprite" parent="Hints"]
+visible = false
+position = Vector2( 570.472, -59.8014 )
+texture = ExtResource( 18 )
 
 [node name="LivingRoomDoor" type="Area2D" parent="."]
 position = Vector2( 1461, 340 )

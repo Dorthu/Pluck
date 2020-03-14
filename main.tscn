@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/master_scene.gd" type="Script" id=1]
 [ext_resource path="res://src/camera.gd" type="Script" id=2]
@@ -7,9 +7,14 @@
 [ext_resource path="res://src/Inventory.gd" type="Script" id=5]
 [ext_resource path="res://img/ui/inventory_bar.png" type="Texture" id=6]
 [ext_resource path="res://src/OpeningDialog.gd" type="Script" id=7]
+[ext_resource path="res://src/HintIcon.gd" type="Script" id=8]
+[ext_resource path="res://img/ui/temp_hint_icon.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 553.4, 331.9 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 25.5536
 
 [node name="MasterScene" type="Node2D"]
 z_index = 9
@@ -68,4 +73,19 @@ script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningDialog"]
 shape = SubResource( 1 )
+
+[node name="HintIcon" type="Area2D" parent="."]
+position = Vector2( 993.163, 560.498 )
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="HintIcon"]
+position = Vector2( -1.04749, 1.74585 )
+scale = Vector2( 0.560048, 0.560048 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HintIcon"]
+position = Vector2( 0, 3 )
+shape = SubResource( 2 )
 [connection signal="input_event" from="OpeningDialog" to="OpeningDialog" method="_on_OpeningDialog_input_event"]
+[connection signal="mouse_entered" from="HintIcon" to="HintIcon" method="_on_HintIcon_mouse_entered"]
+[connection signal="mouse_exited" from="HintIcon" to="HintIcon" method="_on_HintIcon_mouse_exited"]
