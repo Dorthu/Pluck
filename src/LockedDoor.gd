@@ -7,6 +7,7 @@ var locked_dialog_contents: Clickable.DialogTextPool
 export var key_id: String
 var closed_state: Sprite
 var opened_state: Sprite
+var known_locked := false
 
 var open_sound = load("res://audio/fx/door_unlock.wav")
 var sfx: AudioStreamPlayer
@@ -30,7 +31,7 @@ func _on_Door_mouse_entered():
 	if controller.should_allow_doors():
 		if is_unlocked():
 			arrow.show()
-		else:
+		elif known_locked:
 			locked_icon.show()
 
 func _on_Door_mouse_exited():
@@ -57,6 +58,7 @@ func _on_Door_input_event(_viewport, event, _shape_idx):
 		if not is_unlocked():
 			if locked_dialog_contents.lines[0]:
 				controller.show_dialog(locked_dialog_contents)
+			known_locked = true
 			return
 		
 		get_tree().get_root().get_children()[0].change_rooms(to_room, initial_camera_x)

@@ -16,6 +16,7 @@ var on_dialog_finished
 
 var HINT_ICON_TEMPLATE = ResourceLoader.load("res://scenes/ui/ClickHint.tscn")
 
+
 func _ready():
 	for s in ["living_room","bedroom","kitchen","cellar"]:
 		room_map[s] = ResourceLoader.load('res://scenes/rooms/'+s+'.tscn').instance()
@@ -76,6 +77,8 @@ func collect_item(item_id, item_texture):
 	inventory.add_item(item)
 	
 func set_active_item(item: InventoryItem):
+	if active_item and item == null:
+		active_item.stop_being_active()
 	active_item = item
 	
 func set_game_state(state: String):
@@ -93,7 +96,7 @@ func _unhandled_input(event):
 func _process(_delta):
 	if active_item:
 		if clear_active_item:
-			active_item = null
+			set_active_item(null)
 			clear_active_item = false
 		update()
 

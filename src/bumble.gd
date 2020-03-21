@@ -69,7 +69,7 @@ func _process(delta):
 		# are we close enough to trade?
 		if distance_to_mouse < 100:
 			controller.inventory.remove_item(controller.active_item)
-			controller.active_item = null
+			controller.set_active_item(null)
 			controller.collect_item('honeycomb', honeycomb_texture)
 			gave_honeycomb = true
 			with_honeycomb.hide()
