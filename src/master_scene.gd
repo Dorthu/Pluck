@@ -32,6 +32,34 @@ func _ready():
 	# initial room
 	change_rooms('bedroom', -400)
 	
+	# setup for mobile support
+	# this all assumes we're only doing export for web, which
+	# is true for now.  Wrap this in a platform check if we decide
+	# to export to other platforms later
+	var value = JavaScript.eval("""
+		// this might need to be changed, I hear it's deprecated
+		var result = (typeof window.orientation !== 'undefined');
+		result;
+	""")
+	if value:
+		var screen_width = JavaScript.eval("screen.width")
+		var screen_height = JavaScript.eval("screen.height")
+		#var width_scale = screen_width/1024
+		#var height_scale = screen_height/600
+		#var use_scale = width_scale if width_scale < height_scale else height_scale
+		#JavaScript.eval("""
+		#	var canvas = document.getElementById('canvas');
+		#	canvas.width = %s;
+		#	canvas.height = %s;
+		#""" % [screen_width, screen_height])
+		get_viewport().set_size_override(true, Vector2(512, 300))
+		get_tree().set_screen_stretch(
+			SceneTree.STRETCH_MODE_2D,
+			SceneTree.STRETCH_ASPECT_KEEP,
+			Vector2(256, 150),
+			.228
+		)
+		camera.VIEWPORT_WIDTH = screen_width
 
 func show_dialog(text_pool, on_finished=null): # Clickable.DialogTextPool
 	if dialog_active():
@@ -57,7 +85,8 @@ func should_pan_camera():
 	return active_item == null and not dialog_active()
 
 func should_allow_doors():
-	return active_item == null and not dialog_active()
+	return (active_item == null and not dialog_active() 
+			and game_state_active("showed_opening_dialog"))
 
 func get_room_width():
 	return cur_room.room_width

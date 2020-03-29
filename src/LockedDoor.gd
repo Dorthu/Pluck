@@ -29,9 +29,11 @@ func is_unlocked():
 
 func _on_Door_mouse_entered():
 	if controller.should_allow_doors():
-		if is_unlocked():
+		if is_unlocked() or not known_locked:
+			# you can see the arrow if this is open, or if it's
+			# locked but we don't know it yet
 			arrow.show()
-		elif known_locked:
+		else:
 			locked_icon.show()
 
 func _on_Door_mouse_exited():
@@ -58,6 +60,8 @@ func _on_Door_input_event(_viewport, event, _shape_idx):
 		if not is_unlocked():
 			if locked_dialog_contents.lines[0]:
 				controller.show_dialog(locked_dialog_contents)
+			arrow.hide()
+			locked_icon.show()
 			known_locked = true
 			return
 		

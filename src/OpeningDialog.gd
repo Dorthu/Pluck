@@ -1,7 +1,8 @@
 extends Node2D
 
-func opening_dialog():
+func opening_dialog():	
 	var controller = get_tree().get_root().get_children()[0]
+	controller.set_game_state("showed_opening_dialog")
 	var lines := [
 		"|Ppat_sad|Dad left last night, and he's not back yet.",
 		"I should go after him.",

@@ -7,7 +7,7 @@ var PAN_MARGIN := 250
 var Y_CUTOFF := 500
 
 var controller: MasterController
-const VIEWPORT_WIDTH := 1020
+var VIEWPORT_WIDTH := 1020
 var pan_position := 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,8 +26,8 @@ func _process(_delta):
 	var distance = 0
 	var dir := 1
 	
-	if mouse_x > get_viewport_rect().size.x - PAN_MARGIN:
-		distance = get_viewport_rect().size.x - mouse_x
+	if mouse_x > VIEWPORT_WIDTH - PAN_MARGIN:
+		distance = VIEWPORT_WIDTH - mouse_x
 		dir = -1
 	elif mouse_x < PAN_MARGIN:
 		distance = mouse_x
