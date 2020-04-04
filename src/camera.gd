@@ -10,9 +10,16 @@ var controller: MasterController
 var VIEWPORT_WIDTH := 1020
 var pan_position := 0.0
 
+# This is used for mobile browsers only.  When you pick your finger
+# up from the phone screen, the "mouse" remains where you last toched.
+# This would normally cause the screen to keep scrolling in that
+# direction until you touch the screen somewhere else, so on mobile
+# only we have to ignore the mouse after a "mouse button up" event
+var ignore_mouse = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if not controller.should_pan_camera():
+	if not controller.should_pan_camera() or ignore_mouse:
 		controller.cur_room.position.x = pan_position
 		return
 	

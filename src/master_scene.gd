@@ -16,6 +16,7 @@ var on_dialog_finished
 
 var HINT_ICON_TEMPLATE = ResourceLoader.load("res://scenes/ui/ClickHint.tscn")
 
+var is_mobile := false
 
 func _ready():
 	for s in ["living_room","bedroom","kitchen","cellar"]:
@@ -42,21 +43,28 @@ func _ready():
 		result;
 	""")
 	if value:
+		# flag that this is a mobile session so we can handle it
+		# accordingly elsewhere
+		is_mobile = true
+		JavaScript.eval("""
+			alet('were in mobile mode now!');
+		""")
+		# what are the screen dimensions in this mobile browser?
 		var screen_width = JavaScript.eval("screen.width")
 		var screen_height = JavaScript.eval("screen.height")
-		#var width_scale = screen_width/1024
-		#var height_scale = screen_height/600
-		#var use_scale = width_scale if width_scale < height_scale else height_scale
-		#JavaScript.eval("""
-		#	var canvas = document.getElementById('canvas');
-		#	canvas.width = %s;
-		#	canvas.height = %s;
-		#""" % [screen_width, screen_height])
+		var width_scale = screen_width/1024
+		var height_scale = screen_height/600
+		var use_scale = width_scale if width_scale < height_scale else height_scale
+		JavaScript.eval("""
+			var canvas = document.getElementById('canvas');
+			canvas.width = %s;
+			canvas.height = %s;
+		""" % [screen_width, screen_height])
 		get_viewport().set_size_override(true, Vector2(512, 300))
 		get_tree().set_screen_stretch(
 			SceneTree.STRETCH_MODE_2D,
 			SceneTree.STRETCH_ASPECT_KEEP,
-			Vector2(256, 150),
+			Vector2(512, 300),
 			.228
 		)
 		camera.VIEWPORT_WIDTH = screen_width
@@ -121,7 +129,13 @@ func _unhandled_input(event):
 		# don't mark this as handled!
 		clear_active_item = true # clear this nomatter what happens
 		update()
-		
+	
+	if is_mobile and event is InputEventMouseButton:
+		# i can't warp_mouse in a browser, so we've got to find another
+		# way to ignore idle pointers toward the edges of the screen
+		# on mobile
+		camera.ignore_mouse = not event.pressed
+
 func _process(_delta):
 	if active_item:
 		if clear_active_item:
