@@ -10,11 +10,11 @@
 [ext_resource path="res://src/HintIcon.gd" type="Script" id=8]
 [ext_resource path="res://img/ui/temp_hint_icon.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 553.4, 331.9 )
-
 [sub_resource type="CircleShape2D" id=2]
 radius = 25.5536
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 553.4, 331.9 )
 
 [node name="MasterScene" type="Node2D"]
 z_index = 9
@@ -36,36 +36,51 @@ stream = ExtResource( 4 )
 volume_db = 3.059
 autoplay = true
 
-[node name="Inventory" type="Node2D" parent="."]
+[node name="HUDSpacer" type="Node2D" parent="."]
 position = Vector2( 517, 566 )
+
+[node name="Inventory" type="Node2D" parent="HUDSpacer"]
 z_index = 10
 script = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="Inventory"]
+[node name="Sprite" type="Sprite" parent="HUDSpacer/Inventory"]
 position = Vector2( 8.59189, 0 )
 scale = Vector2( 1.14678, 1 )
 texture = ExtResource( 6 )
 
-[node name="slot0" type="Node2D" parent="Inventory"]
+[node name="slot0" type="Node2D" parent="HUDSpacer/Inventory"]
 position = Vector2( -329.896, 3.22524 )
 
-[node name="slot1" type="Node2D" parent="Inventory"]
+[node name="slot1" type="Node2D" parent="HUDSpacer/Inventory"]
 position = Vector2( -283.571, 2.93754 )
 
-[node name="slot2" type="Node2D" parent="Inventory"]
+[node name="slot2" type="Node2D" parent="HUDSpacer/Inventory"]
 position = Vector2( -233.302, 3.50645 )
 
-[node name="slot3" type="Node2D" parent="Inventory"]
+[node name="slot3" type="Node2D" parent="HUDSpacer/Inventory"]
 position = Vector2( -183.551, 2.93095 )
 
-[node name="slot4" type="Node2D" parent="Inventory"]
+[node name="slot4" type="Node2D" parent="HUDSpacer/Inventory"]
 position = Vector2( -137.387, 2.05054 )
 
-[node name="slot5" type="Node2D" parent="Inventory"]
+[node name="slot5" type="Node2D" parent="HUDSpacer/Inventory"]
 position = Vector2( -88.4203, -0.94946 )
 
-[node name="slot6" type="Node2D" parent="Inventory"]
+[node name="slot6" type="Node2D" parent="HUDSpacer/Inventory"]
 position = Vector2( -44.0055, -6.50128 )
+
+[node name="HintIcon" type="Area2D" parent="HUDSpacer"]
+position = Vector2( 476.163, -5.50201 )
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="HUDSpacer/HintIcon"]
+position = Vector2( -1.04749, 1.74585 )
+scale = Vector2( 0.560048, 0.560048 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HUDSpacer/HintIcon"]
+position = Vector2( 0, 3 )
+shape = SubResource( 2 )
 
 [node name="OpeningDialog" type="Area2D" parent="."]
 position = Vector2( 552, 327 )
@@ -73,19 +88,6 @@ script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningDialog"]
 shape = SubResource( 1 )
-
-[node name="HintIcon" type="Area2D" parent="."]
-position = Vector2( 993.163, 560.498 )
-script = ExtResource( 8 )
-
-[node name="Sprite" type="Sprite" parent="HintIcon"]
-position = Vector2( -1.04749, 1.74585 )
-scale = Vector2( 0.560048, 0.560048 )
-texture = ExtResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HintIcon"]
-position = Vector2( 0, 3 )
-shape = SubResource( 2 )
+[connection signal="mouse_entered" from="HUDSpacer/HintIcon" to="HUDSpacer/HintIcon" method="_on_HintIcon_mouse_entered"]
+[connection signal="mouse_exited" from="HUDSpacer/HintIcon" to="HUDSpacer/HintIcon" method="_on_HintIcon_mouse_exited"]
 [connection signal="input_event" from="OpeningDialog" to="OpeningDialog" method="_on_OpeningDialog_input_event"]
-[connection signal="mouse_entered" from="HintIcon" to="HintIcon" method="_on_HintIcon_mouse_entered"]
-[connection signal="mouse_exited" from="HintIcon" to="HintIcon" method="_on_HintIcon_mouse_exited"]

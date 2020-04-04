@@ -14,6 +14,8 @@ var game_state := Dictionary()
 var stop_camera := true
 var on_dialog_finished
 
+var hud_root: Node2D
+
 var HINT_ICON_TEMPLATE = ResourceLoader.load("res://scenes/ui/ClickHint.tscn")
 
 var is_mobile := false
@@ -26,9 +28,10 @@ func _ready():
 	dialog_controller.controller = self
 	camera = get_node("Camera")
 	camera.controller = self
-	inventory = get_node("Inventory")
+	hud_root = get_node("HUDSpacer")
+	inventory = hud_root.get_node("Inventory")
 	inventory.controller = self
-	hint_icon = get_node("HintIcon")
+	hint_icon = hud_root.get_node("HintIcon")
 	
 	# initial room
 	change_rooms('bedroom', -400)
@@ -50,24 +53,22 @@ func _ready():
 			alet('were in mobile mode now!');
 		""")
 		# what are the screen dimensions in this mobile browser?
-		var screen_width = JavaScript.eval("screen.width")
-		var screen_height = JavaScript.eval("screen.height")
-		var width_scale = screen_width/1024
+		var screen_width = JavaScript.eval("innerWidth")
+		var screen_height = JavaScript.eval("innerHeight")
+		# 1024 x 600 are the intended dimensions
 		var height_scale = screen_height/600
-		var use_scale = width_scale if width_scale < height_scale else height_scale
+		var new_dimensions = Vector2(1024, 600) / height_scale
 		JavaScript.eval("""
 			var canvas = document.getElementById('canvas');
 			canvas.width = %s;
 			canvas.height = %s;
-		""" % [screen_width, screen_height])
-		get_viewport().set_size_override(true, Vector2(512, 300))
-		get_tree().set_screen_stretch(
-			SceneTree.STRETCH_MODE_2D,
-			SceneTree.STRETCH_ASPECT_KEEP,
-			Vector2(512, 300),
-			.228
-		)
-		camera.VIEWPORT_WIDTH = screen_width
+		""" % [new_dimensions.x, new_dimensions.y])
+		# we're adding the pan margin so you can't over-scroll
+		camera.VIEWPORT_WIDTH = new_dimensions.y + camera.PAN_MARGIN
+		camera.snap_camera() # make sure we're in frame
+		hud_root.position.x = screen_width
+		# 402 is half the dialog box's width
+		dialog_controller.BOX_POS.x = hud_root.position.x - 402
 
 func show_dialog(text_pool, on_finished=null): # Clickable.DialogTextPool
 	if dialog_active():

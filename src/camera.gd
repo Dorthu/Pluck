@@ -49,6 +49,13 @@ func _process(_delta):
 		pan_position = -1 * (controller.get_room_width() - VIEWPORT_WIDTH)
 	
 	controller.cur_room.position.x = pan_position
+
+func snap_camera():
+	pan_position = controller.cur_room.position.x
 	
+	if pan_position > 0:
+		pan_position = 0
+	elif pan_position < -1 * (controller.get_room_width() - VIEWPORT_WIDTH):
+		pan_position = -1 * (controller.get_room_width() - VIEWPORT_WIDTH)
 	
-	
+	controller.cur_room.position.x = pan_position
