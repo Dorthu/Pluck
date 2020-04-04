@@ -37,9 +37,10 @@ volume_db = 3.059
 autoplay = true
 
 [node name="HUDSpacer" type="Node2D" parent="."]
-position = Vector2( 517, 566 )
+position = Vector2( 500, 566 )
 
 [node name="Inventory" type="Node2D" parent="HUDSpacer"]
+position = Vector2( 17, 0 )
 z_index = 10
 script = ExtResource( 5 )
 
@@ -70,7 +71,7 @@ position = Vector2( -88.4203, -0.94946 )
 position = Vector2( -44.0055, -6.50128 )
 
 [node name="HintIcon" type="Area2D" parent="HUDSpacer"]
-position = Vector2( 476.163, -5.50201 )
+position = Vector2( 493.163, -5.502 )
 script = ExtResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="HUDSpacer/HintIcon"]

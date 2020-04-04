@@ -66,7 +66,7 @@ func _ready():
 		# we're adding the pan margin so you can't over-scroll
 		camera.VIEWPORT_WIDTH = new_dimensions.y + camera.PAN_MARGIN
 		camera.snap_camera() # make sure we're in frame
-		hud_root.position.x = screen_width
+		hud_root.position.x = camera.VIEWPORT_WIDTH / 2
 		# 402 is half the dialog box's width
 		dialog_controller.BOX_POS.x = hud_root.position.x - 402
 
