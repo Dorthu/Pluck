@@ -1,7 +1,7 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
-[ext_resource path="res://img/living-room/background.png" type="Texture" id=2]
+[ext_resource path="res://img/living-room/background_final.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/LockedOpernable.gd" type="Script" id=5]
@@ -12,7 +12,7 @@
 [ext_resource path="res://img/living-room/backpack_final.png" type="Texture" id=10]
 [ext_resource path="res://src/FrontDoor.gd" type="Script" id=11]
 [ext_resource path="res://src/clickable.gd" type="Script" id=12]
-[ext_resource path="res://img/living-room/fire_mask_glow.png" type="Texture" id=13]
+[ext_resource path="res://img/living-room/normal_map.png" type="Texture" id=13]
 [ext_resource path="res://src/FireLight.gd" type="Script" id=14]
 [ext_resource path="res://img/stool.png" type="Texture" id=15]
 [ext_resource path="res://src/shaders/phantom_stool.shader" type="Shader" id=16]
@@ -21,7 +21,7 @@
 [ext_resource path="res://src/Domorov.gd" type="Script" id=19]
 [ext_resource path="res://img/living-room/temp_sword_and_shield_smol.png" type="Texture" id=20]
 [ext_resource path="res://src/StoolOnlyPickupItem.gd" type="Script" id=21]
-[ext_resource path="res://img/living-room/temp_sword_and_shield.png" type="Texture" id=22]
+[ext_resource path="res://img/living-room/show_and_shield.png" type="Texture" id=22]
 [ext_resource path="res://audio/fx/backpack_drop.wav" type="AudioStream" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -44,6 +44,48 @@ extents = Vector2( 22.3111, 22.6504 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 140.493, 34.5527 )
+
+[sub_resource type="OccluderPolygon2D" id=16]
+polygon = PoolVector2Array( -86.3962, -10.7969, -87.6843, -7.66849, -92.6531, -3.06783, -96.7017, -1.41159, -102.591, -0.675476, -108.295, -2.8838, -85.6602, -24.5989, -85.6602, -19.0781 )
+
+[sub_resource type="OccluderPolygon2D" id=17]
+polygon = PoolVector2Array( -81.0593, -13.0053, -81.2434, -9.1407, -79.4031, -6.74835, -63.5769, -7.11641, -56.0317, -9.1407, -53.4556, -10.7969, -49.9148, -14.1945 )
+
+[sub_resource type="OccluderPolygon2D" id=18]
+polygon = PoolVector2Array( -48.3027, -8.95668, -45.7263, -7.11641, -41.1257, -4.54004, -36.3411, -3.98796, -21.6189, -4.54004, -18.1223, -5.82823, -17.2285, -9.01178, -46.8262, -11.4971 )
+
+[sub_resource type="OccluderPolygon2D" id=19]
+polygon = PoolVector2Array( -12.8684, -12.8527, -12.6426, -7.43022, -10.4421, -4.54004, -7.12964, -3.06783, -0.136719, -0.307434, 9.6167, 3.37311, 18.2659, 4.66129, 23.4187, 3.92517, 29.1558, -0.65213, 29.8335, -5.84866 )
+
+[sub_resource type="OccluderPolygon2D" id=20]
+polygon = PoolVector2Array( 32.0928, 0.477539, 33.5403, 3.18907, 37.2207, 4.47726, 43.6616, 6.50156, 49.5505, 6.8696, 56.9116, 7.60571, 60.592, 7.78973, 63.95, 7.93344, 61.9165, 5.44815 )
+
+[sub_resource type="OccluderPolygon2D" id=21]
+polygon = PoolVector2Array( 67.113, 10.1928, 69.2415, 12.7585, 71.2656, 14.7827, 74.7622, 16.807, 80.283, 17.5431, 86.3557, 18.4633, 89.0288, 18.1006 )
+
+[sub_resource type="OccluderPolygon2D" id=22]
+polygon = PoolVector2Array( 61.4124, -0.276154, 63.7205, 1.90088, 66.1128, 3.74115, 68.8733, 4.29323, 71.8176, 4.29323, 76.5549, 3.51587 )
+
+[sub_resource type="OccluderPolygon2D" id=23]
+polygon = PoolVector2Array( 38.1079, -22.4002, 35.8296, -20.9763, 36.676, -18.5595, 37.2146, -16.7129, 38.8306, -15.097, 41.2407, -12.2901 )
+
+[sub_resource type="OccluderPolygon2D" id=24]
+polygon = PoolVector2Array( -17.426, -29.9473, -17.9956, -27.9537, -17.5684, -25.8177, -16.0022, -23.6818, -13.8662, -22.5426, -9.30957, -22.8274 )
+
+[sub_resource type="OccluderPolygon2D" id=25]
+polygon = PoolVector2Array( -23.0542, -32.9176, -21.4343, -34.1112, -20.8374, -36.3279, -19.8474, -40.5846, -21.9832, -44.8565, -24.1191, -46.9925, -25.116, -31.1865 )
+
+[sub_resource type="OccluderPolygon2D" id=26]
+polygon = PoolVector2Array( 31.491, -34.4746, 32.5376, -31.9624, 34.4219, -31.0204, 36.3059, -31.439, 39.1321, -34.7886, 42.5657, -36.6171, 28.4897, -37.8452 )
+
+[sub_resource type="OccluderPolygon2D" id=27]
+polygon = PoolVector2Array( 33.1189, -20.463, 32.1362, -17.944, 31.0591, -16.559, 29.3662, -16.3281, 27.3562, -17.1566 )
+
+[sub_resource type="OccluderPolygon2D" id=28]
+polygon = PoolVector2Array( 90.7769, 19.859, 93.3274, 23.9211, 99.5623, 39.0361, 106.931, 39.3195, 99.9402, 19.1032 )
+
+[sub_resource type="OccluderPolygon2D" id=29]
+polygon = PoolVector2Array( 89.2253, 11.9429, 93.2876, 17.0442, 96.2161, 19.5948, 100.845, 17.611 )
 
 [sub_resource type="OccluderPolygon2D" id=8]
 polygon = PoolVector2Array( -69.5605, 46.1689, -60.4941, 53.4715, -48.3054, 49.5281, -58.3716, 45.4695 )
@@ -197,7 +239,7 @@ position = Vector2( -9.24268, 4.40128 )
 shape = SubResource( 7 )
 
 [node name="FireplaceLight" type="Light2D" parent="."]
-position = Vector2( 2289.36, 311.152 )
+position = Vector2( 2273.36, 309.152 )
 texture = ExtResource( 13 )
 offset = Vector2( -234.99, 12.6266 )
 color = Color( 0.886275, 0.239216, 0.133333, 1 )
@@ -205,6 +247,52 @@ mode = 2
 range_z_max = 99
 shadow_enabled = true
 script = ExtResource( 14 )
+
+[node name="FireplaceDetail" type="Node2D" parent="."]
+position = Vector2( 2270.64, 205.488 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 16 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 17 )
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 18 )
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 19 )
+
+[node name="LightOccluder2D5" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 20 )
+
+[node name="LightOccluder2D6" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 21 )
+
+[node name="LightOccluder2D7" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 22 )
+
+[node name="LightOccluder2D8" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 23 )
+
+[node name="LightOccluder2D9" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 24 )
+
+[node name="LightOccluder2D10" type="LightOccluder2D" parent="FireplaceDetail"]
+position = Vector2( 0.0852051, 0 )
+occluder = SubResource( 25 )
+
+[node name="LightOccluder2D11" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 26 )
+
+[node name="LightOccluder2D12" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 27 )
+
+[node name="LightOccluder2D13" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 28 )
+
+[node name="LightOccluder2D14" type="LightOccluder2D" parent="FireplaceDetail"]
+occluder = SubResource( 29 )
 
 [node name="StoolSpot" type="Area2D" parent="."]
 position = Vector2( 2169.55, 345.565 )
@@ -241,7 +329,7 @@ texture = ExtResource( 15 )
 shape = SubResource( 13 )
 
 [node name="SwordShield" type="Area2D" parent="."]
-position = Vector2( 2297.27, 79.4159 )
+position = Vector2( 2313.27, 62.4159 )
 script = ExtResource( 21 )
 lines = [ "|Ppat_normal|I hope I don't need to use these.." ]
 item_id = "sword_and_shield"
@@ -253,6 +341,7 @@ position = Vector2( -13, 10 )
 texture = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordShield"]
+position = Vector2( -1.26025, 6.93277 )
 shape = SubResource( 14 )
 
 [node name="Domorov" type="Area2D" parent="."]

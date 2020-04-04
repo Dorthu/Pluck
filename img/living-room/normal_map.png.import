@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fireplace_mask.png-73ee01e37dc543a30453d386cfbbe263.stex"
+path="res://.import/normal_map.png-cc4b9d38581d71b808658f3e5f9e80ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/living-room/fireplace_mask.png"
-dest_files=[ "res://.import/fireplace_mask.png-73ee01e37dc543a30453d386cfbbe263.stex" ]
+source_file="res://img/living-room/normal_map.png"
+dest_files=[ "res://.import/normal_map.png-cc4b9d38581d71b808658f3e5f9e80ef.stex" ]
 
 [params]
 
