@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/temp_sword_and_shield_smol.png-115ea25a894cdb8a08f7890d3f313881.stex"
+path="res://.import/show_and_shield_small.png-191ace65654a2e0501a5dcd461032117.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/living-room/temp_sword_and_shield_smol.png"
-dest_files=[ "res://.import/temp_sword_and_shield_smol.png-115ea25a894cdb8a08f7890d3f313881.stex" ]
+source_file="res://img/living-room/show_and_shield_small.png"
+dest_files=[ "res://.import/show_and_shield_small.png-191ace65654a2e0501a5dcd461032117.stex" ]
 
 [params]
 
