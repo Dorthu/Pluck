@@ -19,6 +19,9 @@ var ignore_mouse = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if controller.cutscene_mode:
+		return
+	
 	if not controller.should_pan_camera() or ignore_mouse:
 		controller.cur_room.position.x = pan_position
 		return

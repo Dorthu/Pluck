@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://img/cutscenes/house_sketch.png" type="Texture" id=1]
+[ext_resource path="res://img/cutscenes/house_outside_sketch.png" type="Texture" id=2]
+[ext_resource path="res://img/cutscenes/pat_running.png" type="Texture" id=3]
+[ext_resource path="res://src/cutscene_orchestrator.gd" type="Script" id=4]
+[ext_resource path="res://img/cutscenes/outro_2.png" type="Texture" id=5]
+[ext_resource path="res://img/cutscenes/outro_3.png" type="Texture" id=6]
+[ext_resource path="res://src/shaders/outline.shader" type="Shader" id=7]
+[ext_resource path="res://img/cutscenes/outro_1.png" type="Texture" id=8]
+[ext_resource path="res://img/cutscenes/outro_4.png" type="Texture" id=9]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 7 )
+shader_param/on = true
+shader_param/outline_color = Plane( 1, 0, 0, 1 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -96.3376, 492.926 ],
+"_edit_vertical_guides_": [ 1239.85, -63.8688 ]
+}
+outro_textures = [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 9 ) ]
+
+[node name="bg" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="outside" type="Sprite" parent="."]
+visible = false
+z_index = 10
+texture = ExtResource( 2 )
+centered = false
+
+[node name="pat_leaving" type="Sprite" parent="."]
+position = Vector2( 321.613, 299.926 )
+scale = Vector2( 2.32568, 2.32568 )
+z_index = 1
+texture = ExtResource( 3 )
+
+[node name="outro" type="Sprite" parent="."]
+visible = false
+material = SubResource( 1 )
+centered = false

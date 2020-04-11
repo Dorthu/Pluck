@@ -62,7 +62,7 @@ func show_dialog(_event):
 	
 	if controller.inventory.has_item('backpack'):
 		if ready_to_go(controller):
-			controller.show_dialog(Clickable.DialogTextPool.new([]+YOU_WIN_TEXT))
+			controller.show_outro_cutscene()
 		else:
 			controller.show_dialog(Clickable.DialogTextPool.new(
 				get_signposting_text(controller)

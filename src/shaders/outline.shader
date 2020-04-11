@@ -3,6 +3,7 @@ render_mode unshaded;
 
 // should we render?
 uniform bool on;
+uniform vec4 outline_color;
 
 // fragment runs on each pixel before lighting is applied
 void fragment() {
@@ -20,7 +21,7 @@ void fragment() {
 			
 			// if an adjacent space is not transparent
 			if(up.a >= .2 || left.a >= .2 || down.a >= .2 || right.a >= .2) {
-				COLOR = vec4(.8, .85, .2, 1);
+				COLOR = outline_color;
 			}
 		}
 	}

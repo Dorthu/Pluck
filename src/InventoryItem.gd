@@ -21,7 +21,7 @@ func setup(inventory, item_id: String, texture: Texture):
 	
 	if my_sprite:
 		my_sprite.texture = texture
-		my_sprite.material
+		#my_sprite.material
 		
 func stop_being_active():
 	my_shader.set_shader_param("on", false)

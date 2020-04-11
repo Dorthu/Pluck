@@ -17,6 +17,8 @@ var on_dialog_finished
 var hud_root: Node2D
 
 var HINT_ICON_TEMPLATE = ResourceLoader.load("res://scenes/ui/ClickHint.tscn")
+var CUTSCENE_TEMPLATE := ResourceLoader.load("res://scenes/cutscene/intro-outro.tscn")
+var cutscene_mode := false
 
 var is_mobile := false
 
@@ -35,6 +37,14 @@ func _ready():
 	
 	# initial room
 	change_rooms('bedroom', -400)
+	# set up intro cutscene
+	#var active_scene = get_node("ActiveScene")
+	#var cutscene = CUTSCENE_TEMPLATE.instance()
+	#cutscene.cutscene_mode = 2
+	#cutscene.controller = self # for callback
+	#active_scene.add_child(cutscene)
+	#get_node("OpeningDialog").hide()
+	#hide_ui()
 	
 	# setup for mobile support
 	# this all assumes we're only doing export for web, which
@@ -53,7 +63,7 @@ func _ready():
 			alet('were in mobile mode now!');
 		""")
 		# what are the screen dimensions in this mobile browser?
-		var screen_width = JavaScript.eval("innerWidth")
+		#var screen_width = JavaScript.eval("innerWidth")
 		var screen_height = JavaScript.eval("innerHeight")
 		# 1024 x 600 are the intended dimensions
 		var height_scale = screen_height/600
@@ -73,14 +83,12 @@ func _ready():
 func show_dialog(text_pool, on_finished=null): # Clickable.DialogTextPool
 	if dialog_active():
 		return
-	inventory.hide()
-	hint_icon.hide()
+	hide_ui()
 	dialog_controller.new_dialog(text_pool)
 	on_dialog_finished = on_finished
 
 func dialog_finished():
-	inventory.show()
-	hint_icon.show()
+	show_ui()
 	if on_dialog_finished:
 		on_dialog_finished.dialog_finished()
 		on_dialog_finished = null
@@ -91,7 +99,7 @@ func dialog_active():
 func should_pan_camera():
 	if stop_camera:
 		return false
-	return active_item == null and not dialog_active()
+	return not cutscene_mode and active_item == null and not dialog_active()
 
 func should_allow_doors():
 	return (active_item == null and not dialog_active() 
@@ -126,6 +134,9 @@ func game_state_active(state: String):
 	return state in game_state
 	
 func _unhandled_input(event):
+	if cutscene_mode:
+		return # handled by cutscene orchestrator
+	
 	if event is InputEventMouseButton and event.pressed and active_item != null:
 		# don't mark this as handled!
 		clear_active_item = true # clear this nomatter what happens
@@ -153,6 +164,9 @@ func show_click_hints():
 	# on each clickable element on the screen.  This is intended to
 	# help players find what is interactable and help avoid pixel-
 	# hunting.
+	if cutscene_mode:
+		return
+	
 	for node in cur_room.get_children():
 		if not node is Clickable or not node.visible:
 			continue
@@ -175,3 +189,28 @@ func hide_click_hints():
 		var existing_hint_node = node.get_node("ClickHint")
 		if existing_hint_node:
 			existing_hint_node.hide()
+
+func hide_ui():
+	hud_root.hide()
+
+func show_ui():
+	hud_root.show()
+
+func intro_cutscene_callback():
+	# this is called when the intro cutscene is done to enable the game
+	show_ui()
+	get_node("OpeningDialog").show()
+	change_rooms("bedroom", -400)
+	cutscene_mode = false
+
+func show_outro_cutscene():
+	# sets up and starts the outro cutscene.  This ends the game.
+	var active_scene = get_node("ActiveScene")
+	while len(active_scene.get_children()) > 0:
+		active_scene.remove_child(active_scene.get_child(0))
+	cutscene_mode = true
+	var cutscene = CUTSCENE_TEMPLATE.instance()
+	cutscene.cutscene_mode = 2
+	cutscene.controller = self # for callback
+	active_scene.add_child(cutscene)
+	hide_ui()

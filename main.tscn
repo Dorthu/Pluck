@@ -10,10 +10,10 @@
 [ext_resource path="res://src/HintIcon.gd" type="Script" id=8]
 [ext_resource path="res://img/ui/temp_hint_icon.png" type="Texture" id=9]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 radius = 25.5536
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 553.4, 331.9 )
 
 [node name="MasterScene" type="Node2D"]
@@ -81,14 +81,14 @@ texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HUDSpacer/HintIcon"]
 position = Vector2( 0, 3 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="OpeningDialog" type="Area2D" parent="."]
 position = Vector2( 552, 327 )
 script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningDialog"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 [connection signal="mouse_entered" from="HUDSpacer/HintIcon" to="HUDSpacer/HintIcon" method="_on_HintIcon_mouse_entered"]
 [connection signal="mouse_exited" from="HUDSpacer/HintIcon" to="HUDSpacer/HintIcon" method="_on_HintIcon_mouse_exited"]
 [connection signal="input_event" from="OpeningDialog" to="OpeningDialog" method="_on_OpeningDialog_input_event"]
