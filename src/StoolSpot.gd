@@ -35,7 +35,7 @@ func has_stool() -> bool:
 
 func _on_StoolSpot_input_event(_viewport, event, _shape_idx):
 	# when you put the stool down
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and controller.click_should_interact(event):
 		interact_with_stool()
 
 

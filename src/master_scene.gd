@@ -117,6 +117,7 @@ func change_rooms(to_room: String, camera_x: float):
 	
 	if camera:
 		camera.pan_position = camera_x
+		camera.fix_bounds()
 
 func collect_item(item_id, item_texture):
 	var item = inventory.make_item(item_id, item_texture)
@@ -137,16 +138,12 @@ func _unhandled_input(event):
 	if cutscene_mode:
 		return # handled by cutscene orchestrator
 	
-	if event is InputEventMouseButton and event.pressed and active_item != null:
-		# don't mark this as handled!
-		clear_active_item = true # clear this nomatter what happens
-		update()
-	
-	if is_mobile and event is InputEventMouseButton:
-		# i can't warp_mouse in a browser, so we've got to find another
-		# way to ignore idle pointers toward the edges of the screen
-		# on mobile
-		camera.ignore_mouse = not event.pressed
+	if event is InputEventMouseButton and active_item != null:
+		# this is backward on mobile so that the more natural tap-and-drag works
+		if (not is_mobile and event.pressed) or (is_mobile and not event.pressed):
+			# don't mark this as handled!
+			clear_active_item = true # clear this nomatter what happens
+			update()
 
 func _process(_delta):
 	if active_item:
@@ -214,3 +211,9 @@ func show_outro_cutscene():
 	cutscene.controller = self # for callback
 	active_scene.add_child(cutscene)
 	hide_ui()
+
+func click_should_interact(event):
+	if is_mobile:
+		return (not event.pressed and not camera.dragging)
+	else:
+		return event.pressed

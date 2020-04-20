@@ -71,6 +71,7 @@ position = Vector2( -88.4203, -0.94946 )
 position = Vector2( -44.0055, -6.50128 )
 
 [node name="HintIcon" type="Area2D" parent="HUDSpacer"]
+visible = false
 position = Vector2( 493.163, -5.502 )
 script = ExtResource( 8 )
 

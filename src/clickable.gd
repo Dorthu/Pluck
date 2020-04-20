@@ -42,13 +42,14 @@ func show_dialog(_event):
 
 
 func _on_Clickable_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.pressed:
+	var controller = get_tree().get_root().get_children()[0]
+	
+	if event is InputEventMouseButton and controller.click_should_interact(event):
 		get_tree().set_input_as_handled()
 		
 		# if this is flagged as being unavailable before the backpack
 		# is obtained, do nothing if the backpack isn't in the inventory
 		if not before_backpack:
-			var controller = get_tree().get_root().get_children()[0]
 			if not controller.inventory.has_item("backpack"):
 				return
 		

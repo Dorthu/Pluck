@@ -74,6 +74,6 @@ func show_dialog(_event):
 
 
 func _on_FrontDoor_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and controller.click_should_interact(event):
 		get_tree().set_input_as_handled()
 		show_dialog(event)

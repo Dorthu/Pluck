@@ -22,7 +22,7 @@ func _input(event):
 	if not cur_box:
 		return
 	
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and controller.click_should_interact(event):
 		get_tree().set_input_as_handled()
 		if not cur_box.show_full():
 			remove_child(cur_box)

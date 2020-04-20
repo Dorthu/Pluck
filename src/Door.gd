@@ -22,6 +22,6 @@ func _on_Door_input_event(_viewport, event, _shape_idx):
 	if not controller.should_allow_doors():
 		return
 	
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and controller.click_should_interact(event):
 		get_tree().set_input_as_handled()
 		get_tree().get_root().get_children()[0].change_rooms(to_room, initial_camera_x)
