@@ -45,71 +45,71 @@ extents = Vector2( 22.3111, 22.6504 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 140.493, 34.5527 )
 
-[sub_resource type="OccluderPolygon2D" id=16]
+[sub_resource type="OccluderPolygon2D" id=8]
 polygon = PoolVector2Array( -86.3962, -10.7969, -87.6843, -7.66849, -92.6531, -3.06783, -96.7017, -1.41159, -102.591, -0.675476, -108.295, -2.8838, -85.6602, -24.5989, -85.6602, -19.0781 )
 
-[sub_resource type="OccluderPolygon2D" id=17]
+[sub_resource type="OccluderPolygon2D" id=9]
 polygon = PoolVector2Array( -81.0593, -13.0053, -81.2434, -9.1407, -79.4031, -6.74835, -63.5769, -7.11641, -56.0317, -9.1407, -53.4556, -10.7969, -49.9148, -14.1945 )
 
-[sub_resource type="OccluderPolygon2D" id=18]
+[sub_resource type="OccluderPolygon2D" id=10]
 polygon = PoolVector2Array( -48.3027, -8.95668, -45.7263, -7.11641, -41.1257, -4.54004, -36.3411, -3.98796, -21.6189, -4.54004, -18.1223, -5.82823, -17.2285, -9.01178, -46.8262, -11.4971 )
 
-[sub_resource type="OccluderPolygon2D" id=19]
+[sub_resource type="OccluderPolygon2D" id=11]
 polygon = PoolVector2Array( -12.8684, -12.8527, -12.6426, -7.43022, -10.4421, -4.54004, -7.12964, -3.06783, -0.136719, -0.307434, 9.6167, 3.37311, 18.2659, 4.66129, 23.4187, 3.92517, 29.1558, -0.65213, 29.8335, -5.84866 )
 
-[sub_resource type="OccluderPolygon2D" id=20]
+[sub_resource type="OccluderPolygon2D" id=12]
 polygon = PoolVector2Array( 32.0928, 0.477539, 33.5403, 3.18907, 37.2207, 4.47726, 43.6616, 6.50156, 49.5505, 6.8696, 56.9116, 7.60571, 60.592, 7.78973, 63.95, 7.93344, 61.9165, 5.44815 )
 
-[sub_resource type="OccluderPolygon2D" id=21]
+[sub_resource type="OccluderPolygon2D" id=13]
 polygon = PoolVector2Array( 67.113, 10.1928, 69.2415, 12.7585, 71.2656, 14.7827, 74.7622, 16.807, 80.283, 17.5431, 86.3557, 18.4633, 89.0288, 18.1006 )
 
-[sub_resource type="OccluderPolygon2D" id=22]
+[sub_resource type="OccluderPolygon2D" id=14]
 polygon = PoolVector2Array( 61.4124, -0.276154, 63.7205, 1.90088, 66.1128, 3.74115, 68.8733, 4.29323, 71.8176, 4.29323, 76.5549, 3.51587 )
 
-[sub_resource type="OccluderPolygon2D" id=23]
+[sub_resource type="OccluderPolygon2D" id=15]
 polygon = PoolVector2Array( 38.1079, -22.4002, 35.8296, -20.9763, 36.676, -18.5595, 37.2146, -16.7129, 38.8306, -15.097, 41.2407, -12.2901 )
 
-[sub_resource type="OccluderPolygon2D" id=24]
+[sub_resource type="OccluderPolygon2D" id=16]
 polygon = PoolVector2Array( -17.426, -29.9473, -17.9956, -27.9537, -17.5684, -25.8177, -16.0022, -23.6818, -13.8662, -22.5426, -9.30957, -22.8274 )
 
-[sub_resource type="OccluderPolygon2D" id=25]
+[sub_resource type="OccluderPolygon2D" id=17]
 polygon = PoolVector2Array( -23.0542, -32.9176, -21.4343, -34.1112, -20.8374, -36.3279, -19.8474, -40.5846, -21.9832, -44.8565, -24.1191, -46.9925, -25.116, -31.1865 )
 
-[sub_resource type="OccluderPolygon2D" id=26]
+[sub_resource type="OccluderPolygon2D" id=18]
 polygon = PoolVector2Array( 31.491, -34.4746, 32.5376, -31.9624, 34.4219, -31.0204, 36.3059, -31.439, 39.1321, -34.7886, 42.5657, -36.6171, 28.4897, -37.8452 )
 
-[sub_resource type="OccluderPolygon2D" id=27]
+[sub_resource type="OccluderPolygon2D" id=19]
 polygon = PoolVector2Array( 33.1189, -20.463, 32.1362, -17.944, 31.0591, -16.559, 29.3662, -16.3281, 27.3562, -17.1566 )
 
-[sub_resource type="OccluderPolygon2D" id=28]
+[sub_resource type="OccluderPolygon2D" id=20]
 polygon = PoolVector2Array( 90.7769, 19.859, 93.3274, 23.9211, 99.5623, 39.0361, 106.931, 39.3195, 99.9402, 19.1032 )
 
-[sub_resource type="OccluderPolygon2D" id=29]
+[sub_resource type="OccluderPolygon2D" id=21]
 polygon = PoolVector2Array( 89.2253, 11.9429, 93.2876, 17.0442, 96.2161, 19.5948, 100.845, 17.611 )
 
-[sub_resource type="OccluderPolygon2D" id=8]
+[sub_resource type="OccluderPolygon2D" id=22]
 polygon = PoolVector2Array( -69.5605, 46.1689, -60.4941, 53.4715, -48.3054, 49.5281, -58.3716, 45.4695 )
 
-[sub_resource type="OccluderPolygon2D" id=9]
+[sub_resource type="OccluderPolygon2D" id=23]
 polygon = PoolVector2Array( -17.1169, 64.5847, 7.26025, 64.5847, -6.41162, 68.1298 )
 
-[sub_resource type="OccluderPolygon2D" id=10]
+[sub_resource type="OccluderPolygon2D" id=24]
 polygon = PoolVector2Array( 57.4482, 53.83, 68.3379, 45.9386, 57.4482, 43.7923, 48.4861, 47.3772 )
 
-[sub_resource type="OccluderPolygon2D" id=11]
+[sub_resource type="OccluderPolygon2D" id=25]
 polygon = PoolVector2Array( 11.9204, 44.1508, 3.67529, 48.4527, -2.77759, 46.3018, 3.31665, 41.9999 )
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=26]
 shader = ExtResource( 16 )
 shader_param/Texture = ExtResource( 15 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=27]
 extents = Vector2( 71.0562, 66.4996 )
 
-[sub_resource type="CircleShape2D" id=14]
+[sub_resource type="CircleShape2D" id=28]
 radius = 71.7813
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=29]
 extents = Vector2( 54.2749, 46.7183 )
 
 [node name="Node2D" type="Node2D"]
@@ -252,47 +252,47 @@ script = ExtResource( 14 )
 position = Vector2( 2270.64, 205.488 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 16 )
+occluder = SubResource( 8 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 17 )
+occluder = SubResource( 9 )
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 18 )
+occluder = SubResource( 10 )
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 19 )
+occluder = SubResource( 11 )
 
 [node name="LightOccluder2D5" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 20 )
+occluder = SubResource( 12 )
 
 [node name="LightOccluder2D6" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 21 )
+occluder = SubResource( 13 )
 
 [node name="LightOccluder2D7" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 22 )
+occluder = SubResource( 14 )
 
 [node name="LightOccluder2D8" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 23 )
+occluder = SubResource( 15 )
 
 [node name="LightOccluder2D9" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 24 )
+occluder = SubResource( 16 )
 
 [node name="LightOccluder2D10" type="LightOccluder2D" parent="FireplaceDetail"]
 position = Vector2( 0.0852051, 0 )
-occluder = SubResource( 25 )
+occluder = SubResource( 17 )
 
 [node name="LightOccluder2D11" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 26 )
+occluder = SubResource( 18 )
 
 [node name="LightOccluder2D12" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 27 )
+occluder = SubResource( 19 )
 
 [node name="LightOccluder2D13" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 28 )
+occluder = SubResource( 20 )
 
 [node name="LightOccluder2D14" type="LightOccluder2D" parent="FireplaceDetail"]
-occluder = SubResource( 29 )
+occluder = SubResource( 21 )
 
 [node name="StoolSpot" type="Area2D" parent="."]
 position = Vector2( 2169.55, 345.565 )
@@ -306,27 +306,27 @@ texture = ExtResource( 15 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
 position = Vector2( 16.8489, -10.0377 )
-occluder = SubResource( 8 )
+occluder = SubResource( 22 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
 position = Vector2( 6.45264, -4.30188 )
-occluder = SubResource( 9 )
+occluder = SubResource( 23 )
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
 position = Vector2( -16.4905, -10.3961 )
-occluder = SubResource( 10 )
+occluder = SubResource( 24 )
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="StoolSpot/StoolSprite"]
 position = Vector2( 0, -13.264 )
-occluder = SubResource( 11 )
+occluder = SubResource( 25 )
 
 [node name="StoolPlaceholder" type="Sprite" parent="StoolSpot"]
 visible = false
-material = SubResource( 12 )
+material = SubResource( 26 )
 texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StoolSpot"]
-shape = SubResource( 13 )
+shape = SubResource( 27 )
 
 [node name="SwordShield" type="Area2D" parent="."]
 position = Vector2( 2313.27, 62.4159 )
@@ -342,14 +342,14 @@ texture = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordShield"]
 position = Vector2( -1.26025, 6.93277 )
-shape = SubResource( 14 )
+shape = SubResource( 28 )
 
 [node name="Domorov" type="Area2D" parent="."]
 position = Vector2( 2308.49, 312.114 )
 script = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Domorov"]
-shape = SubResource( 15 )
+shape = SubResource( 29 )
 [connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]
