@@ -12,10 +12,10 @@ dest_files=[ "res://.import/kitchen_cabinets_2.wav-9197ed9e86ea16142325646a42d71
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
 edit/loop=false
-compress/mode=0
+compress/mode=1

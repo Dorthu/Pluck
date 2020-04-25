@@ -12,10 +12,10 @@ dest_files=[ "res://.import/stool_drop_2.wav-26d35bcb4c0b5af4911dbc612524e7f0.sa
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
 edit/loop=false
-compress/mode=0
+compress/mode=1
