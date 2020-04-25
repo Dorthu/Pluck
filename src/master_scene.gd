@@ -17,15 +17,23 @@ var on_dialog_finished
 var hud_root: Node2D
 
 var HINT_ICON_TEMPLATE = ResourceLoader.load("res://scenes/ui/ClickHint.tscn")
-var CUTSCENE_TEMPLATE := ResourceLoader.load("res://scenes/cutscene/intro-outro.tscn")
+var CUTSCENE_TEMPLATE = ResourceLoader.load("res://scenes/cutscene/intro-outro.tscn")
 var cutscene_mode := false
 
 var is_mobile := false
 
 func _ready():
-	for s in ["living_room","bedroom","kitchen","cellar"]:
-		room_map[s] = ResourceLoader.load('res://scenes/rooms/'+s+'.tscn').instance()
-		room_map[s].controller = self
+	#for s in ["living_room","bedroom","kitchen","cellar"]:
+	#	room_map[s] = ResourceLoader.load('res://scenes/rooms/'+s+'.tscn').instance()
+	#	room_map[s].controller = self
+	room_map["living_room"] = preload('res://scenes/rooms/living_room.tscn').instance()
+	room_map["bedroom"] = preload('res://scenes/rooms/bedroom.tscn').instance()
+	room_map["kitchen"] = preload('res://scenes/rooms/kitchen.tscn').instance()
+	room_map["cellar"] = preload('res://scenes/rooms/cellar.tscn').instance()
+	
+	for s in room_map.values():
+		s.controller = self
+	
 	dialog_controller = get_node('DialogController')
 	dialog_controller.controller = self
 	camera = get_node("Camera")

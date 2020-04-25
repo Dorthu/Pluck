@@ -2,7 +2,7 @@ extends Area2D
 
 class_name StoolSpot
 
-var controller: MasterController
+var controller # MasterController
 var stool_present = false
 var stool_sprite: Sprite
 var stool_suggestion: Sprite

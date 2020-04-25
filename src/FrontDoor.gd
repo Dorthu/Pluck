@@ -34,7 +34,7 @@ const YOU_WIN_TEXT := [
 	"Dorthu :: dorthu.com",
 ]
 
-func get_signposting_text(controller: MasterController) -> Array:
+func get_signposting_text(controller) -> Array:
 	var hints := [
 		"|Ppat_sad|I'm not ready to go yet.",
 		"",
@@ -51,7 +51,7 @@ func get_signposting_text(controller: MasterController) -> Array:
 	
 	return hints
 
-func ready_to_go(controller: MasterController) -> bool:
+func ready_to_go(controller) -> bool:
 	for item in DIALOG_MAP.keys():
 		if not controller.inventory.has_item(item):
 			return false
