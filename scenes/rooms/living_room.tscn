@@ -167,13 +167,11 @@ locked_text = [ "|Ppat_sad|The hook I hang my backpack on has", "grown around th
 
 [node name="State1" type="Sprite" parent="BranchHook"]
 position = Vector2( 44.6504, 114.593 )
-scale = Vector2( 0.125556, 0.125556 )
 texture = ExtResource( 6 )
 
 [node name="State2" type="Sprite" parent="BranchHook"]
 visible = false
 position = Vector2( 51.4307, 113.405 )
-scale = Vector2( 0.126497, 0.126497 )
 texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BranchHook"]
@@ -191,7 +189,6 @@ item_sprite = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="BranchHook/Backpack"]
 position = Vector2( 45.0859, 28.6316 )
-scale = Vector2( 0.128208, 0.128208 )
 texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BranchHook/Backpack"]
