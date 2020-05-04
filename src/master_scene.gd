@@ -26,13 +26,6 @@ func _ready():
 	#for s in ["living_room","bedroom","kitchen","cellar"]:
 	#	room_map[s] = ResourceLoader.load('res://scenes/rooms/'+s+'.tscn').instance()
 	#	room_map[s].controller = self
-	room_map["living_room"] = preload('res://scenes/rooms/living_room.tscn').instance()
-	room_map["bedroom"] = preload('res://scenes/rooms/bedroom.tscn').instance()
-	room_map["kitchen"] = preload('res://scenes/rooms/kitchen.tscn').instance()
-	room_map["cellar"] = preload('res://scenes/rooms/cellar.tscn').instance()
-	
-	for s in room_map.values():
-		s.controller = self
 	
 	dialog_controller = get_node('DialogController')
 	dialog_controller.controller = self
@@ -43,16 +36,15 @@ func _ready():
 	inventory.controller = self
 	hint_icon = hud_root.get_node("HintIcon")
 	
-	# initial room
-	change_rooms('bedroom', -400)
 	# set up intro cutscene
-	#var active_scene = get_node("ActiveScene")
-	#var cutscene = CUTSCENE_TEMPLATE.instance()
-	#cutscene.cutscene_mode = 2
-	#cutscene.controller = self # for callback
-	#active_scene.add_child(cutscene)
-	#get_node("OpeningDialog").hide()
-	#hide_ui()
+	var active_scene = get_node("ActiveScene")
+	var cutscene = CUTSCENE_TEMPLATE.instance()
+	cutscene.start_cutscene(1)
+	cutscene_mode = true
+	cutscene.controller = self # for callback
+	active_scene.add_child(cutscene)
+	get_node("OpeningDialog").hide()
+	hide_ui()
 	
 	# setup for mobile support
 	# this all assumes we're only doing export for web, which
@@ -201,7 +193,15 @@ func hide_ui():
 func show_ui():
 	hud_root.show()
 
-func intro_cutscene_callback():
+func intro_cutscene_callback(cso: CutsceneOrchestrator):
+	# the intro cutscene hides the loading of all rooms, so we need
+	# to finish setting them up now.
+	for s in room_map.values():
+		s.controller = self
+	
+	# setup the first room
+	change_rooms('bedroom', -400)
+	
 	# this is called when the intro cutscene is done to enable the game
 	show_ui()
 	get_node("OpeningDialog").show()
