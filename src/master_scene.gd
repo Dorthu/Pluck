@@ -23,10 +23,6 @@ var cutscene_mode := false
 var is_mobile := false
 
 func _ready():
-	#for s in ["living_room","bedroom","kitchen","cellar"]:
-	#	room_map[s] = ResourceLoader.load('res://scenes/rooms/'+s+'.tscn').instance()
-	#	room_map[s].controller = self
-	
 	dialog_controller = get_node('DialogController')
 	dialog_controller.controller = self
 	camera = get_node("Camera")
