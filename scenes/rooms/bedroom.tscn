@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/bedroom/top_doors_open.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://img/ui/click_hint.png" type="Texture" id=18]
 [ext_resource path="res://img/ui/look_hint.png" type="Texture" id=19]
 [ext_resource path="res://src/tutor.gd" type="Script" id=20]
+[ext_resource path="res://audio/fx/keys.wav" type="AudioStream" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.0016, 214.8 )
@@ -160,6 +161,7 @@ script = ExtResource( 10 )
 lines = [ "An old key." ]
 item_id = "cellar_key"
 item_sprite = ExtResource( 11 )
+pickup_sound = ExtResource( 21 )
 
 [node name="Sprite" type="Sprite" parent="DresserBottom/CellarDoorKey"]
 texture = ExtResource( 11 )

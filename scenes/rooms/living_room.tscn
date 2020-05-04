@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/living-room/background_final.png" type="Texture" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://src/StoolOnlyPickupItem.gd" type="Script" id=21]
 [ext_resource path="res://img/living-room/show_and_shield.png" type="Texture" id=22]
 [ext_resource path="res://audio/fx/backpack_drop.wav" type="AudioStream" id=23]
+[ext_resource path="res://audio/fx/fireplace.ogg" type="AudioStream" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 86.4009, 257 )
@@ -234,6 +235,12 @@ item_text = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Books"]
 position = Vector2( -9.24268, 4.40128 )
 shape = SubResource( 7 )
+
+[node name="FireplaceAudio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 2273.36, 309.152 )
+stream = ExtResource( 24 )
+volume_db = 4.333
+autoplay = true
 
 [node name="FireplaceLight" type="Light2D" parent="."]
 position = Vector2( 2273.36, 309.152 )
