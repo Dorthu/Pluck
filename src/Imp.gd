@@ -6,6 +6,7 @@ var satisfied: bool
 var popped_out: bool
 var hidden: Sprite
 var shown: Sprite
+var shownSleepParticles: CPUParticles2D
 
 var cur_text: int
 const TEXT_POOL: Array = [
@@ -35,6 +36,7 @@ func _ready():
 	popped_out = false
 	hidden = get_node("hidden")
 	shown = get_node("shown")
+	shownSleepParticles = shown.get_node("sleep")
 	cur_text = 0
 
 func pop_out():
@@ -73,9 +75,13 @@ func make_demands():
 		"I'd have to be |_really |out for you to get it.",
 	])
 	
-func say(lines: Array):
+func say(lines: Array, with_callback: bool = false):
 	var controller = get_tree().get_root().get_children()[0]
-	controller.show_dialog(Clickable.DialogTextPool.new(lines))
+	
+	if with_callback:
+		controller.show_dialog(Clickable.DialogTextPool.new(lines), self)
+	else:
+		controller.show_dialog(Clickable.DialogTextPool.new(lines))
 
 func talk():
 	if not satisfied:
@@ -114,9 +120,8 @@ func handle_clicked(_event):
 				"",
 				"|Pfrank_happy|Heh.. haven't had any of this in a |_long time.",
 				"|_. . . ",
-				"|_zzzzzzzzz",
-				"|Ppat_normal|I think he fell asleep?",
-			])
+				"",
+			], true)
 			satisfied = true
 			controller.inventory.remove_item(controller.active_item)
 		elif satisfied:
@@ -137,3 +142,13 @@ func handle_clicked(_event):
 			])
 	else:
 		talk()
+
+func dialog_finished():
+	shownSleepParticles.show()
+	# TODO - change to sleeping sprite
+	say([
+		"|Pfrank_happy|_zzzzzzzzzz",
+		"",
+		"",
+		"|Ppat_normal|I think he fell asleep?",
+	])

@@ -140,6 +140,20 @@ position = Vector2( 14.9393, 65.2433 )
 z_index = 1
 texture = ExtResource( 10 )
 
+[node name="sleep" type="CPUParticles2D" parent="Imp/shown"]
+visible = false
+position = Vector2( 24.389, -84.4265 )
+amount = 3
+lifetime = 3.0
+texture = ExtResource( 12 )
+direction = Vector2( 0, 1 )
+gravity = Vector2( -10, -30 )
+linear_accel_curve = SubResource( 5 )
+angle_random = 0.3
+angle_curve = SubResource( 6 )
+scale_amount_curve = SubResource( 7 )
+color_ramp = SubResource( 8 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Imp"]
 position = Vector2( 8.95799, 35.2543 )
 shape = SubResource( 9 )
