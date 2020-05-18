@@ -1,6 +1,7 @@
 [gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
+[ext_resource path="res://img/kitchen/background_final.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/LockedDoor.gd" type="Script" id=5]
@@ -26,10 +27,6 @@
 [ext_resource path="res://audio/fx/kitchen_cabinets_2.wav" type="AudioStream" id=25]
 [ext_resource path="res://audio/fx/liquor_pickup.wav" type="AudioStream" id=26]
 [ext_resource path="res://src/clickable.gd" type="Script" id=27]
-
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/background_final_longer.png-7c44966753abed43913f9e039e95c99a.stex"
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 53.8139, 195.76 )
@@ -71,7 +68,7 @@ script = ExtResource( 1 )
 room_width = 1500
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = SubResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 
 [node name="LivingRoomDoor" type="Area2D" parent="."]

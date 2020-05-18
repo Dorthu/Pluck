@@ -8,7 +8,7 @@
 [ext_resource path="res://img/bedroom/cookies.png" type="Texture" id=6]
 [ext_resource path="res://img/bedroom/bottom_doors_open.png" type="Texture" id=7]
 [ext_resource path="res://audio/fx/stool_lift_1.wav" type="AudioStream" id=8]
-[ext_resource path="res://img/bedroom/background.png" type="Texture" id=9]
+[ext_resource path="res://img/bedroom/background_longer.png" type="Texture" id=9]
 [ext_resource path="res://src/PickupItem.gd" type="Script" id=10]
 [ext_resource path="res://img/bedroom/key.png" type="Texture" id=11]
 [ext_resource path="res://img/stool.png" type="Texture" id=12]
@@ -23,7 +23,7 @@
 [ext_resource path="res://audio/fx/keys.wav" type="AudioStream" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 59.0016, 214.8 )
+extents = Vector2( 97.0746, 214.8 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 57.0016, 229.8 )
@@ -48,7 +48,7 @@ extents = Vector2( 23.825, 31.8396 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
-room_width = 1500
+room_width = 1640
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 9 )
@@ -76,12 +76,12 @@ to_room = "living_room"
 
 [node name="Arrow" type="Sprite" parent="LivingRoomDoor"]
 visible = false
-position = Vector2( -61.7552, -20.2755 )
+position = Vector2( -21.7552, -18.2755 )
 texture = ExtResource( 4 )
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LivingRoomDoor"]
-position = Vector2( -18, -12 )
+position = Vector2( 8, -7 )
 shape = SubResource( 1 )
 
 [node name="KitchenDoor" type="Area2D" parent="."]
