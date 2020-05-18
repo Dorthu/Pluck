@@ -24,7 +24,7 @@ const IMAGE_INTERVAL: float = 3.0
 func _ready():
 	intro1 = get_node("intro1")
 	intro2 = get_node("intro2")
-	intro3 = get_node("intro1")
+	intro3 = get_node("intro3")
 	images = [
 		intro1, intro2, intro3
 	]

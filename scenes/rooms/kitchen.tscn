@@ -1,7 +1,6 @@
 [gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
-[ext_resource path="res://img/kitchen/background_final.png" type="Texture" id=2]
 [ext_resource path="res://src/Door.gd" type="Script" id=3]
 [ext_resource path="res://img/ui/arrow.png" type="Texture" id=4]
 [ext_resource path="res://src/LockedDoor.gd" type="Script" id=5]
@@ -28,38 +27,42 @@
 [ext_resource path="res://audio/fx/liquor_pickup.wav" type="AudioStream" id=26]
 [ext_resource path="res://src/clickable.gd" type="Script" id=27]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 53.8139, 195.76 )
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/background_final_longer.png-7c44966753abed43913f9e039e95c99a.stex"
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 74.6987, 109.364 )
+extents = Vector2( 53.8139, 195.76 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 73.7302, 213.854 )
+extents = Vector2( 74.6987, 109.364 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 12.5266, 16.125 )
+extents = Vector2( 73.7302, 213.854 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 48.9508, 29.885 )
+extents = Vector2( 12.5266, 16.125 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 17.7599, 33.1073 )
+extents = Vector2( 48.9508, 29.885 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 85.0508, 58.4772 )
+extents = Vector2( 17.7599, 33.1073 )
 
 [sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 85.0508, 58.4772 )
+
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 78.2014, 57.898 )
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 23 )
 shader_param/Texture = ExtResource( 20 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 71.2109, 68.0586 )
 
-[sub_resource type="CapsuleShape2D" id=11]
+[sub_resource type="CapsuleShape2D" id=12]
 radius = 24.5548
 height = 10.5818
 
@@ -68,7 +71,7 @@ script = ExtResource( 1 )
 room_width = 1500
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = SubResource( 1 )
 centered = false
 
 [node name="LivingRoomDoor" type="Area2D" parent="."]
@@ -83,7 +86,7 @@ texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LivingRoomDoor"]
 position = Vector2( -48.44, -5.17322 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CellarDoor" type="Area2D" parent="."]
 position = Vector2( 359.897, 275.649 )
@@ -116,7 +119,7 @@ texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CellarDoor"]
 position = Vector2( -1, -3.38223 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="BedroomDoor" type="Area2D" parent="."]
 position = Vector2( 1435.15, 286.035 )
@@ -131,7 +134,7 @@ flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BedroomDoor"]
 position = Vector2( -5.03491, -2.51752 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Cup" type="Area2D" parent="."]
 position = Vector2( 1134.62, 246.596 )
@@ -146,7 +149,7 @@ texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cup"]
 position = Vector2( 0, 1.5094 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Sink" type="Area2D" parent="."]
 position = Vector2( 604.718, 244.609 )
@@ -162,7 +165,7 @@ fill_cup_text = [ "I filled the cup with water." ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sink"]
 position = Vector2( 14.8878, -9 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Liquor" type="Area2D" parent="."]
 position = Vector2( 1231.48, 91.575 )
@@ -178,7 +181,7 @@ texture = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Liquor"]
 position = Vector2( -1.54004, 0.513344 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="CabinetLeft" type="Area2D" parent="."]
 position = Vector2( 764.734, 363.303 )
@@ -198,7 +201,7 @@ texture = ExtResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CabinetLeft"]
 position = Vector2( 6.63422, -22.5563 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="CabinetRight" type="Area2D" parent="."]
 position = Vector2( 977.474, 362.854 )
@@ -217,7 +220,7 @@ texture = ExtResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CabinetRight"]
 position = Vector2( -38.15, -24.1543 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="StoolSpot" type="Area2D" parent="."]
 position = Vector2( 1111.06, 395.562 )
@@ -230,12 +233,12 @@ texture = ExtResource( 20 )
 
 [node name="StoolPlaceholder" type="Sprite" parent="StoolSpot"]
 visible = false
-material = SubResource( 9 )
+material = SubResource( 10 )
 texture = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StoolSpot"]
 visible = false
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="Pitcher" type="Area2D" parent="."]
 position = Vector2( 1185.73, 243.178 )
@@ -244,7 +247,7 @@ before_backpack = true
 lines = [ "|Ppat_sad|It's full of water, but it's too heavy for me to pick up." ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pitcher"]
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 [connection signal="input_event" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_exited"]
