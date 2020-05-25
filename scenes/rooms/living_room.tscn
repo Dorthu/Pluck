@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/living-room/background_final.png" type="Texture" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://img/living-room/show_and_shield.png" type="Texture" id=22]
 [ext_resource path="res://audio/fx/backpack_drop.wav" type="AudioStream" id=23]
 [ext_resource path="res://audio/fx/fireplace.ogg" type="AudioStream" id=24]
+[ext_resource path="res://img/living-room/red.png" type="Texture" id=25]
+[ext_resource path="res://src/red.gd" type="Script" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 86.4009, 257 )
@@ -112,6 +114,9 @@ radius = 71.7813
 
 [sub_resource type="RectangleShape2D" id=29]
 extents = Vector2( 54.2749, 46.7183 )
+
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 111.489, 88.2337 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -354,6 +359,17 @@ script = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Domorov"]
 shape = SubResource( 29 )
+
+[node name="Red2" type="Area2D" parent="."]
+position = Vector2( 809, 484 )
+script = ExtResource( 26 )
+before_backpack = true
+
+[node name="Sprite" type="Sprite" parent="Red2"]
+texture = ExtResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Red2"]
+shape = SubResource( 30 )
 [connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]
@@ -372,3 +388,4 @@ shape = SubResource( 29 )
 [connection signal="mouse_exited" from="StoolSpot" to="StoolSpot" method="_on_StoolSpot_mouse_exited"]
 [connection signal="input_event" from="SwordShield" to="SwordShield" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="Domorov" to="Domorov" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Red2" to="Red2" method="_on_Clickable_input_event"]

@@ -114,6 +114,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Potion.gd"
 }, {
+"base": "Clickable",
+"class": "Red",
+"language": "GDScript",
+"path": "res://src/red.gd"
+}, {
 "base": "Node2D",
 "class": "Room",
 "language": "GDScript",
@@ -161,6 +166,7 @@ _global_script_class_icons={
 "Openable": "",
 "PickupItem": "",
 "Potion": "",
+"Red": "",
 "Room": "",
 "Sink": "",
 "StoolOnlyPickipItem": "",
