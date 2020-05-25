@@ -6,7 +6,7 @@ var satisfied: bool
 var popped_out: bool
 var hidden: Sprite
 var shown: Sprite
-var shownSleepParticles: CPUParticles2D
+var shownSleepy: Sprite
 
 var cur_text: int
 const TEXT_POOL: Array = [
@@ -36,7 +36,7 @@ func _ready():
 	popped_out = false
 	hidden = get_node("hidden")
 	shown = get_node("shown")
-	shownSleepParticles = shown.get_node("sleep")
+	shownSleepy = get_node("shownSleepy")
 	cur_text = 0
 
 func pop_out():
@@ -94,7 +94,7 @@ func talk():
 			cur_text = 0
 	else:
 		say([
-			"|Pfrank_happy|_zzzzzzzzzz",
+			"|Pfrank_sleepy|_zzzzzzzzzz",
 		])
 
 func handle_clicked(_event):
@@ -126,7 +126,7 @@ func handle_clicked(_event):
 			controller.inventory.remove_item(controller.active_item)
 		elif satisfied:
 			say([
-				"|Pfrank_happy|Zzzz",
+				"|Pfrank_sleepy|Zzzz",
 			])
 		else:
 			say([
@@ -144,10 +144,10 @@ func handle_clicked(_event):
 		talk()
 
 func dialog_finished():
-	shownSleepParticles.show()
-	# TODO - change to sleeping sprite
+	shown.hide()
+	shownSleepy.show()
 	say([
-		"|Pfrank_happy|_zzzzzzzzzz",
+		"|Pfrank_sleepy|_zzzzzzzzzz",
 		"",
 		"",
 		"|Ppat_normal|I think he fell asleep?",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/cellar/potion.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://img/cellar/barrels.png" type="Texture" id=11]
 [ext_resource path="res://img/cellar/sleep_particle.png" type="Texture" id=12]
 [ext_resource path="res://audio/fx/potion_pickup.wav" type="AudioStream" id=13]
+[ext_resource path="res://img/cellar/imp_sleep.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 110.002, 133.186 )
@@ -140,9 +141,17 @@ position = Vector2( 14.9393, 65.2433 )
 z_index = 1
 texture = ExtResource( 10 )
 
-[node name="sleep" type="CPUParticles2D" parent="Imp/shown"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Imp"]
+position = Vector2( 8.95799, 35.2543 )
+shape = SubResource( 9 )
+
+[node name="shownSleepy" type="Sprite" parent="Imp"]
 visible = false
-position = Vector2( 24.389, -84.4265 )
+position = Vector2( 16.7018, 77.8391 )
+texture = ExtResource( 14 )
+
+[node name="sleep" type="CPUParticles2D" parent="Imp/shownSleepy"]
+position = Vector2( 47.0846, -102.286 )
 amount = 3
 lifetime = 3.0
 texture = ExtResource( 12 )
@@ -153,10 +162,6 @@ angle_random = 0.3
 angle_curve = SubResource( 6 )
 scale_amount_curve = SubResource( 7 )
 color_ramp = SubResource( 8 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Imp"]
-position = Vector2( 8.95799, 35.2543 )
-shape = SubResource( 9 )
 
 [node name="Barrels" type="Area2D" parent="."]
 script = ExtResource( 5 )
