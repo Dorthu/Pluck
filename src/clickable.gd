@@ -14,6 +14,10 @@ var dialog_contents: DialogTextPool
 ## Keys: item ids  
 ## Values: Text pools when that item is used on this clickable.
 export var item_text: Dictionary
+# If set, a game state with this name is set when this
+# clickable is clicked.
+export var set_game_state: String
+
 var DEFAULT_ITEM_TEXT := DialogTextPool.new(["I can't use this here."])
 
 func _ready():
@@ -53,10 +57,16 @@ func _on_Clickable_input_event(_viewport, event, _shape_idx):
 			if not controller.inventory.has_item("backpack"):
 				return
 		
+		# do game state handling regardless of subclass' behavior
+		if set_game_state:
+			controller.set_game_state(set_game_state)
+	
+		
 		handle_clicked(event)
 
 
 func handle_clicked(event):
+
 	show_dialog(event)
 
 

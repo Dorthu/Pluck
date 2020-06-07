@@ -36,7 +36,7 @@ const YOU_WIN_TEXT := [
 
 func get_signposting_text(controller) -> Array:
 	var hints := [
-		"|Ppat_sad|I'm not ready to go yet.",
+		"|Pred_talk|Do you have everything you need?",
 		"",
 		"",
 	]
@@ -46,7 +46,9 @@ func get_signposting_text(controller) -> Array:
 			hints += DIALOG_MAP[item]
 	
 	hints += [
-		"|Ppat_sad|I should look around the house more.",
+		"|Pred|You should look around the house more.",
+		"",
+		"Talk to me if you need some help.",
 	]
 	
 	return hints
@@ -70,7 +72,7 @@ func show_dialog(_event):
 			))
 	else:
 		controller.show_dialog(Clickable.DialogTextPool.new([
-			"|Ppat_sad|I can't leave the house without my backpack."
+			"|Pred|You should get your backpack before you go."
 		]))
 
 

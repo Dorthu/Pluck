@@ -19,7 +19,7 @@ var intro3: Sprite
 
 # config these
 const BETWEEN_INTERNVAL: float = 0.6
-const IMAGE_INTERVAL: float = 3.0
+const IMAGE_INTERVAL: float = .6 # 3.0
 
 func _ready():
 	intro1 = get_node("intro1")

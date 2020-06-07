@@ -102,6 +102,7 @@ shape = SubResource( 3 )
 position = Vector2( 905.415, 355.134 )
 script = ExtResource( 6 )
 lines = [ "|Ppat_normal|He seems really out..", "I think I can just take it now.", "|_. . . ", "|Ppat_normal|Sorry Frank!  I'll tell Dad that you tried." ]
+set_game_state = "met_frank"
 item_id = "potion"
 item_sprite = ExtResource( 2 )
 pickup_sound = ExtResource( 13 )

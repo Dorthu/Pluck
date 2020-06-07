@@ -165,6 +165,7 @@ item_text = {
 "liquor": "|Ppat_sad|It wouldn't like that.",
 "potion": "I think it wants water."
 }
+set_game_state = "saw_backpack"
 item_name = "Backpack"
 open_sound = ExtResource( 23 )
 required_item_id = "water_cup"
@@ -341,6 +342,7 @@ shape = SubResource( 27 )
 position = Vector2( 2313.27, 62.4159 )
 script = ExtResource( 21 )
 lines = [ "|Ppat_normal|I hope I don't need to use these.." ]
+set_game_state = "saw_sword"
 item_id = "sword_and_shield"
 item_sprite = ExtResource( 20 )
 no_stool_lines = [ "|Ppat_normal|The sword and sheild would be a good way to", "defend myself, if I need to.", "", "|Ppat_sad|But I can't reach them up there." ]

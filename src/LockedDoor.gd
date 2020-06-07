@@ -2,6 +2,8 @@ extends Doorway
 
 export var unlocked_state_marker: String
 export(Array, String) var locked_text
+export var set_game_state: String
+export var unlocked_game_state: String
 var locked_icon: Sprite
 var locked_dialog_contents: Clickable.DialogTextPool
 export var key_id: String
@@ -50,6 +52,8 @@ func _on_Door_input_event(_viewport, event, _shape_idx):
 			opened_state.show()
 			controller.inventory.remove_item(controller.active_item)
 			sfx.play()
+			if unlocked_game_state:
+				controller.set_game_state(unlocked_game_state)
 			return
 		
 		if not controller.should_allow_doors():
@@ -58,6 +62,8 @@ func _on_Door_input_event(_viewport, event, _shape_idx):
 		get_tree().set_input_as_handled()
 		
 		if not is_unlocked():
+			if set_game_state:
+				controller.set_game_state(set_game_state)
 			if locked_dialog_contents.lines[0]:
 				controller.show_dialog(locked_dialog_contents)
 			arrow.hide()

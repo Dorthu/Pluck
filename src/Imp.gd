@@ -124,6 +124,7 @@ func handle_clicked(_event):
 			], true)
 			satisfied = true
 			controller.inventory.remove_item(controller.active_item)
+			controller.set_game_state("frank_asleep")
 		elif satisfied:
 			say([
 				"|Pfrank_sleepy|Zzzz",
