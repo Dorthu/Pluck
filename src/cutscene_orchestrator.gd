@@ -16,9 +16,10 @@ var intro1: Sprite
 var intro2: Sprite
 var intro3: Sprite
 var outro: Sprite
-var outroPat1: Sprite
+
 var outroPat2: Sprite
 var outroPat3: Sprite
+var outroAnimator: AnimationPlayer
 
 
 # config these
@@ -34,7 +35,7 @@ func _ready():
 		intro1, intro2, intro3
 	]
 	outro = get_node("Outro")
-	outroPat1 = outro.get_node("pat1")
+	outroAnimator = get_node("Outro/WalkAnim")
 	outroPat2 = outro.get_node("pat2")
 	outroPat3 = outro.get_node("pat3")
 
@@ -105,15 +106,13 @@ func process_outro(delta: float):
 	var newDelta = cumulativeDelta + delta
 	
 	if cumulativeDelta <= 1 and newDelta > 1:
-		outroPat1.show()
+		outroAnimator.play("Pat Walk")
 	elif cumulativeDelta <= OUTRO_TIME/3 and newDelta > OUTRO_TIME/3:
-		outroPat1.hide()
-		outroPat2.show()
+		outroAnimator.play("PatWalk1")
 	elif cumulativeDelta <= OUTRO_TIME-OUTRO_TIME/3 and newDelta > OUTRO_TIME-OUTRO_TIME/3:
-		outroPat2.hide()
-		outroPat3.show()
-	elif cumulativeDelta > OUTRO_TIME:
-		outroPat3.hide()
+		outroAnimator.play("PatWalk2")
+	elif cumulativeDelta <= OUTRO_TIME and newDelta > OUTRO_TIME:
+		outroAnimator.play("PatWalk3")
 	
 	cumulativeDelta = newDelta
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://img/cutscenes/intro_1.png" type="Texture" id=1]
 [ext_resource path="res://img/cutscenes/outside_bg.png" type="Texture" id=2]
@@ -9,6 +9,90 @@
 [ext_resource path="res://img/cutscenes/outro_pat_2.png" type="Texture" id=7]
 [ext_resource path="res://img/cutscenes/outro_pat_3.png" type="Texture" id=8]
 [ext_resource path="res://img/cutscenes/outro_pat_1.png" type="Texture" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Pat Walk"
+tracks/0/type = "value"
+tracks/0/path = NodePath("pat1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "PatWalk1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("pat1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pat2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "PatWalk2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("pat2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pat3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "PatWalk3"
+tracks/0/type = "value"
+tracks/0/path = NodePath("pat3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
@@ -47,17 +131,23 @@ position = Vector2( 0, -1.29237 )
 texture = ExtResource( 2 )
 centered = false
 
+[node name="WalkAnim" type="AnimationPlayer" parent="Outro"]
+"anims/Pat Walk" = SubResource( 1 )
+anims/PatWalk1 = SubResource( 2 )
+anims/PatWalk2 = SubResource( 3 )
+anims/PatWalk3 = SubResource( 4 )
+
 [node name="pat1" type="Sprite" parent="Outro"]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 446.529, 318.948 )
 texture = ExtResource( 9 )
 
 [node name="pat2" type="Sprite" parent="Outro"]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 916.073, 375.604 )
 texture = ExtResource( 7 )
 
 [node name="pat3" type="Sprite" parent="Outro"]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1445.68, 320.897 )
 texture = ExtResource( 8 )
