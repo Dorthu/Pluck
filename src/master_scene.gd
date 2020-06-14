@@ -211,9 +211,9 @@ func show_outro_cutscene():
 		active_scene.remove_child(active_scene.get_child(0))
 	cutscene_mode = true
 	var cutscene = CUTSCENE_TEMPLATE.instance()
-	cutscene.cutscene_mode = 2
 	cutscene.controller = self # for callback
 	active_scene.add_child(cutscene)
+	cutscene.start_cutscene(2)
 	hide_ui()
 
 func click_should_interact(event):

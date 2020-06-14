@@ -15,11 +15,16 @@ var cur_delta: float = 0
 var intro1: Sprite
 var intro2: Sprite
 var intro3: Sprite
+var outro: Sprite
+var outroPat1: Sprite
+var outroPat2: Sprite
+var outroPat3: Sprite
 
 
 # config these
 const BETWEEN_INTERNVAL: float = 0.6
 const IMAGE_INTERVAL: float = 3.0
+const OUTRO_TIME: float = 10.0 # seconds
 
 func _ready():
 	intro1 = get_node("intro1")
@@ -28,6 +33,10 @@ func _ready():
 	images = [
 		intro1, intro2, intro3
 	]
+	outro = get_node("Outro")
+	outroPat1 = outro.get_node("pat1")
+	outroPat2 = outro.get_node("pat2")
+	outroPat3 = outro.get_node("pat3")
 
 func _process(delta):
 	if not started:
@@ -42,6 +51,10 @@ func start_cutscene(cutscene: int):
 	cutscene_mode = cutscene
 	cur_delta = 0
 	started = true
+	
+	if cutscene == 2:
+		outro.show()
+		cumulativeDelta = 0
 
 var lastChangeDelta: float = 0
 var cumulativeDelta: float = 0
@@ -87,6 +100,23 @@ func process_intro(delta: float):
 			lastChangeDelta = cumulativeDelta
 			imageShown = true
 
-func process_outro(_delta: float):
+func process_outro(delta: float):
 	# This does the animation for the outro cutscene
-	pass
+	var newDelta = cumulativeDelta + delta
+	
+	if cumulativeDelta <= 1 and newDelta > 1:
+		outroPat1.show()
+	elif cumulativeDelta <= OUTRO_TIME/3 and newDelta > OUTRO_TIME/3:
+		outroPat1.hide()
+		outroPat2.show()
+	elif cumulativeDelta <= OUTRO_TIME-OUTRO_TIME/3 and newDelta > OUTRO_TIME-OUTRO_TIME/3:
+		outroPat2.hide()
+		outroPat3.show()
+	elif cumulativeDelta > OUTRO_TIME:
+		outroPat3.hide()
+	
+	cumulativeDelta = newDelta
+	
+	if cumulativeDelta < OUTRO_TIME:
+		var thisStep = delta * (800/OUTRO_TIME)
+		outro.position += Vector2(-thisStep, 0)
