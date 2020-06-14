@@ -19,7 +19,7 @@ var intro3: Sprite
 
 # config these
 const BETWEEN_INTERNVAL: float = 0.6
-const IMAGE_INTERVAL: float = .6 # 3.0
+const IMAGE_INTERVAL: float = 3.0
 
 func _ready():
 	intro1 = get_node("intro1")
@@ -60,9 +60,7 @@ func process_intro(delta: float):
 	# this shows the intro cutscene while sneakily loading recourses
 	# in the background
 	if loadOnNextFrame:
-		print("loading this frame")
 		for c in toLoad[imageIndex]:
-			print("Loading "+c)
 			var r := load("res://scenes/rooms/"+c+".tscn")
 			controller.room_map[c] = r.instance()
 		loadOnNextFrame = false
@@ -70,14 +68,16 @@ func process_intro(delta: float):
 	
 	if imageShown:
 		if cumulativeDelta > lastChangeDelta + IMAGE_INTERVAL:
-			print("hiding image")
 			images[imageIndex].hide()
 			imageShown = false
 			imageIndex += 1
 			lastChangeDelta = cumulativeDelta
+		elif imageIndex == 1:
+			# this one scrolls
+			var thisStep = delta * (800/IMAGE_INTERVAL)
+			images[imageIndex].position += Vector2(-thisStep, 0)
 	else:
 		if cumulativeDelta > lastChangeDelta + BETWEEN_INTERNVAL:
-			print("showing image")
 			if imageIndex >= len(images):
 				controller.intro_cutscene_callback(self)
 				return
@@ -86,26 +86,6 @@ func process_intro(delta: float):
 			loadOnNextFrame = true
 			lastChangeDelta = cumulativeDelta
 			imageShown = true
-
-func old_process_intro(delta: float):
-	# this is the condition in which the intro animation is done
-	var prev_delta := cur_delta
-	cur_delta += delta
-	
-	if prev_delta < BETWEEN_INTERNVAL and cur_delta >= BETWEEN_INTERNVAL:
-		intro1.show()
-	elif prev_delta < BETWEEN_INTERNVAL+IMAGE_INTERVAL and cur_delta >= BETWEEN_INTERNVAL+IMAGE_INTERVAL:
-		intro1.hide()
-	elif prev_delta < BETWEEN_INTERNVAL*2+IMAGE_INTERVAL and cur_delta >= BETWEEN_INTERNVAL*2+IMAGE_INTERVAL:
-		intro2.show()
-	elif prev_delta < BETWEEN_INTERNVAL*2+IMAGE_INTERVAL*2 and cur_delta >= BETWEEN_INTERNVAL*2+IMAGE_INTERVAL*2:
-		intro2.hide()
-	elif prev_delta < BETWEEN_INTERNVAL*3+IMAGE_INTERVAL*2 and cur_delta >= BETWEEN_INTERNVAL*3+IMAGE_INTERVAL*2:
-		intro3.show()
-	elif prev_delta < BETWEEN_INTERNVAL*3+IMAGE_INTERVAL*3 and cur_delta >= BETWEEN_INTERNVAL*3+IMAGE_INTERVAL*3:
-		intro3.hide()
-	elif cur_delta > BETWEEN_INTERNVAL*4+IMAGE_INTERVAL*3:
-		controller.intro_cutscene_callback(self)
 
 func process_outro(_delta: float):
 	# This does the animation for the outro cutscene

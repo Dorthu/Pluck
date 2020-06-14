@@ -19,7 +19,7 @@ centered = false
 
 [node name="intro2" type="Sprite" parent="."]
 visible = false
-position = Vector2( -160, 0 )
+position = Vector2( -612.387, 0 )
 texture = ExtResource( 2 )
 centered = false
 
