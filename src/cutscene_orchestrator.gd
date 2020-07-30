@@ -15,10 +15,11 @@ var cur_delta: float = 0
 var intro1: Sprite
 var intro2: Sprite
 var intro3: Sprite
-var outro: Sprite
 
+var outro: Sprite
 var outroPat2: Sprite
 var outroPat3: Sprite
+var toBeContinued: AnimatedSprite
 var outroAnimator: AnimationPlayer
 
 
@@ -38,6 +39,8 @@ func _ready():
 	outroAnimator = get_node("Outro/WalkAnim")
 	outroPat2 = outro.get_node("pat2")
 	outroPat3 = outro.get_node("pat3")
+	toBeContinued = outro.get_node("tbc")
+	toBeContinued.hide()
 
 func _process(delta):
 	if not started:
@@ -113,6 +116,7 @@ func process_outro(delta: float):
 		outroAnimator.play("PatWalk2")
 	elif cumulativeDelta <= OUTRO_TIME and newDelta > OUTRO_TIME:
 		outroAnimator.play("PatWalk3")
+		toBeContinued.show()
 	
 	cumulativeDelta = newDelta
 	

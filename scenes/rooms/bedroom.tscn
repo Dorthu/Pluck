@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/bedroom/top_doors_open.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://img/ui/look_hint.png" type="Texture" id=19]
 [ext_resource path="res://src/tutor.gd" type="Script" id=20]
 [ext_resource path="res://audio/fx/keys.wav" type="AudioStream" id=21]
+[ext_resource path="res://img/bedroom/guy.png" type="Texture" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 97.0746, 214.8 )
@@ -200,6 +201,10 @@ texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flower"]
 shape = SubResource( 8 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 515.652, 442.044 )
+texture = ExtResource( 22 )
 [connection signal="input_event" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="LivingRoomDoor" to="LivingRoomDoor" method="_on_Door_mouse_exited"]
