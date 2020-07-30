@@ -38,7 +38,7 @@ $answer2 = <STDIN>;
 chomp $answer2;
 
 if($answer2 =~ /^[yY]$/) {
-    `butler push export/upload.zip dorthu/working-title:html5`;
+    `butler push export/upload.zip dorthu/pluck:html5`;
     print "Upload complete!\n";
 } else {
     print "That's fine.  To upload it later, run ' butler push export/upload.zip dorthu/working-title:html5'\n";
