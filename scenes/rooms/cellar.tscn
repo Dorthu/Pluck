@@ -101,7 +101,7 @@ shape = SubResource( 3 )
 [node name="Potion" type="Area2D" parent="."]
 position = Vector2( 905.415, 355.134 )
 script = ExtResource( 6 )
-lines = [ "|Ppat_normal|He seems really out..", "I think I can just take it now.", "|_. . . ", "|Ppat_normal|Sorry Frank!  I'll tell Dad that you tried." ]
+lines = [ "|Ppat_normal|He's really out..", "I think I'm just gonna take it.", "|_. . . ", "|Ppat_normal|Sorry Frank!  I'll make sure to tell Dad you tried." ]
 set_game_state = "met_frank"
 item_id = "potion"
 item_sprite = ExtResource( 2 )

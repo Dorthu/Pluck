@@ -5,31 +5,33 @@ class_name Red
 var controller # MasterController
 var introd: bool
 var intro_text := [
-	"Ppat_normal|Hey red.",
-	"I dreampt that something was wrong with Dad.",
-	"I'm going after him.",
-	"Pred|I thought something was wrong.",
-	"...",
+	"Ppat_normal|Hey Red, I'm worried.",
+	"I had a wierd dream about Dad.",
 	"",
-	"Pred_talk|Let me know if there's anything I can do",
-	"to help you prepare.",
+	"Pred|Do you think something's wrong?",
+	"",
+	"",
+	"Ppat_sad|Yeah, I think I'm gonna go find him.",
+	"",
+	"",
+	"Pred|Make sure you're prepared first.",
+	"You should be able to find everything you need in the house.",
 ]
 
 var help_texts := {
 	"no_progress": [
-		"Ppat_normal|Alright, I'm going.",
-		"",
+		"Ppat_normal|I don't have time.",
+		"I'm just gonna go now.",
 		"",
 		"Pred_talk|You should get your backpack first.",
 		"It's on the hook over there.",
 	],
 	"saw_backpack": [
-		"Ppat_sad|The bracnh grew around my backpack.  I can't get it down.",
+		"Ppat_sad|The branch grew around my backpack.  I can't get it down.",
 		"",
 		"",
 		"Pred|I guess it's been a while since you used it.",
-		"You should look around to see if there's anything you can",
-		"use to get it free.",
+		"The branch might just be thirsty.",
 	],
 	"empty_cup": [
 		"Ppat_sad|I'm not sure how to get my backpack from the branch.",
@@ -42,13 +44,14 @@ var help_texts := {
 		"Ppat_normal|That branch grew around my backpack.  I'm not sure",
 		"how to get it down.",
 		"",
-		"Pred|Maybe it would like some of that water.",
+		"Pred|It is pretty thirsy.  Maybe you should give it some of that",
+		"water.",
 	],
 }
 
 var potion_quest_help := {
 	"no_progress": [
-		"Ppat_normal|Hey red, do you know if we have any good",
+		"Ppat_normal|Hey Red, do you know if we have any good",
 		"potions I can bring?",
 		"",
 		"Pred|Yeah, they should be downstairs.",
@@ -64,10 +67,10 @@ var potion_quest_help := {
 	],
 	"door_unlocked": [
 		"Ppat_normal|I got downstairs, but I can't find the potion",
-		"I wnant.",
+		"I want.",
 		"",
-		"Pred|You should bring the one all the way on the left.  It's",
-		"just what you need.",
+		"Pred|You should bring the orange one on the left.",
+		"That's the one you're looking for."
 	],
 	"met_frank": [
 		"Ppat_sad|Frank won't let me take a potion.  I'm not sure",
@@ -92,7 +95,7 @@ var potion_quest_help := {
 var sword_quest_help := {
 	"no_progress": [
 		"Ppat_sad|What can I bring to defend myself, in case I",
-		"run into something.. scary in the woods?",
+		"run into something.. |_scary| in the woods?",
 		"",
 		"Pred_talk|I'm sure if you look around you'll find something",
 		"suitable.  We do a lot of adventuring, after all.",
@@ -109,14 +112,14 @@ var sword_quest_help := {
 		"Ppat_sad|I need to get the sword down, but when I went to get it",
 		"the domorov almost ate my stepstool!",
 		"",
-		"Pred_talk|I bet he's just hungry.  Find something else for him",
+		"Pred_talk|Oh, he's always hungry.  Find something else for him",
 		"to eat.  He likes cookies, y'know.",
 	],
 	"has_cookies": [
 		"Ppat_sad|I need to get the sword down, but when I went to get it",
 		"the domorov almost ate my stepstool!",
 		"",
-		"Pred_talk|I bet he's just hungry.  I bet he'd like those cookies.",
+		"Pred_talk|Oh, he's always hungry.  I bet he'd like those cookies.",
 	],
 }
 
@@ -129,13 +132,13 @@ var food_quest_help := {
 		"some food in the cabinets.",
 	],
 	"met_bumble": [
-		"Ppat_sad|A bumblebee took the honeycomb I was going to bring",
+		"Ppat_sad|A bumblebee took the honeycomb I want to bring",
 		"on my journey.",
 		"",
 		"Pred|Maybe if you find something else it likes, it'll give it back.",
 	],
 	"has_flower": [
-		"Ppat_sad|A bumblebee took the honeycomb I was going to bring",
+		"Ppat_sad|A bumblebee took the honeycomb I want to bring",
 		"on my journey.",
 		"",
 		"Pred|I bet it would like that flower.  You should offer it to",
@@ -150,7 +153,7 @@ var ready_to_go_text := [
 	"Pred_talk|Good luck!  Be careful!",
 	"",
 	"",
-	"Ppat_normal|Don't worry red, I will be.",
+	"Ppat_normal|Don't worry Red, I will be.",
 	"I'll be back soon.",
 	"_|. . . |With dad."
 ]

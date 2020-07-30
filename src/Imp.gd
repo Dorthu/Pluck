@@ -11,23 +11,26 @@ var shownSleepy: Sprite
 var cur_text: int
 const TEXT_POOL: Array = [
 	[
-		"|Pfrank_happy|Text pool entry 1",
+		"|Pfrank_happy|Get back upstairs, boy!",
 	],
 	[
-		"|Pfrank_happy|Text pool entry 2",
-		"Two lines for number 2",
+		"|Ppat_normal|You sure I can't get that potion?",
+		"",
+		"",
+		"|Pfrank_happy|Yeah I'm sure.",
+		"Get back upstairs.",
 	],
 	[
-		"|Pfrank_happy|Text pool entry 3",
-		"Only two lines though",
-		"",
-		"|Ppat_normal|Why not more?",
+		"|Ppat_normal|I'm still down here!",
 		"",
 		"",
-		"|Pfrank_happy|Because.",
-	],
-	[
-		"|Pfrank_happy|Text pool entry 4",
+		"|Pfrank_happy|Yeah, I see ya'.",
+		"",
+		"I'd rather not see yeh, though.",
+		"|Ppat_sad|So..",
+		"Can I have that potion now?",
+		"",
+		"|Pfrank_nervous|No.",
 	],
 ]
 
@@ -45,34 +48,34 @@ func pop_out():
 	shown.show()
 	
 	say([
-		"|Pfrank_nervous|Hey!  Stop that!",
+		"|Pfrank_nervous|Oy!  Boy, what d'you think yer doin'?",
 		"",
 		"",
 		"|Ppat_sad|Oh, hey Frank.",
 		"",
 		"",
-		"|Pfrank_happy|You know your father doesn't want you getting into the",
+		"|Pfrank_happy|You know yer not supposed to be messing about with the",
 		"potions.",
-		"Now get out of here.",
-		"|Ppat_sad|But he's missing!  I'm trying to-",
+		"Get yerself out of the basement.",
+		"|Ppat_sad|But Dad's missing!  I'm trying to-",
 		"",
 		"",
-		"|Pfrank_nervous|!No |!way. ",
+		"|Pfrank_nervous|_No. Way.|",
 		"",
-		"Now get lost kid.",
+		"Now get lost boy!",
 	])
 
 func make_demands():
 	say([
-		"|Pfrank_happy|I'm not letting you take any potions.",
-		"Your father would be cross with me if I did.",
+		"|Pfrank_happy|I'm not letting ya take any potions.",
+		"Yer dad would be real mad at me if I did.",
 		"",
 		"|Ppat_normal|Can't I do anything to change your mind?",
 		"",
 		"",
-		"|Pfrank_nervous|Hmm....|!No.",
-		"You couldn't even get it while I was sleeping.",
-		"I'd have to be |_really |out for you to get it.",
+		"|Pfrank_nervous|Uh....|!No.",
+		"You couldn't even sneak it when I was sleepin'.  I'd have to'",
+		"be proper passed out for you to get it without my knowin'.",
 	])
 	
 func say(lines: Array, with_callback: bool = false):
@@ -106,19 +109,19 @@ func handle_clicked(_event):
 	if controller.active_item:
 		if controller.active_item.id == "liquor":
 			say([
-				"|Pfrank_nervous|!Hey!  |Where'd you get that?",
+				"|Pfrank_nervous|Oy!  |Where'd ya get |_that|?",
 				"",
 				"",
 				"|Ppat_normal|I found it in the kitchen.",
 				"",
 				"",
-				"|Pfrank_nervous|Well, it's not for kids!",
+				"|Pfrank_nervous|Well, it ain't for you, boy!",
 				"Give it here!",
 				"",
-				"|Ppat_normal|Uhh.. okay..",
+				"|Ppat_normal|Uhh.. okay.",
 				"",
 				"",
-				"|Pfrank_happy|Heh.. haven't had any of this in a |_long time.",
+				"|Pfrank_happy|Heh.. haven't had this in a |_long time.",
 				"|_. . . ",
 				"",
 			], true)
@@ -131,15 +134,15 @@ func handle_clicked(_event):
 			])
 		else:
 			say([
-				"|Pfrank_nervous|Don't try to bribe me.",
-				"I don't even want that.",
+				"|Pfrank_nervous|Don't ya be tryin' to bribe me.",
+				"I don't want that.",
 				"",
 				"|Ppat_sad|What do you want then?",
 				"",
 				"",
-				"|Pfrank_nervous|Nothing!",
+				"|Pfrank_nervous|Er, nothin'.",
 				"",
-				"At leas, nothing a kid would have...",
+				"At least, nothin' a kid would have...",
 			])
 	else:
 		talk()
@@ -151,5 +154,6 @@ func dialog_finished():
 		"|Pfrank_sleepy|_zzzzzzzzzz",
 		"",
 		"",
-		"|Ppat_normal|I think he fell asleep?",
+		"|Ppat_normal|Uh.. he just fell asleep after he drank it?",
+		"Lame.",
 	])

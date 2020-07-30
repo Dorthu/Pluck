@@ -19,5 +19,5 @@ func handle_clicked(_event):
 			]))
 	else:
 		controller.show_dialog(DialogTextPool.new([
-			"|Pdomorov|This is placeholder text",
+			"|Pdomorov|Hey!  Leave me alone!",
 		]))

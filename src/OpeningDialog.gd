@@ -7,7 +7,8 @@ func opening_dialog():
 		"|Ppat_sad|Dad left last night, and he's not back yet.",
 		"I should go after him.",
 		"",
-		"|Ppat_normal|I can't leave the house without my Backpack.",
+		"|Ppat_normal|I have to be prepared, though.",
+		"I should go grab my Backpack."
 	]
 	var text_pool = Clickable.DialogTextPool.new(lines)
 	var tutor = controller.cur_room.get_node("Hints")

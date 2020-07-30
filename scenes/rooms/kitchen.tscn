@@ -170,7 +170,7 @@ shape = SubResource( 5 )
 [node name="Liquor" type="Area2D" parent="."]
 position = Vector2( 1277.48, 91.575 )
 script = ExtResource( 22 )
-lines = [ "|Ppat_sad|Dad doesn't want me to drink this.", "|_ . . .", "Which is |!totally |!unfair." ]
+lines = [ "|Ppat_sad|Dad doesn't let me drink this.", "|_ . . .", "Totally lame." ]
 item_id = "liquor"
 item_sprite = ExtResource( 13 )
 pickup_sound = ExtResource( 26 )

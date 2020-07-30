@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://src/room_shell.gd" type="Script" id=1]
 [ext_resource path="res://img/living-room/background_final.png" type="Texture" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://audio/fx/fireplace.ogg" type="AudioStream" id=24]
 [ext_resource path="res://img/living-room/red.png" type="Texture" id=25]
 [ext_resource path="res://src/red.gd" type="Script" id=26]
+[ext_resource path="res://src/ConditionalClickable.gd" type="Script" id=27]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 86.4009, 257 )
@@ -46,7 +47,7 @@ extents = Vector2( 139.964, 201.501 )
 extents = Vector2( 22.3111, 22.6504 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 140.493, 34.5527 )
+extents = Vector2( 140.493, 58.9226 )
 
 [sub_resource type="OccluderPolygon2D" id=8]
 polygon = PoolVector2Array( -86.3962, -10.7969, -87.6843, -7.66849, -92.6531, -3.06783, -96.7017, -1.41159, -102.591, -0.675476, -108.295, -2.8838, -85.6602, -24.5989, -85.6602, -19.0781 )
@@ -117,6 +118,18 @@ extents = Vector2( 54.2749, 46.7183 )
 
 [sub_resource type="RectangleShape2D" id=30]
 extents = Vector2( 111.489, 88.2337 )
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 65.9692, 36.2427 )
+
+[sub_resource type="RectangleShape2D" id=32]
+extents = Vector2( 32.2988, 34.1692 )
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 50.6649, 92.6795 )
+
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 61.438, 60.2458 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -219,10 +232,11 @@ texture = ExtResource( 4 )
 position = Vector2( 541.788, 251.51 )
 script = ExtResource( 12 )
 before_backpack = true
-lines = [ "|Ppat_normal|I think he's pretty cool." ]
+lines = [ "|Ppat_normal|Aunt Marge is doing fine." ]
 item_text = {
-"liquor": "|Ppat_sad|I'm afraid of what he might do if I gave him some...",
-"water_cup": "|Ppat_normal|He's not thirsty."
+"cookies": "Ppat_sad|I'm not allowed to feed Aunt Marge.",
+"liquor": "|Ppat_sad|Aunt Marge doesn't drink.",
+"water_cup": "|Ppat_normal|She's not thirsty."
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Skull"]
@@ -233,13 +247,13 @@ shape = SubResource( 6 )
 position = Vector2( 421.002, 97.3745 )
 script = ExtResource( 12 )
 before_backpack = true
-lines = [ "|Ppat_normal|Lots of stories of adventures!" ]
+lines = [ "|Ppat_normal|All the stories of Dad's adventures." ]
 item_text = {
 "water_cup": "That would ruin the books."
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Books"]
-position = Vector2( -9.24268, 4.40128 )
+position = Vector2( -3.24268, 39.4013 )
 shape = SubResource( 7 )
 
 [node name="FireplaceAudio" type="AudioStreamPlayer2D" parent="."]
@@ -372,6 +386,48 @@ texture = ExtResource( 25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Red2"]
 shape = SubResource( 30 )
+
+[node name="CauldronAndStuff" type="Area2D" parent="."]
+position = Vector2( 491.52, 327.455 )
+script = ExtResource( 12 )
+before_backpack = true
+lines = [ "Ppat_normal|The stuff I use for school." ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CauldronAndStuff"]
+position = Vector2( 2.04395, 0.875977 )
+shape = SubResource( 31 )
+
+[node name="Drawers" type="Area2D" parent="."]
+position = Vector2( 516.387, 425.836 )
+script = ExtResource( 12 )
+before_backpack = true
+lines = [ "Ppat_normal|This is where I keep all of my ingredients." ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawers"]
+position = Vector2( -1.427, 2.61612 )
+shape = SubResource( 32 )
+
+[node name="Door" type="Area2D" parent="."]
+position = Vector2( 336.634, 399.809 )
+script = ExtResource( 12 )
+before_backpack = true
+lines = [ "Ppat_normal|I'm not allowed to open that.", "", "...", "Ppat_sad|I don't want to let it out.." ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( -4.30185, -5.37732 )
+shape = SubResource( 33 )
+
+[node name="Firewood" type="Area2D" parent="."]
+position = Vector2( 2526.56, 372.622 )
+script = ExtResource( 27 )
+lines = [ "|Pdomorov|I don't want that healthy junk!", "Give me something sugary and bad for you." ]
+notBefore = "hungry_fire"
+notAfter = "domorov_satisfied"
+notHasItem = "cookies"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Firewood"]
+position = Vector2( -0.307373, 4.91772 )
+shape = SubResource( 34 )
 [connection signal="input_event" from="BedroomDoor" to="BedroomDoor" method="_on_Door_input_event"]
 [connection signal="mouse_entered" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_entered"]
 [connection signal="mouse_exited" from="BedroomDoor" to="BedroomDoor" method="_on_Door_mouse_exited"]
@@ -391,3 +447,7 @@ shape = SubResource( 30 )
 [connection signal="input_event" from="SwordShield" to="SwordShield" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="Domorov" to="Domorov" method="_on_Clickable_input_event"]
 [connection signal="input_event" from="Red2" to="Red2" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="CauldronAndStuff" to="CauldronAndStuff" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Drawers" to="Drawers" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Door" to="Door" method="_on_Clickable_input_event"]
+[connection signal="input_event" from="Firewood" to="Firewood" method="_on_Clickable_input_event"]
