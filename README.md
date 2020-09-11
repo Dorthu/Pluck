@@ -4,7 +4,7 @@
 
 A Point and Click Adventure
 
-<iframe frameborder="0" src="https://itch.io/embed/545681?bg_color=535353&amp;fg_color=ffffff&amp;link_color=33dd2e&amp;border_color=333333" width="208" height="167"><a href="https://dorthu.itch.io/pluck">Pluck by Dorthu</a></iframe>
+[Play Pluck in-browser on itch.io](https://dorthu.itch.io/pluck)
 
 ## Credits
 
