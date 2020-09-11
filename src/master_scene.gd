@@ -134,6 +134,13 @@ func _unhandled_input(event):
 	if cutscene_mode:
 		return # handled by cutscene orchestrator
 	
+	#if event is InputEventKey and event.pressed:
+	#	if event.scancode == KEY_E:
+	#		hide_ui()
+	#	elif event.scancode == KEY_R:
+	#		show_ui()
+		
+	
 	if event is InputEventMouseButton and active_item != null:
 		# this is backward on mobile so that the more natural tap-and-drag works
 		if (not is_mobile and event.pressed) or (is_mobile and not event.pressed):
